@@ -31,21 +31,10 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	getData () {
 		const data = super.getData();
 		data.kw_warfare = duplicate(this.actor.data.flags.kw_warfare || {});
-		data.kw_warfareItems = {
-			traits: [],
-			actions: [],
-			orders: []
-		};
+		data.kw_traits = [];
 
 		for (const item of data.items) {
-			const activation = item.data.activation.type;
-			if (activation === 'action') {
-				data.kw_warfareItems.actions.push(item);
-			} else if (activation === 'order') {
-				data.kw_warfareItems.orders.push(item);
-			} else {
-				data.kw_warfareItems.traits.push(item);
-			}
+			data.kw_traits.push(item);
 
 			item.data.description.enriched = TextEditor.enrichHTML(item.data.description.value, {
 				secrets: data.owner,
@@ -88,18 +77,9 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			}
 		};
 
-		let name = 'NewTrait';
-		if (dataset.type === 'action') {
-			name = 'NewAction';
-		}
-
-		if (dataset.type === 'order') {
-			name = 'NewOrder';
-		}
-
 		this.actor.createEmbeddedDocuments('Item', [{
 			type: 'feat',
-			name: game.i18n.localize(`KW_WARFARE.${name}`),
+			name: game.i18n.localize('KW_WARFARE.NewTrait'),
 			data: data
 		}], {renderSheet: true});
 	}
