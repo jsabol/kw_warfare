@@ -30,9 +30,13 @@
 	color: var(--war-edit);
 }
 
-.kw-warfare form input.kw-warfare-unit-stat,
-.kw-warfare form input.kw-warfare-unit-cost {
+.kw-warfare form input.kw-warfare-unit-stat {,
 	max-width: 45px;
+	text-align: center;
+}
+
+.kw-warfare form input.kw-warfare-unit-commander {
+	width: 200px;
 	text-align: center;
 }
 
@@ -101,7 +105,7 @@ label.kw-warfare-unit-name {
 	padding: 1px 0;
 }
 
-.kw-warfare-unit-cost-row {
+.kw-warfare-unit-commander-row {
 	margin-top: 10px;
 	text-transform: uppercase;
 	color: var(--war-base);
@@ -111,7 +115,7 @@ label.kw-warfare-unit-name {
 	align-items: center;
 }
 
-.kw-warfare-unit-cost-row h3 {
+.kw-warfare-unit-commander-row h3 {
 	font-size: 13px;
 	margin: 0 5px 0 0;
 }

@@ -2,9 +2,10 @@ import Actor5e from '../../../systems/dnd5e/module/actor/entity.js';
 import {d20Roll} from '../../../systems/dnd5e/module/dice.js';
 
 const attributeLabels = {
-	attack: 'KW_WARFARE.Attack',
-	power: 'KW_WARFARE.Power',
-	morale: 'KW_WARFARE.Morale'
+	"attack": "KW_WARFARE.Attack",
+	"power": "KW_WARFARE.Power",
+	"morale": "KW_WARFARE.Morale",
+	"command": "KW_WARFARE.Command"
 };
 
 export default function extendActor () {
@@ -21,11 +22,11 @@ export default function extendActor () {
 				stats.casualties = {taken: 0, max: 0};
 			}
 
-			if (typeof stats.size === 'string' && stats.size !== '') {
-				const die = Number(stats.size.split('d')[1]);
-				if (!isNaN(die)) {
-					stats.casualties.max = die;
-				}
+			if(stats.size === '') {
+				stats.casualties.max = 4;
+				stats.size = 4;
+			} else if (typeof stats.size === 'number') {
+				stats.casualties.max = stats.size;
 			}
 
 			stats.casualties.remaining = stats.casualties.max - stats.casualties.taken;
@@ -34,6 +35,16 @@ export default function extendActor () {
 			}
 
 			stats.casualties.diminished = stats.casualties.remaining <= stats.casualties.max / 2;
+
+			this.data.data.attributes.hp = {
+				formula: "" + stats.size,
+				min: 0,
+				max: stats.size,
+				value: stats.casualties.remaining,
+				temp: 0,
+				tempmax: 0
+			}
+
 		}
 	})();
 

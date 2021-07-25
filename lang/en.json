@@ -1,27 +1,44 @@
 {
-	"KW_WARFARE.AddAction": "Add Action",
-	"KW_WARFARE.AddOrder": "Add Order",
-	"KW_WARFARE.AddTrait": "Add Trait",
-	"KW_WARFARE.Ancestry": "Ancestry",
-	"KW_WARFARE.Attack": "Attack",
-	"KW_WARFARE.Actions": "Actions",
-	"KW_WARFARE.Casualties": "Casualties",
-	"KW_WARFARE.Cost": "Cost",
-	"KW_WARFARE.Dark": "Dark",
-	"KW_WARFARE.Defense": "Defense",
-	"KW_WARFARE.Experience": "Experience",
-	"KW_WARFARE.Light": "Light",
-	"KW_WARFARE.Morale": "Morale",
-	"KW_WARFARE.NewAction": "New Action",
-	"KW_WARFARE.NewOrder": "New Order",
-	"KW_WARFARE.NewTrait": "New Trait",
-	"KW_WARFARE.Order": "Order",
-	"KW_WARFARE.Orders": "Orders",
-	"KW_WARFARE.Power": "Power",
-	"KW_WARFARE.Sheet": "Warfare Unit Sheet",
-	"KW_WARFARE.Size": "Size",
-	"KW_WARFARE.Theme": "Theme",
-	"KW_WARFARE.Toughness": "Toughness",
-	"KW_WARFARE.Traits": "Traits",
-	"KW_WARFARE.UnitName": "Unit Name"
+  "KW_WARFARE.Sheet": "Warfare Unit Sheet",
+
+  "KW_WARFARE.AddAction": "Add Action",
+  "KW_WARFARE.AddOrder": "Add Order",
+  "KW_WARFARE.AddTrait": "Add Trait",
+
+  "KW_WARFARE.UnitName": "Unit Name",
+  "KW_WARFARE.Ancestry": "Ancestry",
+  "KW_WARFARE.Experience": "Experience",
+  "KW_WARFARE.Commander": "Commander",
+
+  "KW_WARFARE.Actions": "Actions",
+  "KW_WARFARE.Traits": "Traits",
+  "KW_WARFARE.Orders": "Orders",
+
+  "KW_WARFARE.NewAction": "New Action",
+  "KW_WARFARE.NewOrder": "New Order",
+  "KW_WARFARE.NewTrait": "New Trait",
+
+  "KW_WARFARE.Attack": "Attack",
+  "KW_WARFARE.Defense": "Defense",
+  "KW_WARFARE.Power": "Power",
+  "KW_WARFARE.Toughness": "Toughness",
+  "KW_WARFARE.Morale": "Morale",
+  "KW_WARFARE.Command": "Command",
+  "KW_WARFARE.Damage": "Damage",
+
+  "KW_WARFARE.AttackShort": "ATK",
+  "KW_WARFARE.DefenseShort": "DEF",
+  "KW_WARFARE.PowerShort": "POW",
+  "KW_WARFARE.ToughnessShort": "TOU",
+  "KW_WARFARE.MoraleShort": "MOR",
+  "KW_WARFARE.CommandShort": "COM",
+  "KW_WARFARE.DamageShort": "DMG",
+
+  "KW_WARFARE.Size": "Size",
+
+  "KW_WARFARE.Casualties": "Casualties",
+
+  "KW_WARFARE.Theme": "Theme",
+  "KW_WARFARE.Dark": "Dark",
+  "KW_WARFARE.Light": "Light"
 }

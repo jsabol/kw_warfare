@@ -42,12 +42,12 @@
 		</div>
 	</header>
 	<section class="kw-warfare-unit-stats">
-		<div class="kw-warfare-unit-stat-row kw-warfare-unit-cost-row">
-			<h3>{{localize 'KW_WARFARE.Cost'}}:</h3>
+		<div class="kw-warfare-unit-stat-row kw-warfare-unit-commander-row">
+			<h3>{{localize 'KW_WARFARE.Commander'}}:</h3>
 			<label>
-				<span>{{unitCost}}</span>
-				<input type="text" class="kw-warfare-unit-cost" data-dtype="Number" placeholder="&mdash;"
-				       name="flags.kw_warfare.stats.cost" value="{{kw_warfare.stats.cost}}">
+				<span>{{kw_warfare.details.commander}}</span>
+				<input type="text" class="kw-warfare-unit-commander" data-dtype="String" placeholder="&mdash;"
+				       name="flags.kw_warfare.details.commander" value="{{kw_warfare.details.commander}}">
 			</label>
 		</div>
 		<div class="kw-warfare-unit-stat-row">
@@ -76,7 +76,7 @@
 		</div>
 		<div class="kw-warfare-unit-stat-row">
 			<div>
-				<div class="kw-warfare-unit-stat-key warfare-rollable" data-roll="power">
+				<div class="kw-warfare-unit-stat-key kw-warfare-rollable" data-roll="power">
 					{{localize 'KW_WARFARE.Power'}}:
 				</div>
 				<div class="kw-warfare-unit-stat-value">
@@ -112,19 +112,44 @@
 				</div>
 			</div>
 			<div>
-				<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Size'}}:</div>
-				<div class="kw-warfare-unit-stat-value">
-					<label>
-						<span>{{kw_warfare.stats.size}}</span>
-						<input type="text" class="kw-warfare-unit-stat warfare-unit-size" data-dtype="String"
-						       placeholder="1d4" name="flags.kw_warfare.stats.size"
-						       value="{{kw_warfare.stats.size}}">
-					</label>
-				</div>
+					<div class="kw-warfare-unit-stat-key kw-warfare-rollable" data-roll="command">
+							{{localize 'KW_WARFARE.Command'}}:
+					</div>
+					<div class="kw-warfare-unit-stat-value">
+							<label>
+									<span>{{number-format kw_warfare.stats.command sign=true decimals=0}}</span>
+									<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+												 name="flags.kw_warfare.stats.command" value="{{kw_warfare.stats.command}}">
+							</label>
+					</div>
+			</div>
+		</div>
+		<div class="kw-warfare-unit-stat-row">
+			<div>
+					<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Damage'}}:</div>
+					<div class="kw-warfare-unit-stat-value">
+							<label>
+									<span>{{kw_warfare.stats.damage}}</span>
+									<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+												 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
+							</label>
+					</div>
+			</div>
+			<div>
+					<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Size'}}:</div>
+					<div class="kw-warfare-unit-stat-value">
+							<label>
+									<span>1d{{kw_warfare.stats.size}}</span>
+									<input type="number" class="kw-warfare-unit-stat kw-warfare-unit-size" data-dtype="Number"
+												 name="flags.kw_warfare.stats.size"
+												 value="{{kw_warfare.stats.size}}">
+							</label>
+					</div>
 			</div>
 		</div>
 	</section>
 	{{#if kw_warfare.stats.casualties.max}}
+		<!-- TODO: Display diminished status somewhere -->
 	<section class="kw-warfare-unit-casualties">
 		<div title="{{localize 'KW_WARFARE.Casualties'}}" class="kw-warfare-unit-casualties-pips
 		     {{#if kw_warfare.stats.casualties.diminished}}kw_warfare-unit-casualties-diminished{{/if}}">

@@ -10,10 +10,6 @@ Hooks.on('init', () => {
 	extendActor();
 });
 
-// Hooks.on('setup', () => {
-// 	CONFIG.DND5E.abilityActivationTypes.order = game.i18n.localize('KW_WARFARE.Order');
-// });
-
 Hooks.on('ready', () => {
 	game.settings.register('kw_warfare', 'theme', {
 		name: 'KW_WARFARE.Theme',
