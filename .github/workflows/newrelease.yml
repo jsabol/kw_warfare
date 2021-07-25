@@ -5,7 +5,7 @@ name: Release
 # events but only for the master branch
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
 
 env:
   MODULE_NAME: kw_warfare
