@@ -124,29 +124,42 @@
 					</div>
 			</div>
 		</div>
-		<div class="kw-warfare-unit-stat-row">
-			<div>
-					<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Damage'}}:</div>
-					<div class="kw-warfare-unit-stat-value">
-							<label>
-									<span>{{kw_warfare.stats.damage}}</span>
-									<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-												 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
-							</label>
+			<div class="kw-warfare-unit-stat-row">
+					<div>
+							<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Damage'}}:</div>
+							<div class="kw-warfare-unit-stat-value">
+									<label>
+											<span>{{kw_warfare.stats.damage}}</span>
+											<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+														 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
+									</label>
+							</div>
+					</div>
+					<div>
+							<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.NumberOfAttacks'}}:</div>
+							<div class="kw-warfare-unit-stat-value">
+									<label>
+											<span>{{kw_warfare.stats.numberOfAttacks}}</span>
+											<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+														 name="flags.kw_warfare.stats.numberOfAttacks" value="{{kw_warfare.stats.numberOfAttacks}}">
+									</label>
+							</div>
 					</div>
 			</div>
-			<div>
-					<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Size'}}:</div>
-					<div class="kw-warfare-unit-stat-value">
-							<label>
-									<span>1d{{kw_warfare.stats.size}}</span>
-									<input type="number" class="kw-warfare-unit-stat kw-warfare-unit-size" data-dtype="Number"
-												 name="flags.kw_warfare.stats.size"
-												 value="{{kw_warfare.stats.size}}">
-							</label>
+			<div class="kw-warfare-unit-stat-row">
+					<div></div>
+					<div>
+							<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Size'}}:</div>
+							<div class="kw-warfare-unit-stat-value">
+									<label>
+											<span>1d{{kw_warfare.stats.size}}</span>
+											<input type="number" class="kw-warfare-unit-stat kw-warfare-unit-size" data-dtype="Number"
+														 name="flags.kw_warfare.stats.size"
+														 value="{{kw_warfare.stats.size}}">
+									</label>
+							</div>
 					</div>
 			</div>
-		</div>
 	</section>
 	{{#if kw_warfare.stats.casualties.max}}
 		<!-- TODO: Display diminished status somewhere -->
