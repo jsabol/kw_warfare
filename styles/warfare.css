@@ -1,0 +1,264 @@
+.kw-warfare.window-app .window-content {
+	background: var(--war-bg);
+	border: 8px solid var(--war-border);
+	box-shadow: var(--war-box-shadow);
+}
+
+.kw-warfare form {
+	padding: 12px;
+}
+
+.kw-warfare-unit-config {
+	position: absolute;
+	top: 46px;
+	right: 16px;
+	font-size: 16px;
+	color: var(--war-config-colour);
+}
+
+.kw-warfare-unit-config:hover {
+	text-shadow: none;
+	color: var(--war-highlight);
+}
+
+.kw-warfare form input {
+	display: none;
+	width: 100%;
+	height: unset;
+	border: none;
+	background: transparent;
+	color: var(--war-edit);
+}
+
+.kw-warfare form input.kw-warfare-unit-stat,
+.kw-warfare form input.kw-warfare-unit-cost {
+	max-width: 45px;
+	text-align: center;
+}
+
+.kw-warfare form input:focus {
+	box-shadow: none;
+}
+
+.kw-warfare form.kw-warfare-config input {
+	display: block;
+}
+
+.kw-warfare form.kw-warfare-config label span {
+	display: none;
+}
+
+.kw-warfare-rollable {
+	cursor: pointer;
+}
+
+.kw-warfare-rollable:hover {
+	text-decoration: underline;
+}
+
+.kw-warfare-unit-keyword-row {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.kw-warfare-unit-keyword-row label {
+	margin-right: 5px;
+}
+
+.kw-warfare-unit-keyword-row label span {
+	text-transform: uppercase;
+	color: var(--war-base);
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.kw-warfare form .kw-warfare-unit-keyword-row input {
+	max-width: 200px;
+}
+
+.kw-warfare-unit-keyword-row input:first-child {
+	margin-right: 8px;
+}
+
+label.kw-warfare-unit-name {
+	text-transform: uppercase;
+	font-weight: bold;
+	color: var(--war-highlight);
+	font-size: 18px;
+	width: 100%;
+	display: block;
+	border-bottom: 1px solid var(--war-underscore);
+	margin-bottom: 2px;
+}
+
+.kw-warfare-unit-stats {
+	margin-bottom: 8px;
+}
+
+.kw-warfare-unit-stat-row {
+	display: flex;
+	border-bottom: 1px solid var(--war-underscore);
+	padding: 1px 0;
+}
+
+.kw-warfare-unit-cost-row {
+	margin-top: 10px;
+	text-transform: uppercase;
+	color: var(--war-base);
+	display: flex;
+	justify-content: flex-end;
+	padding: 0 0 4px 0;
+	align-items: center;
+}
+
+.kw-warfare-unit-cost-row h3 {
+	font-size: 13px;
+	margin: 0 5px 0 0;
+}
+
+.kw-warfare-unit-stat-row > div {
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.kw-warfare-unit-stat-key {
+	text-transform: uppercase;
+	color: var(--war-highlight);
+	font-weight: bold;
+	font-size: 14px;
+	width: 50%;
+	min-width: 95px;
+}
+
+.kw-warfare-unit-stat-value {
+	width: 50%;
+	font-size: 14px;
+	color: var(--war-highlight);
+	font-weight: bold;
+}
+
+.kw-warfare-config-add-items {
+	display: none;
+	justify-content: space-between;
+	margin-bottom: 4px;
+}
+
+.kw-warfare-unit-casualties+.kw-warfare-config-add-items {
+	margin-top: 2px;
+}
+
+.kw-warfare-config .kw-warfare-config-add-items {
+	display: flex;
+}
+
+.kw-warfare-config-add-items a,
+.kw-warfare-config-item a {
+	text-transform: uppercase;
+	font-size: 12px;
+	color: var(--war-config-colour);
+}
+
+.kw-warfare-config-item a {
+	display: inline-block;
+}
+
+.kw-warfare-config-item a.kw-warfare-alert,
+.kw-warfare-config-item a.kw-warfare-alert:hover {
+	color: var(--war-alert);
+}
+
+.kw-warfare-config-add-items a:hover,
+.kw-warfare-config-item a:hover {
+	text-shadow: none;
+	color: var(--war-highlight);
+}
+
+.kw-warfare-config-item {
+	display: none;
+}
+
+.kw-warfare-config .kw-warfare-config-item {
+	display: inline-block;
+}
+
+.kw-warfare-unit-feature-block h3 {
+	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: bold;
+	color: var(--war-header);
+	margin-bottom: 0;
+}
+
+.kw-warfare-unit-feature {
+	margin-bottom: 8px;
+	font-size: 13px;
+	text-align: justify;
+	color: var(--war-text);
+}
+
+.kw-warfare-unit-feature strong {
+	text-align: left;
+}
+
+.kw-warfare-unit-feature strong + p {
+	display: inline;
+}
+
+.kw-warfare-unit-feature p {
+	margin: 6px 0;
+}
+
+.kw-warfare-unit-casualties {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 5px;
+}
+
+.kw-warfare-unit-casualties-pips {
+	display: flex;
+	align-items: center;
+}
+
+.kw-warfare-unit-casualties-pip {
+	display: flex;
+	align-items: center;
+	padding-left: 3px;
+	cursor: pointer;
+	position: relative;
+	margin-left: 5px;
+	width: 15px;
+	height: 15px;
+}
+
+.kw-warfare-unit-casualties-pip:first-child {
+	margin-left: 0;
+}
+
+.kw-warfare-unit-casualties-pip span {
+	width: 10px;
+	height: 10px;
+	border: 1px solid var(--war-pip);
+	border-radius: 50%;
+}
+
+.kw-warfare-unit-casualties-pip-full span {
+	background-color: var(--war-pip);
+}
+
+.kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full:before {
+	content: '';
+	width: 11px;
+	height: 11px;
+	border: 2px solid var(--war-pip);
+	border-radius: 50%;
+	position: absolute;
+	left: 1px;
+}
+
+.kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full span {
+	width: 7px;
+	height: 7px;
+	margin-left: 2px;
+}

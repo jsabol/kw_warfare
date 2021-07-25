@@ -1,0 +1,23 @@
+{
+	"name": "kw_warfare",
+	"title": "Kingdoms & Warfare: Warfare",
+	"description": "An implementation of MCDM's warfare rules from Kingdoms & Warfare.",
+	"author": "Mejari",
+	"version": "0.0.1",
+	"minimumCoreVersion": "0.8.2",
+	"compatibleCoreVersion": "0.8.8",
+	"systems": ["dnd5e"],
+	"esmodules": ["module/main.js"],
+	"styles": ["styles/light.css", "styles/warfare.css"],
+	"url": "https://github.com/Mejari/kw-warfare",
+	"manifest": "https://github.com/Mejari/kw-warfare/raw/master/module.json",
+	"download": "https://github.com/Mejari/kw-warfare/get/0.0.1.zip",
+	"bugs": "https://github.com/Mejari/kw-warfare/issues",
+	"license": "LICENSE",
+	"readme": "README.md",
+	"languages": [{
+		"lang": "en",
+		"name": "English",
+		"path": "lang/en.json"
+	}]
+}
