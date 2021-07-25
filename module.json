@@ -3,7 +3,7 @@
   "title": "Kingdoms & Warfare: Warfare",
   "description": "An implementation of MCDM's warfare rules from Kingdoms & Warfare.",
   "author": "Mejari",
-  "version": "0.0.1-21d5f3b",
+  "version": "0.0.1-cd11661",
   "minimumCoreVersion": "0.8.2",
   "compatibleCoreVersion": "0.8.8",
   "systems": [
@@ -18,7 +18,7 @@
   ],
   "url": "https://github.com/Mejari/kw_warfare",
   "manifest": "https://raw.githubusercontent.com/Mejari/kw_warfare/main/module.json",
-  "download": "https://github.com/Mejari/kw_warfare/releases/download/v0.0.1-21d5f3b/kw_warfare-v0.0.1-21d5f3b.zip",
+  "download": "https://github.com/Mejari/kw_warfare/releases/download/v0.0.1-cd11661/kw_warfare-v0.0.1-cd11661.zip",
   "bugs": "https://github.com/Mejari/kw_warfare/issues",
   "changelog": "CHANGELOG",
   "license": "LICENSE",
