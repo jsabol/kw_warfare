@@ -3,7 +3,7 @@
 	"title": "Kingdoms & Warfare: Warfare",
 	"description": "An implementation of MCDM's warfare rules from Kingdoms & Warfare.",
 	"author": "Mejari",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"minimumCoreVersion": "0.8.2",
 	"compatibleCoreVersion": "0.8.8",
 	"systems": ["dnd5e"],
