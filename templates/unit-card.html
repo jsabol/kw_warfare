@@ -198,8 +198,12 @@
 				<table class="tg">
 						<thead>
 						<tr>
-								<th class="kw-warfare-unit-type-icon" rowspan="2"></th>
-								<th class="kw-warfare-unit-ancestry-icon"></th>
+								<th class="kw-warfare-unit-type-icon" rowspan="2">
+										<img alt="{{kw_warfare.details.type}}" src="{{kw_warfare.kw_type_icon}}"/>
+								</th>
+								<th class="kw-warfare-unit-ancestry-icon">
+										<img alt="{{kw_warfare.details.ancestry}}" src="{{kw_warfare.kw_ancestry_icon}}"/>
+								</th>
 								<th colspan="4">
 										<div class="kw-warfare-unit-name-box">
 												<label class="kw-warfare-unit-name">
@@ -222,7 +226,7 @@
 						</tr>
 						<tr>
 								<td colspan="5">
-										<label>
+										Commander: <label>
 												<span>{{kw_warfare.details.commander}}</span>
 												<input type="text" class="kw-warfare-unit-commander" data-dtype="String" placeholder="&mdash;"
 															 name="flags.kw_warfare.details.commander" value="{{kw_warfare.details.commander}}">
@@ -332,12 +336,6 @@
 										</label>
 								</td>
 								<td colspan="5">
-										<section class="kw-warfare-config-add-items">
-												<a class="kw-warfare-config-add-item">
-														<span>{{localize 'KW_WARFARE.AddTrait'}}</span>
-														<i class="fas fa-cog"></i>
-												</a>
-										</section>
 										{{#*inline 'feature'}}
 										<div class="kw-warfare-unit-feature">
 												<div class="kw-warfare-config-item" data-item-id="{{_id}}">
@@ -350,7 +348,15 @@
 										{{/inline}}
 										{{#if kw_traits.length}}
 										<section class="kw-warfare-unit-feature-block">
+												<div class="kw-warfare-unit-features-label">
 												<h3>{{localize 'KW_WARFARE.Traits'}}</h3>
+												<span class="kw-warfare-config-add-items">
+														<a class="kw-warfare-config-add-item">
+																<span>{{localize 'KW_WARFARE.AddTrait'}}</span>
+																<i class="fas fa-cog"></i>
+														</a>
+												</span>
+												</div>
 												{{#each kw_traits}}
 												{{> feature}}
 												{{/each}}

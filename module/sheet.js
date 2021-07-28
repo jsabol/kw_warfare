@@ -45,18 +45,18 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			if(requirements) {
 				if(requirements === KW_ANCESTRY) {
 					data.kw_warfare.details.ancestry = item.name;
-					data.kw_ancestry_icon = item.img; //include default if img is 'icons/svg/item-bag.svg'
-					// continue;
+					data.kw_warfare.kw_ancestry_icon = item.img;
+					continue;
 				} else if (requirements === KW_EXPERIENCE) {
 					data.kw_warfare.details.experience = item.name;
-					// continue;
+					continue;
 				} else if (requirements === KW_EQUIPMENT) {
 					data.kw_warfare.details.equipment = item.name;
-					// continue;
+					continue;
 				} else if (requirements === KW_TYPE) {
 					data.kw_warfare.details.type = item.name;
-					data.kw_type_icon = item.img; //include default if img is 'icons/svg/item-bag.svg'
-					// continue;
+					data.kw_warfare.kw_type_icon = item.img;
+					continue;
 				}
 			}
 			data.kw_traits.push(item);
@@ -70,11 +70,28 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			});
 		}
 
+		data.kw_warfare.kw_type_icon = this._getDefaultTypeImg(data.kw_warfare.kw_type_icon);
+		data.kw_warfare.kw_ancestry_icon = this._getDefaultAncestryImg(data.kw_warfare.kw_ancestry_icon);
+
 		if (data.kw_warfare.stats?.casualties?.max) {
 			this._formatCasualties(data.kw_warfare.stats.casualties);
 		}
 
 		return data;
+	}
+
+	_getDefaultAncestryImg(img) {
+		if(!img || img === 'icons/svg/item-bag.svg') {
+			return 'icons/environment/people/commoner.webp';
+		}
+		return img;
+	}
+
+	_getDefaultTypeImg(img) {
+		if(!img || img === 'icons/svg/item-bag.svg') {
+			return 'icons/weapons/swords/sword-simple-white.webp';
+		}
+		return img;
 	}
 
 	_formatCasualties (casualties) {
