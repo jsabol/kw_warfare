@@ -49,6 +49,7 @@ export default function extendActor () {
 	})();
 
 	Actor5e.prototype.rollUnitAttribute = function (attr, options = {}) {
+		//TODO: include roll attribute icon in roll data
 		const stats = this.getFlag('kw_warfare', 'stats');
 		if (!stats) {
 			return;

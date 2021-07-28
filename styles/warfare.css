@@ -5,13 +5,14 @@
 }
 
 .kw-warfare form {
-	padding: 12px;
+}
+
+.kw-warfare-unit-name-box {
+	display: flex;
 }
 
 .kw-warfare-unit-config {
-	position: absolute;
-	top: 46px;
-	right: 16px;
+	margin-left: 10px;
 	font-size: 16px;
 	color: var(--war-config-colour);
 }
@@ -31,7 +32,7 @@
 }
 
 .kw-warfare form input.kw-warfare-unit-stat {,
-	max-width: 45px;
+max-width: 45 px;
 	text-align: center;
 }
 
@@ -137,8 +138,10 @@ label.kw-warfare-unit-name {
 }
 
 .kw-warfare-unit-stat-value {
-	width: 50%;
-	font-size: 14px;
+	height: 15px;
+	font-size: 21px !important;
+	text-align: center !important;
+	padding: 0 !important;
 	color: var(--war-highlight);
 	font-weight: bold;
 }
@@ -149,7 +152,7 @@ label.kw-warfare-unit-name {
 	margin-bottom: 4px;
 }
 
-.kw-warfare-unit-casualties+.kw-warfare-config-add-items {
+.kw-warfare-unit-casualties + .kw-warfare-config-add-items {
 	margin-top: 2px;
 }
 
@@ -214,6 +217,10 @@ label.kw-warfare-unit-name {
 	margin: 6px 0;
 }
 
+.kw-warfare-trait-name {
+	cursor: pointer;
+}
+
 .kw-warfare-unit-casualties {
 	display: flex;
 	justify-content: center;
@@ -267,9 +274,51 @@ label.kw-warfare-unit-name {
 	margin-left: 2px;
 }
 
-.kw-warfare-table table {border-collapse:collapse;border-spacing:0;}
-.kw-warfare-table td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-	overflow:hidden;padding:10px 5px;word-break:normal;}
-.kw-warfare-table th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-	font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.kw-warfare-table td {text-align:left;vertical-align:top}
+.kw-warfare-table {
+	height: 100%;
+}
+
+.kw-warfare-table table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	height: 100%;
+}
+
+.kw-warfare-table td {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.kw-warfare-table th {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.kw-warfare-table td {
+	text-align: left;
+	vertical-align: top
+}
+
+.kw-warfare-stat-short-label {
+	height: 25px;
+	text-align: center !important;
+	font-size: 20px !important;
+	padding: 0 !important;
+}
+
+.kw-warfare-unit-size {
+
+}

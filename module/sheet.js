@@ -1,12 +1,18 @@
 import ActorSheet5e from '../../../systems/dnd5e/module/actor/sheets/base.js';
 
+export const KW_ANCESTRY = 'Ancestry';
+export const KW_EXPERIENCE = 'Experience';
+export const KW_EQUIPMENT = 'Equipment';
+export const KW_TYPE = 'Type';
+
 export default class KW_WarfareUnitSheet extends ActorSheet5e {
+
 	static get defaultOptions () {
 		return mergeObject(super.defaultOptions, {
 			classes: ['kw-warfare', 'kw-warfare-unit'],
 			scrollY: ['form'],
-			width: 340,
-			height: 415
+			width: 615,
+			height: 440
 		});
 	}
 
@@ -23,6 +29,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		html.find('.kw-warfare-unit-config').click(this._onConfigClicked.bind(this));
 		html.find('.kw-warfare-config-add-item').click(this._onAddItem.bind(this));
 		html.find('.kw-warfare-config-rm-item').click(this._onRemoveItem.bind(this));
+		html.find('.kw-warfare-trait-name').click(this._onTraitNameClicked.bind(this));
 		html.find('.kw-warfare-config-edit-item').click(this._onEditItem.bind(this));
 		html.find('.kw-warfare-unit-casualties-pip').click(this._onCasualtyClicked.bind(this));
 		html.find('[data-roll]').click(this._onRollAttribute.bind(this));
@@ -34,6 +41,24 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		data.kw_traits = [];
 
 		for (const item of data.items) {
+			const requirements = item.data.requirements;
+			if(requirements) {
+				if(requirements === KW_ANCESTRY) {
+					data.kw_warfare.details.ancestry = item.name;
+					data.kw_ancestry_icon = item.img; //include default if img is 'icons/svg/item-bag.svg'
+					// continue;
+				} else if (requirements === KW_EXPERIENCE) {
+					data.kw_warfare.details.experience = item.name;
+					// continue;
+				} else if (requirements === KW_EQUIPMENT) {
+					data.kw_warfare.details.equipment = item.name;
+					// continue;
+				} else if (requirements === KW_TYPE) {
+					data.kw_warfare.details.type = item.name;
+					data.kw_type_icon = item.img; //include default if img is 'icons/svg/item-bag.svg'
+					// continue;
+				}
+			}
 			data.kw_traits.push(item);
 
 			item.data.description.enriched = TextEditor.enrichHTML(item.data.description.value, {
@@ -97,6 +122,15 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		}
 
 		this.actor.deleteEmbeddedDocuments('Item', [target.parentElement.dataset.itemId]);
+	}
+
+	_onTraitNameClicked (evt) {
+		const target = evt.currentTarget;
+		const nextSibling = target.nextElementSibling;
+		if(nextSibling && nextSibling.className.indexOf('kw-warfare-trait-description') >=0) {
+			const currentDisplay = nextSibling.style.display;
+			nextSibling.style.display = currentDisplay === 'none' ? 'block' : 'none';
+		}
 	}
 
 	_onCasualtyClicked (evt) {

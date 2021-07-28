@@ -1,4 +1,4 @@
-import KW_WarfareUnitSheet from './sheet.js';
+import KW_WarfareUnitSheet, {KW_ANCESTRY, KW_EQUIPMENT, KW_EXPERIENCE, KW_TYPE} from './sheet.js';
 import extendActor from './unit.js';
 
 Hooks.on('init', () => {
@@ -26,6 +26,64 @@ Hooks.on('ready', () => {
 
 	setTheme(game.settings.get('kw_warfare', 'theme'));
 });
+
+Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {
+	if(KW_WarfareUnitSheet.name !== sheet.constructor.name) {
+		return;
+	}
+	//overwrite existing experience/ancestry/equipment/type if already exist
+	//delete old trait. clear out text value.
+
+	const item = game.items.get(itemInfo.id);
+	if(!item) { return; }
+
+	const requirements = item.data.data.requirements;
+	if(!requirements) { return; }
+	if(requirements === KW_ANCESTRY) {
+		cleanDetails(actor, 'ancestry', KW_ANCESTRY);
+	} else if(requirements === KW_EQUIPMENT) {
+		cleanDetails(actor, 'equipment', KW_EQUIPMENT);
+	} else if (requirements === KW_EXPERIENCE) {
+		cleanDetails(actor, 'experience', KW_EXPERIENCE);
+	} else if (requirements === KW_TYPE) {
+		cleanDetails(actor, 'type', KW_TYPE);
+	}
+});
+
+Hooks.on('updateActor', (actor, updatedFlags) => {
+	if(!updatedFlags.flags || !updatedFlags.flags.kw_warfare || !updatedFlags.flags.kw_warfare.details) {
+		return;
+	}
+
+	//if manually entering an experience/ancestry/equipment/type
+	//delete old trait if exists
+
+	const updatedDetails = updatedFlags.flags.kw_warfare.details;
+	if(Object.keys(updatedDetails).length !== 1) {
+		return;
+	}
+	const updatedKey = Object.keys(updatedDetails)[0];
+	if(updatedKey === 'ancestry') {
+		cleanDetails(actor, 'ancestry', KW_ANCESTRY, false);
+	} else if(updatedKey === 'equipment') {
+		cleanDetails(actor, 'equipment', KW_EQUIPMENT, false);
+	} else if (updatedKey === 'experience') {
+		cleanDetails(actor, 'experience', KW_EXPERIENCE, false);
+	} else if (updatedKey === 'type') {
+		cleanDetails(actor, 'type', KW_TYPE, false);
+	}
+});
+
+
+function cleanDetails(actor, detailName, detailType, cleanFlag = true) {
+	if(cleanFlag) {
+		actor.setFlag('kw_warfare', 'details.' + detailName, '');
+	}
+	const existingTrait = actor.items.find((i) => { return i.data.data.requirements === detailType; })
+	if(existingTrait) {
+		actor.items.delete(existingTrait.id)
+	}
+}
 
 Handlebars.registerHelper('number-format', function (n, options) {
 	if (n == null) {
