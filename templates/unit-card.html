@@ -204,7 +204,7 @@
 								<th class="kw-warfare-unit-ancestry-icon">
 										<img alt="{{kw_warfare.details.ancestry}}" src="{{kw_warfare.kw_ancestry_icon}}"/>
 								</th>
-								<th colspan="4">
+								<th class="kw-warfare-unit-name-th" colspan="4">
 										<div class="kw-warfare-unit-name-box">
 												<label class="kw-warfare-unit-name">
 														<span>{{actor.name}}</span>
@@ -218,23 +218,28 @@
 								<th class="kw-warfare-unit-size" rowspan="2">
 										<label>
 												<span>{{kw_warfare.stats.size}}</span>
-												<input type="number" class="kw-warfare-unit-stat kw-warfare-unit-size" data-dtype="Number"
+												<input type="number" data-dtype="Number"
 															 name="flags.kw_warfare.stats.size"
 															 value="{{kw_warfare.stats.size}}">
 										</label>
+										<span class="kw-warfare-unit-size-label">Size</span>
 								</th>
 						</tr>
 						<tr>
 								<td colspan="5">
-										Commander: <label>
-												<span>{{kw_warfare.details.commander}}</span>
-												<input type="text" class="kw-warfare-unit-commander" data-dtype="String" placeholder="&mdash;"
-															 name="flags.kw_warfare.details.commander" value="{{kw_warfare.details.commander}}">
-										</label>
+										<div class="kw-warfare-commander-box">
+												<span>Commander:</span>
+												<label>
+														<span>{{kw_warfare.details.commander}}</span>
+														<input type="text" class="kw-warfare-unit-commander" data-dtype="String"
+																	 placeholder="&mdash;"
+																	 name="flags.kw_warfare.details.commander" value="{{kw_warfare.details.commander}}">
+												</label>
+										</div>
 										<div class="kw-warfare-unit-keyword-row">
 												{{#if (or kw_warfare.details.ancestry kw_warfare.sheet.config)}}
 												<label>
-														<span>{{kw_warfare.details.ancestry}}</span>
+														<span>{{kw_warfare.details.ancestry}},</span>
 														<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
 																	 name="flags.kw_warfare.details.ancestry" value="{{kw_warfare.details.ancestry}}"
 																	 placeholder="{{localize 'KW_WARFARE.Ancestry'}}">
@@ -242,7 +247,7 @@
 												{{/if}}
 												<label>
 														<!-- Make these droppable from Items like traits are -->
-														<span>{{kw_warfare.details.experience}}</span>
+														<span>{{kw_warfare.details.experience}},</span>
 														<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
 																	 name="flags.kw_warfare.details.experience"
 																	 value="{{kw_warfare.details.experience}}"
@@ -250,9 +255,10 @@
 												</label>
 												{{#if (or kw_warfare.details.equipment kw_warfare.sheet.config)}}
 												<label>
-														<span>{{kw_warfare.details.equipment}}</span>
+														<span>{{kw_warfare.details.equipment}},</span>
 														<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-																	 name="flags.kw_warfare.details.equipment" value="{{kw_warfare.details.equipment}}"
+																	 name="flags.kw_warfare.details.equipment"
+																	 value="{{kw_warfare.details.equipment}}"
 																	 placeholder="{{localize 'DND5E.ItemTypeEquipment'}}">
 												</label>
 												{{/if}}
@@ -268,13 +274,22 @@
 						</thead>
 						<tbody>
 						<tr>
-								<td rowspan="2">
-										<label>
-												<span>{{kw_warfare.stats.numberOfAttacks}}</span>
-												<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-															 name="flags.kw_warfare.stats.numberOfAttacks"
-															 value="{{kw_warfare.stats.numberOfAttacks}}">
-										</label>
+								<td rowspan="3">
+										<div class="kw-warfare-num-attacks-container">
+												<label>
+														<span>{{kw_warfare.stats.numberOfAttacks}}</span>
+														<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+																	 name="flags.kw_warfare.stats.numberOfAttacks"
+																	 value="{{kw_warfare.stats.numberOfAttacks}}">
+												</label>
+										</div>
+										<div class="kw-warfare-damage-container">
+												<label>
+														<span>{{kw_warfare.stats.damage}}</span>
+														<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+																	 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
+												</label>
+										</div>
 								</td>
 								<td class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.AttackShort'}}</td>
 								<td class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.DefenseShort'}}</td>
@@ -288,7 +303,8 @@
 										<label for="attack-stat" class="kw-warfare-rollable" data-roll="attack">
 												<span>{{number-format kw_warfare.stats.attack sign=true decimals=0}}</span>
 										</label>
-										<input id="attack-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+										<input id="attack-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+													 placeholder="&mdash;"
 													 name="flags.kw_warfare.stats.attack" value="{{kw_warfare.stats.attack}}">
 								</td>
 								<td class="kw-warfare-unit-stat-value">
@@ -302,7 +318,8 @@
 										<label for="power-stat" class="kw-warfare-rollable" data-roll="power">
 												<span>{{number-format kw_warfare.stats.power sign=true decimals=0}}</span>
 										</label>
-										<input id="power-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+										<input id="power-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+													 placeholder="&mdash;"
 													 name="flags.kw_warfare.stats.power" value="{{kw_warfare.stats.power}}">
 								</td>
 								<td class="kw-warfare-unit-stat-value">
@@ -316,25 +333,20 @@
 										<label for="morale-stat" class="kw-warfare-rollable" data-roll="morale">
 												<span>{{number-format kw_warfare.stats.morale sign=true decimals=0}}</span>
 										</label>
-										<input id="morale-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+										<input id="morale-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+													 placeholder="&mdash;"
 													 name="flags.kw_warfare.stats.morale" value="{{kw_warfare.stats.morale}}">
 								</td>
 								<td class="kw-warfare-unit-stat-value">
 										<label for="command-stat" class="kw-warfare-rollable" data-roll="command">
 												<span>{{number-format kw_warfare.stats.command sign=true decimals=0}}</span>
 										</label>
-										<input id="command-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+										<input id="command-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+													 placeholder="&mdash;"
 													 name="flags.kw_warfare.stats.command" value="{{kw_warfare.stats.command}}">
 								</td>
 						</tr>
 						<tr>
-								<td>
-										<label>
-												<span>{{kw_warfare.stats.damage}}</span>
-												<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-															 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
-										</label>
-								</td>
 								<td colspan="5">
 										{{#*inline 'feature'}}
 										<div class="kw-warfare-unit-feature">
@@ -349,8 +361,8 @@
 										{{#if kw_traits.length}}
 										<section class="kw-warfare-unit-feature-block">
 												<div class="kw-warfare-unit-features-label">
-												<h3>{{localize 'KW_WARFARE.Traits'}}</h3>
-												<span class="kw-warfare-config-add-items">
+														<h3>{{localize 'KW_WARFARE.Traits'}}</h3>
+														<span class="kw-warfare-config-add-items">
 														<a class="kw-warfare-config-add-item">
 																<span>{{localize 'KW_WARFARE.AddTrait'}}</span>
 																<i class="fas fa-cog"></i>

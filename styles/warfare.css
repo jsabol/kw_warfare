@@ -31,13 +31,8 @@
 	color: var(--war-edit);
 }
 
-.kw-warfare form input.kw-warfare-unit-stat {,
-max-width: 45 px;
-	text-align: center;
-}
-
-.kw-warfare form input.kw-warfare-unit-commander {
-	width: 200px;
+.kw-warfare form input.kw-warfare-unit-stat {
+	max-width: 45px;
 	text-align: center;
 }
 
@@ -88,11 +83,12 @@ max-width: 45 px;
 label.kw-warfare-unit-name {
 	text-transform: uppercase;
 	font-weight: bold;
-	color: var(--war-highlight);
-	font-size: 18px;
+	color: darkred;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	font-size: 22px;
 	width: 100%;
 	display: block;
-	border-bottom: 1px solid var(--war-underscore);
 	margin-bottom: 2px;
 }
 
@@ -195,6 +191,10 @@ label.kw-warfare-unit-name {
 	justify-content: space-between;
 }
 
+.kw-warfare-unit-feature-block {
+	margin-left: 10px;
+}
+
 .kw-warfare-unit-feature-block h3 {
 	text-transform: uppercase;
 	font-size: 15px;
@@ -289,6 +289,11 @@ label.kw-warfare-unit-name {
 	height: 100%;
 }
 
+.kw-warfare-table table thead {
+	text-shadow: none;
+	color: inherit;
+}
+
 .kw-warfare-table td {
 	border-color: black;
 	border-style: solid;
@@ -322,10 +327,31 @@ label.kw-warfare-unit-name {
 	text-align: center !important;
 	font-size: 20px !important;
 	padding: 0 !important;
+	font-weight: bold;
+	color: darkblue;
 }
 
 .kw-warfare-unit-size {
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	text-align: center;
+	width: 64px;
+}
 
+.kw-warfare-unit-size label {
+	color: darkred;
+	font-size: 64px !important;
+	font-weight: bold !important;
+}
+
+.kw-warfare-unit-size-label {
+	color: wheat;
+	font-size: 12px;
+}
+
+.kw-warfare-unit-type-icon {
+	padding: 0 !important;
+	width: 45px;
 }
 
 .kw-warfare-unit-type-icon img {
@@ -333,7 +359,70 @@ label.kw-warfare-unit-name {
 	max-height: 64px;
 }
 
+.kw-warfare-unit-ancestry-icon {
+	background-color: #FAF0DC;
+	padding: 0 !important;
+	width: 60px;
+}
+
 .kw-warfare-unit-ancestry-icon img {
 	max-width: 32px;
 	max-height: 32px;
+}
+
+.kw-warfare-unit-name-th {
+	background-color: #C19770;
+	height: 50px;
+}
+
+.kw-warfare-commander-box {
+	display: flex;
+	justify-content: start;
+	color: darkred;
+	font-size: 20px;
+	font-weight: bold;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+}
+
+.kw-warfare-commander-box label {
+	padding-left: 3px;
+}
+
+.kw-warfare-damage-container {
+	width: 60px;
+	vertical-align: bottom !important;
+}
+
+.kw-warfare-damage-container {
+	background-image: url("/modules/kw_warfare/explosion.png");
+	background-repeat: no-repeat;
+	background-size: 55px;
+	padding-bottom: 64px;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+}
+
+.kw-warfare-damage-container label {
+	position: absolute;
+	bottom: 35px;
+	left: 37px;
+	color: white;
+	font-size: 26px;
+}
+
+.kw-warfare-damage-container .kw-warfare-unit-stat {
+	padding-right: 28px;
+}
+
+.kw-warfare-num-attacks-container {
+	background-image: url("/modules/kw_warfare/numattacks.png");
+	background-repeat: no-repeat;
+	height: 125px;
+	background-size: contain;
+	background-position: center;
+	padding-top: 12px;
+	text-align: center;
+	font-size: 40px;
+	font-weight: 900;
 }
