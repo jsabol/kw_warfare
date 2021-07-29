@@ -73,9 +73,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		data.kw_warfare.kw_type_icon = this._getDefaultTypeImg(data.kw_warfare.kw_type_icon);
 		data.kw_warfare.kw_ancestry_icon = this._getDefaultAncestryImg(data.kw_warfare.kw_ancestry_icon);
 
-		if (data.kw_warfare.stats?.casualties?.max) {
-			this._formatCasualties(data.kw_warfare.stats.casualties);
-		}
+		data.kw_warfare.kw_casualties = this._formatCasualties(data.data.attributes.hp);
 
 		return data;
 	}
@@ -94,11 +92,11 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		return img;
 	}
 
-	_formatCasualties (casualties) {
+	_formatCasualties (hp) {
 		let display = '';
-		for (let i = 1; i <= casualties.max; i++) {
+		for (let i = 1; i <= hp.max; i++) {
 			const classes = ['kw-warfare-unit-casualties-pip'];
-			if (i <= casualties.remaining) {
+			if (i <= hp.value) {
 				classes.push('kw-warfare-unit-casualties-pip-full');
 			} else {
 				classes.push('kw-warfare-unit-casualties-pip-empty');
@@ -107,7 +105,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			display += `<div class="${classes.join(' ')}" data-n="${i}"><span></span></div>`;
 		}
 
-		casualties.display = display;
+		return display;
 	}
 
 	_onAddItem (evt) {
@@ -151,19 +149,17 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	}
 
 	_onCasualtyClicked (evt) {
-		const casualties = this.actor.getFlag('kw_warfare', 'stats.casualties');
 		const n = Number(evt.currentTarget.dataset.n);
-		let taken = casualties.taken;
 
-		if (n > casualties.remaining) {
-			taken--;
+		let hp = this.actor.data.data.attributes.hp.value;
+
+		if (n > hp) {
+			hp++;
 		} else {
-			taken++;
+			hp--;
 		}
 
-		if (taken > -1 && taken <= casualties.max) {
-			this.actor.setFlag('kw_warfare', 'stats.casualties.taken', taken);
-		}
+		this.actor.update({ "data.attributes.hp.value": hp })
 	}
 
 	_onChangeInputDelta () {

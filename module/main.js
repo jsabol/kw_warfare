@@ -12,20 +12,24 @@ Hooks.on('init', () => {
 });
 
 Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {
-	if(KW_WarfareUnitSheet.name !== sheet.constructor.name) {
+	if (KW_WarfareUnitSheet.name !== sheet.constructor.name) {
 		return;
 	}
 	//overwrite existing experience/ancestry/equipment/type if already exist
 	//delete old trait. clear out text value.
 
 	const item = game.items.get(itemInfo.id);
-	if(!item) { return; }
+	if (!item) {
+		return;
+	}
 
 	const requirements = item.data.data.requirements;
-	if(!requirements) { return; }
-	if(requirements === KW_ANCESTRY) {
+	if (!requirements) {
+		return;
+	}
+	if (requirements === KW_ANCESTRY) {
 		cleanDetails(actor, 'ancestry', KW_ANCESTRY);
-	} else if(requirements === KW_EQUIPMENT) {
+	} else if (requirements === KW_EQUIPMENT) {
 		cleanDetails(actor, 'equipment', KW_EQUIPMENT);
 	} else if (requirements === KW_EXPERIENCE) {
 		cleanDetails(actor, 'experience', KW_EXPERIENCE);
@@ -34,8 +38,24 @@ Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {
 	}
 });
 
+Hooks.on('preUpdateActor', (actor, updatedFlags) => {
+	if (actor.sheet?.constructor.name !== KW_WarfareUnitSheet.name) {
+		return;
+	}
+
+	//If updating the max-hp, reduce current hp to that max if greater than the new max
+	if(updatedFlags && updatedFlags.data && updatedFlags.data.attributes
+		&& updatedFlags.data.attributes.hp && updatedFlags.data.attributes.hp.max) {
+		const newMax = updatedFlags.data.attributes.hp.max;
+		const currentHp = actor.data.data.attributes.hp.value;
+		if(currentHp > newMax) {
+			updatedFlags.data.attributes.hp.value = newMax;
+		}
+	}
+});
+
 Hooks.on('updateActor', (actor, updatedFlags) => {
-	if(!updatedFlags.flags || !updatedFlags.flags.kw_warfare || !updatedFlags.flags.kw_warfare.details) {
+	if (actor.sheet?.constructor.name !== KW_WarfareUnitSheet.name || !updatedFlags.flags || !updatedFlags.flags.kw_warfare || !updatedFlags.flags.kw_warfare.details) {
 		return;
 	}
 
@@ -43,13 +63,13 @@ Hooks.on('updateActor', (actor, updatedFlags) => {
 	//delete old trait if exists
 
 	const updatedDetails = updatedFlags.flags.kw_warfare.details;
-	if(Object.keys(updatedDetails).length !== 1) {
+	if (Object.keys(updatedDetails).length !== 1) {
 		return;
 	}
 	const updatedKey = Object.keys(updatedDetails)[0];
-	if(updatedKey === 'ancestry') {
+	if (updatedKey === 'ancestry') {
 		cleanDetails(actor, 'ancestry', KW_ANCESTRY, false);
-	} else if(updatedKey === 'equipment') {
+	} else if (updatedKey === 'equipment') {
 		cleanDetails(actor, 'equipment', KW_EQUIPMENT, false);
 	} else if (updatedKey === 'experience') {
 		cleanDetails(actor, 'experience', KW_EXPERIENCE, false);
@@ -60,11 +80,13 @@ Hooks.on('updateActor', (actor, updatedFlags) => {
 
 
 function cleanDetails(actor, detailName, detailType, cleanFlag = true) {
-	if(cleanFlag) {
+	if (cleanFlag) {
 		actor.setFlag('kw_warfare', 'details.' + detailName, '');
 	}
-	const existingTrait = actor.items.find((i) => { return i.data.data.requirements === detailType; })
-	if(existingTrait) {
+	const existingTrait = actor.items.find((i) => {
+		return i.data.data.requirements === detailType;
+	})
+	if (existingTrait) {
 		actor.items.delete(existingTrait.id)
 	}
 }
@@ -90,8 +112,7 @@ document.addEventListener('click', evt => {
 	const parent = evt.target.parentElement;
 
 	if (!target.classList.contains('kw-warfare-config-rm-item')
-		&& !parent?.classList.contains('kw-warfare-config-rm-item'))
-	{
+		&& !parent?.classList.contains('kw-warfare-config-rm-item')) {
 		$('.kw-warfare-config-rm-item.kw-warfare-alert').removeClass('kw-warfare-alert');
 	}
 });

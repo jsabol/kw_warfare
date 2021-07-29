@@ -9,47 +9,9 @@ const attributeLabels = {
 };
 
 export default function extendActor () {
-	Actor5e.prototype.prepareDerivedData = (function () {
-		const original = Actor5e.prototype.prepareDerivedData;
-		return function () {
-			original.apply(this, arguments);
-			const stats = this.getFlag('kw_warfare', 'stats');
-			if (!stats) {
-				return;
-			}
-
-			if (!stats.casualties) {
-				stats.casualties = {taken: 0, max: 0};
-			}
-
-			if(stats.size === '') {
-				stats.casualties.max = 4;
-				stats.size = 4;
-			} else if (typeof stats.size === 'number') {
-				stats.casualties.max = stats.size;
-			}
-
-			stats.casualties.remaining = stats.casualties.max - stats.casualties.taken;
-			if (stats.casualties.remaining < 0) {
-				stats.casualties.remaining = 0;
-			}
-
-			stats.casualties.diminished = stats.casualties.remaining <= stats.casualties.max / 2;
-
-			this.data.data.attributes.hp = {
-				formula: "" + stats.size,
-				min: 0,
-				max: stats.size,
-				value: stats.casualties.remaining,
-				temp: 0,
-				tempmax: 0
-			}
-
-		}
-	})();
 
 	Actor5e.prototype.rollUnitAttribute = function (attr, options = {}) {
-		//TODO: include roll attribute icon in roll data
+		//TODO: include roll attribute icon in roll data for chat-portrait module (if possible)
 		const stats = this.getFlag('kw_warfare', 'stats');
 		if (!stats) {
 			return;

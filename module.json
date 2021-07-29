@@ -13,7 +13,6 @@
     "module/main.js"
   ],
   "styles": [
-    "styles/light.css",
     "styles/warfare.css"
   ],
   "url": "https://github.com/Mejari/kw_warfare",

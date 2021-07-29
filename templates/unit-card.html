@@ -9,9 +9,9 @@
 				<div class="kw-size">
 						<div class="kw-size-circle">
 								<label>
-										<span>{{kw_warfare.stats.size}}</span>
-										<input type="number" data-dtype="Number" name="flags.kw_warfare.stats.size"
-													 value="{{kw_warfare.stats.size}}">
+										<span>{{data.attributes.hp.max}}</span>
+										<input type="number" data-dtype="Number" name="data.attributes.hp.max"
+													 value="{{data.attributes.hp.max}}">
 								</label>
 						</div>
 						<div class="kw-size-label">
@@ -68,11 +68,10 @@
 													 placeholder="{{localize 'DND5E.Type'}}">
 								</label>
 						</div>
-						{{#if kw_warfare.stats.casualties.max}}
+						{{#if kw_warfare.kw_casualties}}
 						<div class="kw-warfare-unit-casualties">
-								<div title="{{localize 'KW_WARFARE.Casualties'}}" class="kw-warfare-unit-casualties-pips
-											{{#if kw_warfare.stats.casualties.diminished}}kw-warfare-unit-casualties-diminished{{/if}}">
-										{{{kw_warfare.stats.casualties.display}}}
+								<div title="{{localize 'KW_WARFARE.Casualties'}}" class="kw-warfare-unit-casualties-pips">
+										{{{kw_warfare.kw_casualties}}}
 								</div>
 						</div>
 						{{/if}}
