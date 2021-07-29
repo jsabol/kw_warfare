@@ -28,5 +28,14 @@
       "name": "English",
       "path": "lang/en.json"
     }
+  ],
+  "packs": [
+	{
+	  "name": "kw_warfare_macros",
+	  "label": "K&W Warfare Macros",
+	  "system": "dnd5e",
+	  "path": "./packs/kw_warfare_macros.db",
+	  "entity": "Macro"
+	}
   ]
 }
