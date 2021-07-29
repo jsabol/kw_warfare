@@ -8,6 +8,7 @@
 	display: none;
 	border: none;
 	background: transparent;
+	height: inherit;
 }
 
 .kw-warfare form.kw-warfare-config input {
@@ -129,6 +130,11 @@
 	color: #701820;
 }
 
+.kw-size-circle input {
+	text-align: center;
+}
+
+
 .kw-size-label {
 	height: 20px;
 	font-size: 16px;
@@ -163,6 +169,10 @@
 	border-top: 5px solid silver;
 }
 
+.kw-commander {
+	display: flex;
+}
+
 .kw-commander-prefix {
 	text-transform: uppercase;
 }
@@ -178,6 +188,7 @@
 	text-transform: uppercase;
 	font-size: 15px;
 	-webkit-text-stroke-width: 0;
+	display: flex;
 }
 
 .kw-stats {
@@ -216,6 +227,10 @@
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
 	color: #701820;
+}
+
+.kw-tier-circle input {
+	text-align: center;
 }
 
 .kw-tier-label {
@@ -261,6 +276,9 @@
 	padding-right: 4px;
 }
 
+.kw-damage-hex input {
+	text-align: center;
+}
 
 .kw-numattacks {
 	grid-area: kw-numattacks;
@@ -283,6 +301,10 @@
 	padding-right: 4px;
 }
 
+.kw-numattacks-triangle input {
+	text-align: center;
+}
+
 .kw-numattacks-label {
 	height: 20px;
 	font-size: 16px;
@@ -297,9 +319,11 @@
 .kw-traits {
 	grid-area: kw-traits;
 	margin-top: 24px;
+	overflow-y: scroll;
 }
 
 .kw-warfare-trait-name {
 	color: #662931;
 	font-size: 16px;
+	cursor: pointer;
 }
