@@ -19,7 +19,6 @@ Features:
 Known Issues:
 * Styling is a bit wonky.
 * Manually overwriting via typing an Experience, Equipment, Ancestry or Unit Type that was dropped onto it may take a couple tries.
-* Updating casualties via things that update HP (i.e. "Apply Damage") does not work.
 * No tracking of 'diminished' status.
 * Rolling Attack, Power, Morale and Command not doable through Token Action HUD module.
 * Adding/removing casualties resets Trait open/closed states.
