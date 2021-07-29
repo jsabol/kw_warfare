@@ -1,3 +1,8 @@
+## [0.0.1-8bbcaa8](https://github.com/Mejari/kw_warfare/compare/v0.0.1-9c558a3...v0.0.1-8bbcaa8) (2021-07-29)
+
+
+
+
 ## [0.0.1-9c558a3](https://github.com/Mejari/kw_warfare/compare/v0.0.1-1e7294e...v0.0.1-9c558a3) (2021-07-28)
 
 
