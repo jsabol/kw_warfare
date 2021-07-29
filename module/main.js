@@ -2,29 +2,13 @@ import KW_WarfareUnitSheet, {KW_ANCESTRY, KW_EQUIPMENT, KW_EXPERIENCE, KW_TYPE} 
 import extendActor from './unit.js';
 
 Hooks.on('init', () => {
+	loadTemplates(['modules/kw_warfare/templates/trait.hbs']);
 	Actors.registerSheet('dnd5e', KW_WarfareUnitSheet, {
 		types: ['npc'],
 		makeDefault: false,
 		label: 'KW_WARFARE.Sheet'
 	});
 	extendActor();
-});
-
-Hooks.on('ready', () => {
-	game.settings.register('kw_warfare', 'theme', {
-		name: 'KW_WARFARE.Theme',
-		scope: 'user',
-		config: true,
-		default: 'light',
-		type: String,
-		onChange: setTheme,
-		choices: {
-			'light': 'KW_WARFARE.Light',
-			'dark': 'KW_WARFARE.Dark'
-		}
-	});
-
-	setTheme(game.settings.get('kw_warfare', 'theme'));
 });
 
 Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {

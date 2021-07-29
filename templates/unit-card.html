@@ -1,389 +1,182 @@
 <form class="{{#if kw_warfare.sheet.config}}kw-warfare-config{{/if}}" autocomplete="off">
-		<!--	{{#if editable}}<a class="kw-warfare-unit-config"><i class="fas fa-cog"></i></a>{{/if}}-->
-		<!--	<aside class="kw-warfare-unit-banners"></aside>-->
-		<!--	<header>-->
-		<!--		<label class="kw-warfare-unit-name">-->
-		<!--			<span>{{actor.name}}</span>-->
-		<!--			<input type="text" class="kw-warfare-unit-name" data-dtype="String" name="name"-->
-		<!--			       value="{{actor.name}}" placeholder="{{localize 'KW_WARFARE.UnitName'}}">-->
-		<!--		</label>-->
-		<!--		<div class="kw-warfare-unit-keyword-row">-->
-		<!--			{{#if (or kw_warfare.details.ancestry kw_warfare.sheet.config)}}-->
-		<!--			<label>-->
-		<!--				<span>{{kw_warfare.details.ancestry}}</span>-->
-		<!--				<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"-->
-		<!--				       name="flags.kw_warfare.details.ancestry" value="{{kw_warfare.details.ancestry}}"-->
-		<!--				       placeholder="{{localize 'KW_WARFARE.Ancestry'}}">-->
-		<!--			</label>-->
-		<!--			{{/if}}-->
-		<!--			<label>-->
-		<!--				<span>{{kw_warfare.details.experience}}</span>-->
-		<!--				<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"-->
-		<!--				       name="flags.kw_warfare.details.experience"-->
-		<!--				       value="{{kw_warfare.details.experience}}"-->
-		<!--				       placeholder="{{localize 'KW_WARFARE.Experience'}}">-->
-		<!--			</label>-->
-		<!--		</div>-->
-		<!--		<div class="kw-warfare-unit-keyword-row">-->
-		<!--			{{#if (or kw_warfare.details.equipment kw_warfare.sheet.config)}}-->
-		<!--			<label>-->
-		<!--				<span>{{kw_warfare.details.equipment}}</span>-->
-		<!--				<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"-->
-		<!--				       name="flags.kw_warfare.details.equipment" value="{{kw_warfare.details.equipment}}"-->
-		<!--				       placeholder="{{localize 'DND5E.ItemTypeEquipment'}}">-->
-		<!--			</label>-->
-		<!--			{{/if}}-->
-		<!--			<label>-->
-		<!--				<span>{{kw_warfare.details.type}}</span>-->
-		<!--				<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"-->
-		<!--				       name="flags.kw_warfare.details.type" value="{{kw_warfare.details.type}}"-->
-		<!--				       placeholder="{{localize 'DND5E.Type'}}">-->
-		<!--			</label>-->
-		<!--		</div>-->
-		<!--	</header>-->
-		<!--	<section class="kw-warfare-unit-stats">-->
-		<!--		<div class="kw-warfare-unit-stat-row kw-warfare-unit-commander-row">-->
-		<!--			<h3>{{localize 'KW_WARFARE.Commander'}}:</h3>-->
-		<!--			<label>-->
-		<!--				<span>{{kw_warfare.details.commander}}</span>-->
-		<!--				<input type="text" class="kw-warfare-unit-commander" data-dtype="String" placeholder="&mdash;"-->
-		<!--				       name="flags.kw_warfare.details.commander" value="{{kw_warfare.details.commander}}">-->
-		<!--			</label>-->
-		<!--		</div>-->
-		<!--		<div class="kw-warfare-unit-stat-row">-->
-		<!--			<div>-->
-		<!--				<div class="kw-warfare-unit-stat-key kw-warfare-rollable" data-roll="attack">-->
-		<!--					{{localize 'KW_WARFARE.Attack'}}:-->
-		<!--				</div>-->
-		<!--				<div class="kw-warfare-unit-stat-value">-->
-		<!--					<label>-->
-		<!--						<span>{{number-format kw_warfare.stats.attack sign=true decimals=0}}</span>-->
-		<!--						<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"-->
-		<!--						       name="flags.kw_warfare.stats.attack" value="{{kw_warfare.stats.attack}}">-->
-		<!--					</label>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--			<div>-->
-		<!--				<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Defense'}}:</div>-->
-		<!--				<div class="kw-warfare-unit-stat-value">-->
-		<!--					<label>-->
-		<!--						<span>{{kw_warfare.stats.defense}}</span>-->
-		<!--						<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"-->
-		<!--						       name="flags.kw_warfare.stats.defense" value="{{kw_warfare.stats.defense}}">-->
-		<!--					</label>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--		</div>-->
-		<!--		<div class="kw-warfare-unit-stat-row">-->
-		<!--			<div>-->
-		<!--				<div class="kw-warfare-unit-stat-key kw-warfare-rollable" data-roll="power">-->
-		<!--					{{localize 'KW_WARFARE.Power'}}:-->
-		<!--				</div>-->
-		<!--				<div class="kw-warfare-unit-stat-value">-->
-		<!--					<label>-->
-		<!--						<span>{{number-format kw_warfare.stats.power sign=true decimals=0}}</span>-->
-		<!--						<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"-->
-		<!--						       name="flags.kw_warfare.stats.power" value="{{kw_warfare.stats.power}}">-->
-		<!--					</label>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--			<div>-->
-		<!--				<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Toughness'}}:</div>-->
-		<!--				<div class="kw-warfare-unit-stat-value">-->
-		<!--					<label>-->
-		<!--						<span>{{kw_warfare.stats.toughness}}</span>-->
-		<!--						<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"-->
-		<!--						       name="flags.kw_warfare.stats.toughness" value="{{kw_warfare.stats.toughness}}">-->
-		<!--					</label>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--		</div>-->
-		<!--		<div class="kw-warfare-unit-stat-row">-->
-		<!--			<div>-->
-		<!--				<div class="kw-warfare-unit-stat-key kw-warfare-rollable" data-roll="morale">-->
-		<!--					{{localize 'KW_WARFARE.Morale'}}:-->
-		<!--				</div>-->
-		<!--				<div class="kw-warfare-unit-stat-value">-->
-		<!--					<label>-->
-		<!--						<span>{{number-format kw_warfare.stats.morale sign=true decimals=0}}</span>-->
-		<!--						<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"-->
-		<!--						       name="flags.kw_warfare.stats.morale" value="{{kw_warfare.stats.morale}}">-->
-		<!--					</label>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--			<div>-->
-		<!--					<div class="kw-warfare-unit-stat-key kw-warfare-rollable" data-roll="command">-->
-		<!--							{{localize 'KW_WARFARE.Command'}}:-->
-		<!--					</div>-->
-		<!--					<div class="kw-warfare-unit-stat-value">-->
-		<!--							<label>-->
-		<!--									<span>{{number-format kw_warfare.stats.command sign=true decimals=0}}</span>-->
-		<!--									<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"-->
-		<!--												 name="flags.kw_warfare.stats.command" value="{{kw_warfare.stats.command}}">-->
-		<!--							</label>-->
-		<!--					</div>-->
-		<!--			</div>-->
-		<!--		</div>-->
-		<!--			<div class="kw-warfare-unit-stat-row">-->
-		<!--					<div>-->
-		<!--							<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Damage'}}:</div>-->
-		<!--							<div class="kw-warfare-unit-stat-value">-->
-		<!--									<label>-->
-		<!--											<span>{{kw_warfare.stats.damage}}</span>-->
-		<!--											<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"-->
-		<!--														 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">-->
-		<!--									</label>-->
-		<!--							</div>-->
-		<!--					</div>-->
-		<!--					<div>-->
-		<!--							<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.NumberOfAttacks'}}:</div>-->
-		<!--							<div class="kw-warfare-unit-stat-value">-->
-		<!--									<label>-->
-		<!--											<span>{{kw_warfare.stats.numberOfAttacks}}</span>-->
-		<!--											<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"-->
-		<!--														 name="flags.kw_warfare.stats.numberOfAttacks" value="{{kw_warfare.stats.numberOfAttacks}}">-->
-		<!--									</label>-->
-		<!--							</div>-->
-		<!--					</div>-->
-		<!--			</div>-->
-		<!--			<div class="kw-warfare-unit-stat-row">-->
-		<!--					<div></div>-->
-		<!--					<div>-->
-		<!--							<div class="kw-warfare-unit-stat-key">{{localize 'KW_WARFARE.Size'}}:</div>-->
-		<!--							<div class="kw-warfare-unit-stat-value">-->
-		<!--									<label>-->
-		<!--											<span>1d{{kw_warfare.stats.size}}</span>-->
-		<!--											<input type="number" class="kw-warfare-unit-stat kw-warfare-unit-size" data-dtype="Number"-->
-		<!--														 name="flags.kw_warfare.stats.size"-->
-		<!--														 value="{{kw_warfare.stats.size}}">-->
-		<!--									</label>-->
-		<!--							</div>-->
-		<!--					</div>-->
-		<!--			</div>-->
-		<!--	</section>-->
-		<!--	{{#if kw_warfare.stats.casualties.max}}-->
-		<!--		&lt;!&ndash; TODO: Display diminished status somewhere &ndash;&gt;-->
-		<!--	<section class="kw-warfare-unit-casualties">-->
-		<!--		<div title="{{localize 'KW_WARFARE.Casualties'}}" class="kw-warfare-unit-casualties-pips-->
-		<!--		     {{#if kw_warfare.stats.casualties.diminished}}kw_warfare-unit-casualties-diminished{{/if}}">-->
-		<!--			{{{kw_warfare.stats.casualties.display}}}-->
-		<!--		</div>-->
-		<!--	</section>-->
-		<!--	{{/if}}-->
-		<!--	<section class="kw-warfare-config-add-items">-->
-		<!--		<a class="kw-warfare-config-add-item">-->
-		<!--			<span>{{localize 'KW_WARFARE.AddTrait'}}</span>-->
-		<!--			<i class="fas fa-cog"></i>-->
-		<!--		</a>-->
-		<!--	</section>-->
-		<!--	{{#*inline 'feature'}}-->
-		<!--		<div class="kw-warfare-unit-feature">-->
-		<!--			<div class="kw-warfare-config-item" data-item-id="{{_id}}">-->
-		<!--				<a class="kw-warfare-config-edit-item"><i class="fas fa-cog"></i></a>-->
-		<!--				<a class="kw-warfare-config-rm-item"><i class="fas fa-trash"></i></a>-->
-		<!--			</div>-->
-		<!--			<strong>{{name}}{{#if isOrder}}!{{else}}.{{/if}}</strong>-->
-		<!--			{{{data.description.enriched}}}-->
-		<!--		</div>-->
-		<!--	{{/inline}}-->
-		<!--	{{#if kw_traits.length}}-->
-		<!--	<section class="kw-warfare-unit-feature-block">-->
-		<!--		<h3>{{localize 'KW_WARFARE.Traits'}}</h3>-->
-		<!--		{{#each kw_traits}}-->
-		<!--			{{> feature}}-->
-		<!--		{{/each}}-->
-		<!--	</section>-->
-		<!--	{{/if}}-->
-		<section class="kw-warfare-table">
-				<table class="tg">
-						<thead>
-						<tr>
-								<th class="kw-warfare-unit-type-icon" rowspan="2">
-										<img alt="{{kw_warfare.details.type}}" src="{{kw_warfare.kw_type_icon}}"/>
-								</th>
-								<th class="kw-warfare-unit-ancestry-icon">
-										<img alt="{{kw_warfare.details.ancestry}}" src="{{kw_warfare.kw_ancestry_icon}}"/>
-								</th>
-								<th class="kw-warfare-unit-name-th" colspan="4">
-										<div class="kw-warfare-unit-name-box">
-												<label class="kw-warfare-unit-name">
-														<span>{{actor.name}}</span>
-														<input type="text" class="kw-warfare-unit-name" data-dtype="String" name="name"
-																	 value="{{actor.name}}" placeholder="{{localize 'KW_WARFARE.UnitName'}}">
-												</label>
-
-												{{#if editable}}<a class="kw-warfare-unit-config"><i class="fas fa-cog"></i></a>{{/if}}
-										</div>
-								</th>
-								<th class="kw-warfare-unit-size" rowspan="2">
-										<label>
-												<span>{{kw_warfare.stats.size}}</span>
-												<input type="number" data-dtype="Number"
-															 name="flags.kw_warfare.stats.size"
-															 value="{{kw_warfare.stats.size}}">
-										</label>
-										<span class="kw-warfare-unit-size-label">Size</span>
-								</th>
-						</tr>
-						<tr>
-								<td colspan="5">
-										<div class="kw-warfare-commander-box">
-												<span>Commander:</span>
-												<label>
-														<span>{{kw_warfare.details.commander}}</span>
-														<input type="text" class="kw-warfare-unit-commander" data-dtype="String"
-																	 placeholder="&mdash;"
-																	 name="flags.kw_warfare.details.commander" value="{{kw_warfare.details.commander}}">
-												</label>
-										</div>
-										<div class="kw-warfare-unit-keyword-row">
-												{{#if (or kw_warfare.details.ancestry kw_warfare.sheet.config)}}
-												<label>
-														<span>{{kw_warfare.details.ancestry}},</span>
-														<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-																	 name="flags.kw_warfare.details.ancestry" value="{{kw_warfare.details.ancestry}}"
-																	 placeholder="{{localize 'KW_WARFARE.Ancestry'}}">
-												</label>
-												{{/if}}
-												<label>
-														<!-- Make these droppable from Items like traits are -->
-														<span>{{kw_warfare.details.experience}},</span>
-														<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-																	 name="flags.kw_warfare.details.experience"
-																	 value="{{kw_warfare.details.experience}}"
-																	 placeholder="{{localize 'KW_WARFARE.Experience'}}">
-												</label>
-												{{#if (or kw_warfare.details.equipment kw_warfare.sheet.config)}}
-												<label>
-														<span>{{kw_warfare.details.equipment}},</span>
-														<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-																	 name="flags.kw_warfare.details.equipment"
-																	 value="{{kw_warfare.details.equipment}}"
-																	 placeholder="{{localize 'DND5E.ItemTypeEquipment'}}">
-												</label>
-												{{/if}}
-												<label>
-														<span>{{kw_warfare.details.type}}</span>
-														<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-																	 name="flags.kw_warfare.details.type" value="{{kw_warfare.details.type}}"
-																	 placeholder="{{localize 'DND5E.Type'}}">
-												</label>
-										</div>
-								</td>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-								<td rowspan="3">
-										<div class="kw-warfare-num-attacks-container">
-												<label>
-														<span>{{kw_warfare.stats.numberOfAttacks}}</span>
-														<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-																	 name="flags.kw_warfare.stats.numberOfAttacks"
-																	 value="{{kw_warfare.stats.numberOfAttacks}}">
-												</label>
-										</div>
-										<div class="kw-warfare-damage-container">
-												<label>
-														<span>{{kw_warfare.stats.damage}}</span>
-														<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-																	 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
-												</label>
-										</div>
-								</td>
-								<td class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.AttackShort'}}</td>
-								<td class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.DefenseShort'}}</td>
-								<td class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.PowerShort'}}</td>
-								<td class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.ToughnessShort'}}</td>
-								<td class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.MoraleShort'}}</td>
-								<td class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.CommandShort'}}</td>
-						</tr>
-						<tr>
-								<td class="kw-warfare-unit-stat-value">
-										<label for="attack-stat" class="kw-warfare-rollable" data-roll="attack">
-												<span>{{number-format kw_warfare.stats.attack sign=true decimals=0}}</span>
-										</label>
-										<input id="attack-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+		<div class="kw-sheet-container">
+				<div class="kw-typeicon">
+						<img alt="{{kw_warfare.details.type}}" src="{{kw_warfare.kw_type_icon}}"/>
+				</div>
+				<div class="kw-ancestryicon">
+						<img alt="{{kw_warfare.details.ancestry}}" src="{{kw_warfare.kw_ancestry_icon}}"/>
+				</div>
+				<div class="kw-size">
+						<div class="kw-size-circle">
+								<label>
+										<span>{{kw_warfare.stats.size}}</span>
+										<input type="number" data-dtype="Number" name="flags.kw_warfare.stats.size"
+													 value="{{kw_warfare.stats.size}}">
+								</label>
+						</div>
+						<div class="kw-size-label">
+								{{localize 'KW_WARFARE.Size'}}
+						</div>
+				</div>
+				<div class="kw-unit-name">
+						<label class="kw-warfare-unit-name">
+								<span>{{actor.name}}</span>
+								<input type="text" class="kw-warfare-unit-name" data-dtype="String" name="name"
+											 value="{{actor.name}}" placeholder="{{localize 'KW_WARFARE.UnitName'}}">
+						</label>
+						{{#if editable}}<a class="kw-warfare-unit-config"><i class="fas fa-cog"></i></a>{{/if}}
+				</div>
+				<div class="kw-details">
+						<div class="kw-commander">
+								<span class="kw-commander-prefix">{{localize 'KW_WARFARE.Commander'}}:</span>
+								<label>
+										<span>{{kw_warfare.details.commander}}</span>
+										<input type="text" class="kw-warfare-unit-commander" data-dtype="String"
 													 placeholder="&mdash;"
-													 name="flags.kw_warfare.stats.attack" value="{{kw_warfare.stats.attack}}">
-								</td>
-								<td class="kw-warfare-unit-stat-value">
-										<label>
-												<span>{{kw_warfare.stats.defense}}</span>
-												<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-															 name="flags.kw_warfare.stats.defense" value="{{kw_warfare.stats.defense}}">
-										</label>
-								</td>
-								<td class="kw-warfare-unit-stat-value">
-										<label for="power-stat" class="kw-warfare-rollable" data-roll="power">
-												<span>{{number-format kw_warfare.stats.power sign=true decimals=0}}</span>
-										</label>
-										<input id="power-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
-													 placeholder="&mdash;"
-													 name="flags.kw_warfare.stats.power" value="{{kw_warfare.stats.power}}">
-								</td>
-								<td class="kw-warfare-unit-stat-value">
-										<label>
-												<span>{{kw_warfare.stats.toughness}}</span>
-												<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-															 name="flags.kw_warfare.stats.toughness" value="{{kw_warfare.stats.toughness}}">
-										</label>
-								</td>
-								<td class="kw-warfare-unit-stat-value">
-										<label for="morale-stat" class="kw-warfare-rollable" data-roll="morale">
-												<span>{{number-format kw_warfare.stats.morale sign=true decimals=0}}</span>
-										</label>
-										<input id="morale-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
-													 placeholder="&mdash;"
-													 name="flags.kw_warfare.stats.morale" value="{{kw_warfare.stats.morale}}">
-								</td>
-								<td class="kw-warfare-unit-stat-value">
-										<label for="command-stat" class="kw-warfare-rollable" data-roll="command">
-												<span>{{number-format kw_warfare.stats.command sign=true decimals=0}}</span>
-										</label>
-										<input id="command-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
-													 placeholder="&mdash;"
-													 name="flags.kw_warfare.stats.command" value="{{kw_warfare.stats.command}}">
-								</td>
-						</tr>
-						<tr>
-								<td colspan="5">
-										{{#*inline 'feature'}}
-										<div class="kw-warfare-unit-feature">
-												<div class="kw-warfare-config-item" data-item-id="{{_id}}">
-														<a class="kw-warfare-config-edit-item"><i class="fas fa-cog"></i></a>
-														<a class="kw-warfare-config-rm-item"><i class="fas fa-trash"></i></a>
-												</div>
-												<strong class="kw-warfare-trait-name">• {{name}}</strong>
-												<span class="kw-warfare-trait-description" style="display: none;">{{{data.description.enriched}}}</span>
-										</div>
-										{{/inline}}
-										{{#if kw_traits.length}}
-										<section class="kw-warfare-unit-feature-block">
-												<div class="kw-warfare-unit-features-label">
-														<h3>{{localize 'KW_WARFARE.Traits'}}</h3>
-														<span class="kw-warfare-config-add-items">
-														<a class="kw-warfare-config-add-item">
-																<span>{{localize 'KW_WARFARE.AddTrait'}}</span>
-																<i class="fas fa-cog"></i>
-														</a>
-												</span>
-												</div>
-												{{#each kw_traits}}
-												{{> feature}}
-												{{/each}}
-										</section>
-										{{/if}}
-								</td>
-								<td>
-										<label>
-												<span>{{kw_warfare.stats.tier}}</span>
-												<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-															 name="flags.kw_warfare.stats.tier" value="{{kw_warfare.stats.tier}}">
-										</label>
-								</td>
-						</tr>
-						</tbody>
-				</table>
-		</section>
+													 name="flags.kw_warfare.details.commander" value="{{kw_warfare.details.commander}}">
+								</label>
+						</div>
+						<div class="kw-aeqt">
+								{{#if (or kw_warfare.details.ancestry kw_warfare.sheet.config)}}
+								<label>
+										<span>{{kw_warfare.details.ancestry}},</span>
+										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
+													 name="flags.kw_warfare.details.ancestry" value="{{kw_warfare.details.ancestry}}"
+													 placeholder="{{localize 'KW_WARFARE.Ancestry'}}">
+								</label>
+								{{/if}}
+								<label>
+										<span>{{kw_warfare.details.experience}},</span>
+										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
+													 name="flags.kw_warfare.details.experience"
+													 value="{{kw_warfare.details.experience}}"
+													 placeholder="{{localize 'KW_WARFARE.Experience'}}">
+								</label>
+								{{#if (or kw_warfare.details.equipment kw_warfare.sheet.config)}}
+								<label>
+										<span>{{kw_warfare.details.equipment}},</span>
+										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
+													 name="flags.kw_warfare.details.equipment"
+													 value="{{kw_warfare.details.equipment}}"
+													 placeholder="{{localize 'DND5E.ItemTypeEquipment'}}">
+								</label>
+								{{/if}}
+								<label>
+										<span>{{kw_warfare.details.type}}</span>
+										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
+													 name="flags.kw_warfare.details.type" value="{{kw_warfare.details.type}}"
+													 placeholder="{{localize 'DND5E.Type'}}">
+								</label>
+						</div>
+				</div>
+				<div class="kw-stats">
+						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.AttackShort'}}</div>
+						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.DefenseShort'}}</div>
+						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.PowerShort'}}</div>
+						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.ToughnessShort'}}</div>
+						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.MoraleShort'}}</div>
+						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.CommandShort'}}</div>
+						<div class="kw-warfare-unit-stat-value">
+								<label for="attack-stat" class="kw-warfare-rollable" data-roll="attack">
+										<span>{{number-format kw_warfare.stats.attack sign=true decimals=0}}</span>
+								</label>
+								<input id="attack-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+											 placeholder="&mdash;"
+											 name="flags.kw_warfare.stats.attack" value="{{kw_warfare.stats.attack}}">
+						</div>
+						<div class="kw-warfare-unit-stat-value">
+								<label>
+										<span>{{kw_warfare.stats.defense}}</span>
+										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+													 name="flags.kw_warfare.stats.defense" value="{{kw_warfare.stats.defense}}">
+								</label>
+						</div>
+						<div class="kw-warfare-unit-stat-value">
+								<label for="power-stat" class="kw-warfare-rollable" data-roll="power">
+										<span>{{number-format kw_warfare.stats.power sign=true decimals=0}}</span>
+								</label>
+								<input id="power-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+											 placeholder="&mdash;"
+											 name="flags.kw_warfare.stats.power" value="{{kw_warfare.stats.power}}">
+						</div>
+						<div class="kw-warfare-unit-stat-value">
+								<label>
+										<span>{{kw_warfare.stats.toughness}}</span>
+										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+													 name="flags.kw_warfare.stats.toughness" value="{{kw_warfare.stats.toughness}}">
+								</label>
+						</div>
+						<div class="kw-warfare-unit-stat-value">
+								<label for="morale-stat" class="kw-warfare-rollable" data-roll="morale">
+										<span>{{number-format kw_warfare.stats.morale sign=true decimals=0}}</span>
+								</label>
+								<input id="morale-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+											 placeholder="&mdash;"
+											 name="flags.kw_warfare.stats.morale" value="{{kw_warfare.stats.morale}}">
+						</div>
+						<div class="kw-warfare-unit-stat-value">
+								<label for="command-stat" class="kw-warfare-rollable" data-roll="command">
+										<span>{{number-format kw_warfare.stats.command sign=true decimals=0}}</span>
+								</label>
+								<input id="command-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+											 placeholder="&mdash;"
+											 name="flags.kw_warfare.stats.command" value="{{kw_warfare.stats.command}}">
+						</div>
+				</div>
+				<div class="kw-tier">
+						<div class="kw-tier-circle">
+								<label>
+										<span>{{kw_warfare.stats.tier}}</span>
+										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+													 name="flags.kw_warfare.stats.tier" value="{{kw_warfare.stats.tier}}">
+								</label>
+						</div>
+						<div class="kw-tier-label">
+								{{localize 'KW_WARFARE.Tier'}}
+						</div>
+				</div>
+				<div class="kw-damage">
+						<div class="kw-damage-hex">
+								<label>
+										<span>{{kw_warfare.stats.damage}}</span>
+										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+													 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
+								</label>
+						</div>
+						<div class="kw-damage-label">
+								{{localize 'KW_WARFARE.DamageShort'}}
+						</div>
+				</div>
+				<div class="kw-numattacks">
+						<div class="kw-numattacks-triangle">
+						<label>
+								<span>{{kw_warfare.stats.numberOfAttacks}}</span>
+								<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
+											 name="flags.kw_warfare.stats.numberOfAttacks"
+											 value="{{kw_warfare.stats.numberOfAttacks}}">
+						</label>
+						</div>
+						<div class="kw-numattacks-label">
+								{{localize 'KW_WARFARE.NumberOfAttacks'}}
+						</div>
+				</div>
+				<div class="kw-traits">
+						{{#if kw_traits.length}}
+						<section>
+								<div class="kw-warfare-unit-traits-label">
+										<span class="kw-traits-prefix">{{localize 'KW_WARFARE.Traits'}}</span>
+										<span class="kw-warfare-config-add-items">
+												<a class="kw-warfare-config-add-item">
+														<span>{{localize 'KW_WARFARE.AddTrait'}}</span>
+														<i class="fas fa-cog"></i>
+												</a>
+										</span>
+								</div>
+								{{#each kw_traits}}
+								{{> "modules/kw_warfare/templates/trait.hbs"}}
+								{{/each}}
+						</section>
+						{{/if}}
+				</div>
+		</div>
 </form>
