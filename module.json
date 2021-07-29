@@ -3,7 +3,7 @@
   "title": "Kingdoms & Warfare: Warfare",
   "description": "An implementation of MCDM's warfare rules from Kingdoms & Warfare.",
   "author": "Mejari",
-  "version": "0.1.0-f48779e",
+  "version": "0.1.0-71d470e",
   "minimumCoreVersion": "0.8.2",
   "compatibleCoreVersion": "0.8.8",
   "systems": [
@@ -17,7 +17,7 @@
   ],
   "url": "https://github.com/Mejari/kw_warfare",
   "manifest": "https://raw.githubusercontent.com/Mejari/kw_warfare/main/module.json",
-  "download": "https://github.com/Mejari/kw_warfare/releases/download/v0.1.0-f48779e/kw_warfare-v0.1.0-f48779e.zip",
+  "download": "https://github.com/Mejari/kw_warfare/releases/download/v0.1.0-71d470e/kw_warfare-v0.1.0-71d470e.zip",
   "bugs": "https://github.com/Mejari/kw_warfare/issues",
   "changelog": "CHANGELOG.md",
   "license": "LICENSE",
@@ -30,12 +30,12 @@
     }
   ],
   "packs": [
-	{
-	  "name": "kw_warfare_macros",
-	  "label": "K&W Warfare Macros",
-	  "system": "dnd5e",
-	  "path": "./packs/kw_warfare_macros.db",
-	  "entity": "Macro"
-	}
+    {
+      "name": "kw_warfare_macros",
+      "label": "K&W Warfare Macros",
+      "system": "dnd5e",
+      "path": "./packs/kw_warfare_macros.db",
+      "entity": "Macro"
+    }
   ]
 }
