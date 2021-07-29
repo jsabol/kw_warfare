@@ -327,3 +327,56 @@
 	font-size: 16px;
 	cursor: pointer;
 }
+
+.kw-warfare-unit-casualties {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 5px;
+}
+
+.kw-warfare-unit-casualties-pips {
+	display: flex;
+	align-items: center;
+}
+
+.kw-warfare-unit-casualties-pip {
+	display: flex;
+	align-items: center;
+	padding-left: 3px;
+	cursor: pointer;
+	position: relative;
+	margin-left: 5px;
+	width: 15px;
+	height: 15px;
+}
+
+.kw-warfare-unit-casualties-pip:first-child {
+	margin-left: 0;
+}
+
+.kw-warfare-unit-casualties-pip span {
+	width: 10px;
+	height: 10px;
+	border: 1px solid #ba2828;
+	border-radius: 50%;
+}
+
+.kw-warfare-unit-casualties-pip-full span {
+	background-color: #ba2828;
+}
+
+.kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full:before {
+	content: '';
+	width: 11px;
+	height: 11px;
+	border: 2px solid #ba2828;
+	border-radius: 50%;
+	position: absolute;
+	left: 1px;
+}
+
+.kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full span {
+	width: 7px;
+	height: 7px;
+	margin-left: 2px;
+}

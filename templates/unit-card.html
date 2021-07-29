@@ -68,6 +68,14 @@
 													 placeholder="{{localize 'DND5E.Type'}}">
 								</label>
 						</div>
+						{{#if kw_warfare.stats.casualties.max}}
+						<div class="kw-warfare-unit-casualties">
+								<div title="{{localize 'KW_WARFARE.Casualties'}}" class="kw-warfare-unit-casualties-pips
+											{{#if kw_warfare.stats.casualties.diminished}}kw-warfare-unit-casualties-diminished{{/if}}">
+										{{{kw_warfare.stats.casualties.display}}}
+								</div>
+						</div>
+						{{/if}}
 				</div>
 				<div class="kw-stats">
 						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.AttackShort'}}</div>

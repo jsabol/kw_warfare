@@ -13,12 +13,16 @@ Features:
   * Dragging and dropping it onto unit cards will correctly map the feature to the correct field.
 * Icons for Ancestry and Unit Type features will be displayed on the unit card
 * Click on the rollable stats to trigger a roll!
+* Unit HP follows casualties so things like hp bars will show correct values.
 * Clickable Trait names that will expand the Trait details inside the sheet.
 
 Known Issues:
 * Styling is a bit wonky.
-* No way to apply/track damage.
 * Manually overwriting via typing an Experience, Equipment, Ancestry or Unit Type that was dropped onto it may take a couple tries.
+* Updating casualties via things that update HP (i.e. "Apply Damage") does not work.
+* No tracking of 'diminished' status.
+* Rolling Attack, Power, Morale and Command not doable through Token Action HUD module.
+* Adding/removing casualties resets Trait open/closed states.
 
 ## License
 
