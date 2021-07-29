@@ -69,7 +69,7 @@
 								</label>
 						</div>
 						{{#if kw_warfare.kw_casualties}}
-						<div class="kw-warfare-unit-casualties">
+						<div class="kw-warfare-unit-casualties {{#if kw_warfare.diminished}}kw-warfare-unit-diminished{{/if}}">
 								<div title="{{localize 'KW_WARFARE.Casualties'}}" class="kw-warfare-unit-casualties-pips">
 										{{{kw_warfare.kw_casualties}}}
 								</div>

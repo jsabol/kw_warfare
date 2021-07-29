@@ -365,6 +365,14 @@
 	background-color: #ba2828;
 }
 
+.kw-warfare-unit-diminished .kw-warfare-unit-casualties-pip span {
+	border: 1px solid darkslateblue;
+}
+
+.kw-warfare-unit-diminished .kw-warfare-unit-casualties-pip-full span {
+	background-color: darkslateblue;
+}
+
 .kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full:before {
 	content: '';
 	width: 11px;
@@ -373,6 +381,10 @@
 	border-radius: 50%;
 	position: absolute;
 	left: 1px;
+}
+
+.kw-warfare-unit-diminished .kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full:before {
+	border: 2px solid darkslateblue;
 }
 
 .kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full span {

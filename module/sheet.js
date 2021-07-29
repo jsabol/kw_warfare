@@ -73,7 +73,11 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		data.kw_warfare.kw_type_icon = this._getDefaultTypeImg(data.kw_warfare.kw_type_icon);
 		data.kw_warfare.kw_ancestry_icon = this._getDefaultAncestryImg(data.kw_warfare.kw_ancestry_icon);
 
-		data.kw_warfare.kw_casualties = this._formatCasualties(data.data.attributes.hp);
+		const hp = data.data.attributes.hp;
+
+		data.kw_warfare.kw_casualties = this._formatCasualties(hp);
+
+		data.kw_warfare.diminished = (hp.max / 2) >= hp.value;
 
 		return data;
 	}
