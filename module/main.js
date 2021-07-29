@@ -85,23 +85,6 @@ Handlebars.registerHelper('or', function (...args) {
 	return args.reduce((acc, x) => acc || !!x);
 });
 
-function setTheme (theme) {
-	const head = document.getElementsByTagName('head')[0];
-	if (theme === 'dark') {
-		const link = document.createElement('link');
-		link.type = 'text/css';
-		link.rel = 'stylesheet';
-		link.href = 'modules/kw_warfare/styles/dark.css';
-		link.id = 'kw-warfare-dark-sheet';
-		head.appendChild(link);
-	} else {
-		const sheet = document.getElementById('kw-warfare-dark-sheet');
-		if (sheet) {
-			sheet.remove();
-		}
-	}
-}
-
 document.addEventListener('click', evt => {
 	const target = evt.target;
 	const parent = evt.target.parentElement;

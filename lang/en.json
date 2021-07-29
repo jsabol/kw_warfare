@@ -1,5 +1,5 @@
 {
-  "KW_WARFARE.Sheet": "Warfare Unit Sheet",
+  "KW_WARFARE.Sheet": "K&W Unit Sheet",
 
   "KW_WARFARE.AddAction": "Add Action",
   "KW_WARFARE.AddOrder": "Add Order",
@@ -34,9 +34,5 @@
   "KW_WARFARE.Size": "Size",
   "KW_WARFARE.Tier": "Tier",
 
-  "KW_WARFARE.Casualties": "Casualties",
-
-  "KW_WARFARE.Theme": "Theme",
-  "KW_WARFARE.Dark": "Dark",
-  "KW_WARFARE.Light": "Light"
+  "KW_WARFARE.Casualties": "Casualties"
 }

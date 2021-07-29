@@ -4,6 +4,22 @@ A [FoundryVTT](https://foundryvtt.com/) module that provides an implementation o
 
 This project is not affiliated with MCDM and is in no way endorsed by them.
 
+To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
+
+Features:
+* Drag-drop Traits, Experience, Equipment, Ancestry and Unit Type.
+  * Create an Item of the type "Feature"
+  * Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type`.
+  * Dragging and dropping it onto unit cards will correctly map the feature to the correct field.
+* Icons for Ancestry and Unit Type features will be displayed on the unit card
+* Click on the rollable stats to trigger a roll!
+* Clickable Trait names that will expand the Trait details inside the sheet.
+
+Known Issues:
+* Styling is a bit wonky.
+* No way to apply/track damage.
+* Manually overwriting via typing an Experience, Equipment, Ancestry or Unit Type that was dropped onto it may take a couple tries.
+
 ## License
 
 This project is derived from the original [Warfare](https://bitbucket.org/Fyorl/warfare/src) module developed by Kim Mantas.
