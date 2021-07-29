@@ -1,3 +1,13 @@
+# [0.1.0-f48779e](https://github.com/Mejari/kw_warfare/compare/v0.0.1-dd0afc0...v0.1.0-f48779e) (2021-07-29)
+
+
+### Features
+
+* **casualties:** color casualties differently if diminished ([f48779e](https://github.com/Mejari/kw_warfare/commit/f48779e))
+
+
+
+
 ## [0.0.1-dd0afc0](https://github.com/Mejari/kw_warfare/compare/v0.0.1-8bbcaa8...v0.0.1-dd0afc0) (2021-07-29)
 
 
