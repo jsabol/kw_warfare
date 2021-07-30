@@ -9,12 +9,13 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 Features:
 * Drag-drop Traits, Experience, Equipment, Ancestry and Unit Type.
   * Create an Item of the type "Feature"
-  * Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type`.
-  * Dragging and dropping it onto unit cards will correctly map the feature to the correct field.
+  * Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type`
+  * Dragging and dropping it onto unit cards will correctly map the feature to the correct field
 * Icons for Ancestry and Unit Type features will be displayed on the unit card
 * Click on the rollable stats to trigger a roll!
 * Unit HP follows casualties so things like hp bars will show correct values.
 * Clickable Trait names that will expand the Trait details inside the sheet.
+* Built in Compendium with several helpful macros.
 
 Known Issues:
 * Styling is a bit wonky.
