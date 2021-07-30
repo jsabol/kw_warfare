@@ -1,3 +1,13 @@
+# [0.1.0-3713504](https://github.com/Mejari/kw_warfare/compare/v0.1.0-e3a49bc...v0.1.0-3713504) (2021-07-30)
+
+
+### Bug Fixes
+
+* **ui:** improved some ui behavior ([59edfe9](https://github.com/Mejari/kw_warfare/commit/59edfe9))
+
+
+
+
 # [0.1.0-e3a49bc](https://github.com/Mejari/kw_warfare/compare/v0.1.0-be72434...v0.1.0-e3a49bc) (2021-07-30)
 
 
