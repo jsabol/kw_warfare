@@ -1,3 +1,13 @@
+# [0.1.0-be72434](https://github.com/Mejari/kw_warfare/compare/v0.1.0-f654a22...v0.1.0-be72434) (2021-07-30)
+
+
+### Features
+
+* **macros:** Add macros to do damage to other warfare units ([be72434](https://github.com/Mejari/kw_warfare/commit/be72434))
+
+
+
+
 # [0.1.0-f654a22](https://github.com/Mejari/kw_warfare/compare/v0.1.0-71d470e...v0.1.0-f654a22) (2021-07-30)
 
 
