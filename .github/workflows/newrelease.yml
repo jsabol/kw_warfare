@@ -1,11 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 name: Release
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# Controls when the action will run.
 on:
-  push:
-    branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      new_version:
+        description: 'Version to release'
+        required: true
+
 
 env:
   MODULE_NAME: kw_warfare
@@ -37,8 +40,8 @@ jobs:
       - name: Update Module
         id: update_module
         env:
-          NEW_VERSION: ${{ steps.calculate_version.outputs.new_version }}
-          NEW_TAG: ${{ steps.calculate_version.outputs.new_tag }}
+          NEW_VERSION: ${{ github.event.inputs.new_version }}
+          NEW_TAG: v${{github.event.inputs.new_version}}
         run: |
           echo "${NEW_VERSION}"
           echo "${NEW_TAG}"
@@ -63,7 +66,7 @@ jobs:
         with:
           add: module.json CHANGELOG.md
           message: |
-            chore(build): Releasing ${{ steps.calculate_version.outputs.new_tag }}
+            chore(build): Releasing v${{github.event.inputs.new_version}}
 
       - name: Commit Tag
         id: commit_tag
@@ -77,8 +80,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.calculate_version.outputs.new_tag }}
-          release_name: Release ${{ steps.calculate_version.outputs.new_tag }}
+          tag_name: v${{github.event.inputs.new_version}}
+          release_name: Release v${{github.event.inputs.new_version}}
           body: |
             Changes in this release:
             ${{ steps.calculate_version.outputs.changelog }}
@@ -88,7 +91,7 @@ jobs:
       - name: Build Zip
         id: build_zip
         env:
-          NEW_TAG: ${{ steps.calculate_version.outputs.new_tag }}
+          NEW_TAG: v${{github.event.inputs.new_version}}
         run: |
           zip -r /tmp/module.zip . -x .git\*
 
@@ -100,5 +103,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: /tmp/module.zip
-          asset_name: ${{ env.MODULE_NAME }}-${{ steps.calculate_version.outputs.new_tag }}.zip
+          asset_name: ${{ env.MODULE_NAME }}-v${{github.event.inputs.new_version}}.zip
           asset_content_type: application/zip

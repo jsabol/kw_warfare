@@ -4,6 +4,11 @@
 	box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, .4);
 }
 
+.kw-warfare.window-app form {
+	height: 100%;
+}
+
+
 .kw-warfare form input {
 	display: none;
 	border: none;
@@ -71,18 +76,17 @@
 .kw-sheet-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 0.6fr 0.5fr 0.6fr 0.6fr 2.7fr 1fr;
+	grid-template-rows: 0.6fr 0.5fr 90px 2.7fr 90px;
 	gap: 0 0;
 	grid-auto-flow: row;
 	grid-template-areas:
     "kw-typeicon kw-ancestryicon kw-unit-name kw-unit-name kw-unit-name kw-unit-name kw-size"
     "kw-typeicon kw-details kw-details kw-details kw-details kw-details kw-size"
     "kw-numattacks kw-stats kw-stats kw-stats kw-stats kw-stats kw-stats"
-    "kw-numattacks kw-stats kw-stats kw-stats kw-stats kw-stats kw-stats"
     "kw-numattacks kw-traits kw-traits kw-traits kw-traits kw-traits ."
     "kw-damage kw-traits kw-traits kw-traits kw-traits kw-traits kw-tier";
-	width: 585px;
-	height: 375px;
+	/*width: 585px;*/
+	height: 100%;
 }
 
 .kw-typeicon {
@@ -112,6 +116,8 @@
 	grid-area: kw-size;
 	background-color: #102641;
 	border: 2px solid silver;
+	height: 90px;
+	width: 90px;
 }
 
 .kw-size-circle {
@@ -194,7 +200,7 @@
 .kw-stats {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
+	grid-template-rows: 40px 40px;
 	gap: 0 0;
 	grid-auto-flow: row;
 	grid-template-areas:
@@ -210,10 +216,11 @@
 	grid-area: kw-tier;
 	background-color: beige;
 	border: 3px solid silver;
+	height: 88px;
+	width: 88px;
 }
 
 .kw-tier-circle {
-	/*width: calc(100% - 18px);*/
 	height: calc(100% - 18px);
 	max-height: 64px;
 	background: goldenrod center;
@@ -246,6 +253,7 @@
 
 .kw-damage {
 	grid-area: kw-damage;
+	width: 80px;
 }
 
 .kw-damage-label {
@@ -282,6 +290,7 @@
 
 .kw-numattacks {
 	grid-area: kw-numattacks;
+	width: 80px;
 }
 
 .kw-numattacks-triangle {
@@ -318,7 +327,6 @@
 
 .kw-traits {
 	grid-area: kw-traits;
-	margin-top: 24px;
 	overflow-y: scroll;
 }
 
