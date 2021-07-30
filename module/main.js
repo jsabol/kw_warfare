@@ -2,7 +2,7 @@ import KW_WarfareUnitSheet, {KW_ANCESTRY, KW_EQUIPMENT, KW_EXPERIENCE, KW_TYPE} 
 import extendActor from './unit.js';
 
 Hooks.on('init', () => {
-	loadTemplates(['modules/kw_warfare/templates/trait.hbs']);
+	loadTemplates(['modules/kw-warfare/templates/trait.hbs']);
 	Actors.registerSheet('dnd5e', KW_WarfareUnitSheet, {
 		types: ['npc'],
 		makeDefault: false,
@@ -28,16 +28,16 @@ Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {
 		return;
 	}
 	if (requirements === KW_ANCESTRY) {
-		actor.setFlag('kw_warfare', 'details.ancestry', item.name);
+		actor.setFlag('kw-warfare', 'details.ancestry', item.name);
 		cleanDetails(actor, 'ancestry', KW_ANCESTRY);
 	} else if (requirements === KW_EQUIPMENT) {
-		actor.setFlag('kw_warfare', 'details.equipment', item.name);
+		actor.setFlag('kw-warfare', 'details.equipment', item.name);
 		cleanDetails(actor, 'equipment', KW_EQUIPMENT);
 	} else if (requirements === KW_EXPERIENCE) {
-		actor.setFlag('kw_warfare', 'details.experience', item.name);
+		actor.setFlag('kw-warfare', 'details.experience', item.name);
 		cleanDetails(actor, 'experience', KW_EXPERIENCE);
 	} else if (requirements === KW_TYPE) {
-		actor.setFlag('kw_warfare', 'details.type', item.name);
+		actor.setFlag('kw-warfare', 'details.type', item.name);
 		cleanDetails(actor, 'type', KW_TYPE);
 	}
 });
@@ -59,8 +59,8 @@ Hooks.on('preUpdateActor', (actor, updatedFlags) => {
 
 	//if manually entering an experience/ancestry/equipment/type
 	//delete old trait if exists
-	if(updatedFlags.flags && updatedFlags.flags.kw_warfare && updatedFlags.flags.kw_warfare.details) {
-		const updatedDetails = updatedFlags.flags.kw_warfare.details;
+	if(updatedFlags.flags && updatedFlags.flags['kw-warfare'] && updatedFlags.flags['kw-warfare'].details) {
+		const updatedDetails = updatedFlags.flags['kw-warfare'].details;
 		if (Object.keys(updatedDetails).length !== 1) {
 			return;
 		}

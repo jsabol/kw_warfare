@@ -28,12 +28,12 @@
 				</div>
 				<div class="kw-details">
 						<div class="kw-commander">
-								<span class="kw-commander-prefix">{{localize 'KW_WARFARE.Commander'}}:</span>
+								<span class="kw-commander-prefix">{{localize 'KW_WARFARE.Commander'}}:&nbsp;</span>
 								<label>
 										<span>{{kw_warfare.details.commander}}</span>
 										<input type="text" class="kw-warfare-unit-commander" data-dtype="String"
 													 placeholder="&mdash;"
-													 name="flags.kw_warfare.details.commander" value="{{kw_warfare.details.commander}}">
+													 name="flags.kw-warfare.details.commander" value="{{kw_warfare.details.commander}}">
 								</label>
 						</div>
 						<div class="kw-aeqt">
@@ -41,14 +41,14 @@
 								<label>
 										<span>{{kw_warfare.details.ancestry}},</span>
 										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-													 name="flags.kw_warfare.details.ancestry" value="{{kw_warfare.details.ancestry}}"
+													 name="flags.kw-warfare.details.ancestry" value="{{kw_warfare.details.ancestry}}"
 													 placeholder="{{localize 'KW_WARFARE.Ancestry'}}">
 								</label>
 								{{/if}}
 								<label>
 										<span>{{kw_warfare.details.experience}},</span>
 										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-													 name="flags.kw_warfare.details.experience"
+													 name="flags.kw-warfare.details.experience"
 													 value="{{kw_warfare.details.experience}}"
 													 placeholder="{{localize 'KW_WARFARE.Experience'}}">
 								</label>
@@ -56,7 +56,7 @@
 								<label>
 										<span>{{kw_warfare.details.equipment}},</span>
 										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-													 name="flags.kw_warfare.details.equipment"
+													 name="flags.kw-warfare.details.equipment"
 													 value="{{kw_warfare.details.equipment}}"
 													 placeholder="{{localize 'DND5E.ItemTypeEquipment'}}">
 								</label>
@@ -64,7 +64,7 @@
 								<label>
 										<span>{{kw_warfare.details.type}}</span>
 										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-													 name="flags.kw_warfare.details.type" value="{{kw_warfare.details.type}}"
+													 name="flags.kw-warfare.details.type" value="{{kw_warfare.details.type}}"
 													 placeholder="{{localize 'DND5E.Type'}}">
 								</label>
 						</div>
@@ -89,13 +89,13 @@
 								</label>
 								<input id="attack-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 											 placeholder="&mdash;"
-											 name="flags.kw_warfare.stats.attack" value="{{kw_warfare.stats.attack}}">
+											 name="flags.kw-warfare.stats.attack" value="{{kw_warfare.stats.attack}}">
 						</div>
 						<div class="kw-warfare-unit-stat-value">
 								<label>
 										<span>{{kw_warfare.stats.defense}}</span>
 										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-													 name="flags.kw_warfare.stats.defense" value="{{kw_warfare.stats.defense}}">
+													 name="flags.kw-warfare.stats.defense" value="{{kw_warfare.stats.defense}}">
 								</label>
 						</div>
 						<div class="kw-warfare-unit-stat-value">
@@ -104,13 +104,13 @@
 								</label>
 								<input id="power-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 											 placeholder="&mdash;"
-											 name="flags.kw_warfare.stats.power" value="{{kw_warfare.stats.power}}">
+											 name="flags.kw-warfare.stats.power" value="{{kw_warfare.stats.power}}">
 						</div>
 						<div class="kw-warfare-unit-stat-value">
 								<label>
 										<span>{{kw_warfare.stats.toughness}}</span>
 										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-													 name="flags.kw_warfare.stats.toughness" value="{{kw_warfare.stats.toughness}}">
+													 name="flags.kw-warfare.stats.toughness" value="{{kw_warfare.stats.toughness}}">
 								</label>
 						</div>
 						<div class="kw-warfare-unit-stat-value">
@@ -119,7 +119,7 @@
 								</label>
 								<input id="morale-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 											 placeholder="&mdash;"
-											 name="flags.kw_warfare.stats.morale" value="{{kw_warfare.stats.morale}}">
+											 name="flags.kw-warfare.stats.morale" value="{{kw_warfare.stats.morale}}">
 						</div>
 						<div class="kw-warfare-unit-stat-value">
 								<label for="command-stat" class="kw-warfare-rollable" data-roll="command">
@@ -127,7 +127,7 @@
 								</label>
 								<input id="command-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 											 placeholder="&mdash;"
-											 name="flags.kw_warfare.stats.command" value="{{kw_warfare.stats.command}}">
+											 name="flags.kw-warfare.stats.command" value="{{kw_warfare.stats.command}}">
 						</div>
 				</div>
 				<div class="kw-tier">
@@ -135,7 +135,7 @@
 								<label>
 										<span>{{kw_warfare.stats.tier}}</span>
 										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-													 name="flags.kw_warfare.stats.tier" value="{{kw_warfare.stats.tier}}">
+													 name="flags.kw-warfare.stats.tier" value="{{kw_warfare.stats.tier}}">
 								</label>
 						</div>
 						<div class="kw-tier-label">
@@ -147,7 +147,7 @@
 								<label>
 										<span>{{kw_warfare.stats.damage}}</span>
 										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-													 name="flags.kw_warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
+													 name="flags.kw-warfare.stats.damage" value="{{kw_warfare.stats.damage}}">
 								</label>
 						</div>
 						<div class="kw-damage-label">
@@ -159,7 +159,7 @@
 						<label>
 								<span>{{kw_warfare.stats.numberOfAttacks}}</span>
 								<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-											 name="flags.kw_warfare.stats.numberOfAttacks"
+											 name="flags.kw-warfare.stats.numberOfAttacks"
 											 value="{{kw_warfare.stats.numberOfAttacks}}">
 						</label>
 						</div>
@@ -180,7 +180,7 @@
 										</span>
 								</div>
 								{{#each kw_traits}}
-								{{> "modules/kw_warfare/templates/trait.hbs"}}
+								{{> "modules/kw-warfare/templates/trait.hbs"}}
 								{{/each}}
 						</section>
 						{{/if}}

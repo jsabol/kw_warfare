@@ -17,7 +17,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	}
 
 	get template () {
-		return 'modules/kw_warfare/templates/unit-card.html';
+		return 'modules/kw-warfare/templates/unit-card.html';
 	}
 
 	activateListeners (html) {
@@ -37,7 +37,9 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
 	getData () {
 		const data = super.getData();
-		data.kw_warfare = duplicate(this.actor.data.flags.kw_warfare || {});
+		data.kw_warfare = duplicate(this.actor.data.flags['kw-warfare'] || { sheet: { config: false } });
+		data.kw_warfare.details = data.kw_warfare.details || {};
+		data.kw_warfare.stats = data.kw_warfare.stats || {};
 		data.kw_traits = [];
 
 		for (const item of data.items) {
@@ -145,8 +147,8 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
 	_onTraitNameClicked (evt) {
 		const item = this.actor.items.get(evt.currentTarget.parentElement.dataset.itemId);
-		const isExpanded = !!item.getFlag('kw_warfare', 'kw_trait_expanded');
-		item.setFlag('kw_warfare', 'kw_trait_expanded', !isExpanded);
+		const isExpanded = !!item.getFlag('kw-warfare', 'kw_trait_expanded');
+		item.setFlag('kw-warfare', 'kw_trait_expanded', !isExpanded);
 	}
 
 	_onCasualtyClicked (evt) {
@@ -169,8 +171,8 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	}
 
 	_onConfigClicked () {
-		const currentStatus = !!this.actor.getFlag('kw_warfare', 'sheet.config');
-		this.actor.setFlag('kw_warfare', 'sheet.config', !currentStatus);
+		const currentStatus = !!this.actor.getFlag('kw-warfare', 'sheet.config');
+		this.actor.setFlag('kw-warfare', 'sheet.config', !currentStatus);
 	}
 
 	_onRollAttribute (evt) {
