@@ -18,7 +18,6 @@ Features:
 
 Known Issues:
 * Styling is a bit wonky.
-* Manually overwriting via typing an Experience, Equipment, Ancestry or Unit Type that was dropped onto it may take a couple tries.
 * TODO: hook up targeting to automatically roll against matching stats (attack vs target's defense, etc...)
 * TODO: Automatically apply damage on hit/successful power test (add option to disable)
 
