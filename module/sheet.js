@@ -129,7 +129,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	}
 
 	_onEditItem (evt) {
-		const item = this.actor.items.get(evt.currentTarget.parentElement.dataset.itemId);
+		const item = this.actor.items.get(evt.currentTarget.parentElement.parentElement.dataset.itemId);
 		item.sheet.render(true);
 	}
 
@@ -144,12 +144,9 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	}
 
 	_onTraitNameClicked (evt) {
-		const target = evt.currentTarget;
-		const nextSibling = target.nextElementSibling;
-		if(nextSibling && nextSibling.className.indexOf('kw-warfare-trait-description') >=0) {
-			const currentDisplay = nextSibling.style.display;
-			nextSibling.style.display = currentDisplay === 'none' ? 'block' : 'none';
-		}
+		const item = this.actor.items.get(evt.currentTarget.parentElement.dataset.itemId);
+		const isExpanded = !!item.getFlag('kw_warfare', 'kw_trait_expanded');
+		item.setFlag('kw_warfare', 'kw_trait_expanded', !isExpanded);
 	}
 
 	_onCasualtyClicked (evt) {

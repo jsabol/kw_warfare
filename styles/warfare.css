@@ -392,3 +392,11 @@
 	height: 7px;
 	margin-left: 2px;
 }
+
+.kw-warfare-trait-description {
+	display: none;
+}
+
+.kw-warfare-trait-description.kw-trait-expanded {
+	display: block;
+}
