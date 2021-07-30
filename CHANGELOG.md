@@ -1,3 +1,13 @@
+# [0.1.0-e3a49bc](https://github.com/Mejari/kw_warfare/compare/v0.1.0-be72434...v0.1.0-e3a49bc) (2021-07-30)
+
+
+### Bug Fixes
+
+* **traits:** Fix manual overwriting of unit details not sticking ([e3a49bc](https://github.com/Mejari/kw_warfare/commit/e3a49bc))
+
+
+
+
 # [0.1.0-be72434](https://github.com/Mejari/kw_warfare/compare/v0.1.0-f654a22...v0.1.0-be72434) (2021-07-30)
 
 
