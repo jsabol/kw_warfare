@@ -1,3 +1,14 @@
+## [0.2.1-284e540](https://github.com/Mejari/kw_warfare/compare/v0.2.1-cc55430...v0.2.1-284e540) (2021-07-31)
+
+
+### Bug Fixes
+
+* **migrate:** Migrate to 'kw-warfare' name to match Foundry criteria ([4d0d07f](https://github.com/Mejari/kw_warfare/commit/4d0d07f))
+* **ui:** use blank image as default for ancestry and type ([0c520d3](https://github.com/Mejari/kw_warfare/commit/0c520d3))
+
+
+
+
 ## [0.2.1-cc55430](https://github.com/Mejari/kw_warfare/compare/v0.2.0...v0.2.1-cc55430) (2021-07-30)
 
 
