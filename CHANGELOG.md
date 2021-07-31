@@ -1,3 +1,11 @@
+## [0.3.0](https://github.com/Mejari/kw_warfare/compare/v0.2.1...v0.3.0) (2021-07-31)
+
+
+### Features
+
+* **ui:** Re layout sheet ([cf9d4d1](https://github.com/Mejari/kw_warfare/commit/cf9d4d1a1eab997eefc39cbe9d9c1b484cbe6aa1))
+
+
 ### [0.2.1](https://github.com/Mejari/kw_warfare/compare/v0.2.0...v0.2.1) (2021-07-31)
 
 
