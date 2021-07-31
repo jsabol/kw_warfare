@@ -15,7 +15,7 @@
   "bugs": "https://github.com/Mejari/kw_warfare/issues",
   "changelog": "CHANGELOG.md",
   "flags": {},
-  "version": "0.2.1-b2ecb91",
+  "version": "0.2.1-4f2f11d",
   "minimumCoreVersion": "0.8.2",
   "compatibleCoreVersion": "0.8.8",
   "scripts": [],
@@ -48,7 +48,7 @@
   "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Mejari/kw_warfare/main/module.json",
-  "download": "https://github.com/Mejari/kw_warfare/releases/download/v0.2.1-b2ecb91/kw-warfare-v0.2.1-b2ecb91.zip",
+  "download": "https://github.com/Mejari/kw_warfare/releases/download/v0.2.1-4f2f11d/kw-warfare-v0.2.1-4f2f11d.zip",
   "protected": false,
   "coreTranslation": false
 }

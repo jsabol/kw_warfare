@@ -1,3 +1,13 @@
+## [0.2.1-4f2f11d](https://github.com/Mejari/kw_warfare/compare/v0.2.1-b2ecb91...v0.2.1-4f2f11d) (2021-07-31)
+
+
+### Bug Fixes
+
+* **readme:** Clean up readme to be more accurate ([4f2f11d](https://github.com/Mejari/kw_warfare/commit/4f2f11d))
+
+
+
+
 ## [0.2.1-b2ecb91](https://github.com/Mejari/kw_warfare/compare/v0.2.1-284e540...v0.2.1-b2ecb91) (2021-07-31)
 
 
