@@ -2,7 +2,7 @@
 
 A [FoundryVTT](https://foundryvtt.com/) module that provides a unit sheet for MCDM's warfare system as seen in [Kingdoms & Warfare](https://shop.mcdmproductions.com/products/kingdoms-and-warfare-book).
 
-###This project is not affiliated with MCDM and is in no way endorsed by them.
+**This project is not affiliated with MCDM and is in no way endorsed by them.**
 
 The module adds a sheet for NPC Actors that designates them as a warfare unit and allows you to input any units created with the warfare system.
 
