@@ -103,6 +103,7 @@
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	border: none;
 }
 
 .kw-ancestryicon {
@@ -115,6 +116,7 @@
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	border: none;
 }
 
 .kw-size {

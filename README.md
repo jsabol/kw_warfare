@@ -19,8 +19,14 @@ Features:
 
 Known Issues:
 * Styling is a bit wonky.
-* TODO: hook up targeting to automatically roll against matching stats (attack vs target's defense, etc...)
-* TODO: Automatically apply damage on hit/successful power test (add option to disable)
+
+Proposed Features:
+* Hook up targeting to automatically roll against matching stats (attack vs target's defense, etc...)
+* Automatically apply damage on hit/successful power test (add option to disable)
+* Store stats in the Feature items (Ancestry, Experience, etc...) and automatically calculate unit stats when added. This would enable drag/drop unit building from scratch.
+* Add conditions for things like Weakened to mark units with.
+
+**NOTE** Not all feature suggestions may be possible to implement in order to not infringe on MCDM's copyright.
 
 ## License
 

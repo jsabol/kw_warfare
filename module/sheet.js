@@ -72,8 +72,8 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			});
 		}
 
-		data.kw_warfare.kw_type_icon = this._getDefaultTypeImg(data.kw_warfare.kw_type_icon);
-		data.kw_warfare.kw_ancestry_icon = this._getDefaultAncestryImg(data.kw_warfare.kw_ancestry_icon);
+		data.kw_warfare.kw_type_icon = this._getDefaultImg(data.kw_warfare.kw_type_icon);
+		data.kw_warfare.kw_ancestry_icon = this._getDefaultImg(data.kw_warfare.kw_ancestry_icon);
 
 		const hp = data.data.attributes.hp;
 
@@ -84,16 +84,9 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		return data;
 	}
 
-	_getDefaultAncestryImg(img) {
+	_getDefaultImg(img) {
 		if(!img || img === 'icons/svg/item-bag.svg') {
-			return 'icons/environment/people/commoner.webp';
-		}
-		return img;
-	}
-
-	_getDefaultTypeImg(img) {
-		if(!img || img === 'icons/svg/item-bag.svg') {
-			return 'icons/weapons/swords/sword-simple-white.webp';
+			return '/modules/kw-warfare/blank.png';
 		}
 		return img;
 	}
