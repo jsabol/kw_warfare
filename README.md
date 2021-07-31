@@ -1,21 +1,23 @@
-# Kingdoms & Warfare: Warfare
+# K&W: Warfare
 
-A [FoundryVTT](https://foundryvtt.com/) module that provides an implementation of MCDM's warfare system as seen in [Kingdoms & Warfare](https://shop.mcdmproductions.com/products/kingdoms-and-warfare-book). The module adds a special sheet for NPC Actors that designates them as a unit and allows you to input any units created with the warfare system.
+A [FoundryVTT](https://foundryvtt.com/) module that provides a unit sheet for MCDM's warfare system as seen in [Kingdoms & Warfare](https://shop.mcdmproductions.com/products/kingdoms-and-warfare-book).
 
-This project is not affiliated with MCDM and is in no way endorsed by them.
+###This project is not affiliated with MCDM and is in no way endorsed by them.
+
+The module adds a special sheet for NPC Actors that designates them as a unit and allows you to input any units created with the warfare system.
 
 To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 
 Features:
 * Drag-drop Traits, Experience, Equipment, Ancestry and Unit Type.
   * Create an Item of the type "Feature"
-  * Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type`
+  * Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type` (any other value or blank will be treated as a unit Trait)
   * Dragging and dropping it onto unit cards will correctly map the feature to the correct field
-* Icons for Ancestry and Unit Type features will be displayed on the unit card
+* Icons added by you for Ancestry and Unit Type features will be displayed on the unit card
 * Click on the rollable stats to trigger a roll!
-* Unit HP follows casualties so things like hp bars will show correct values.
+* Unit HP is configured by the `size` attribute so all normal methods to damage/heal tokens should function.
 * Clickable Trait names that will expand the Trait details inside the sheet.
-* Built in Compendium with several helpful macros.
+* Built-in Compendium with several helpful macros.
 
 Known Issues:
 * Styling is a bit wonky.
