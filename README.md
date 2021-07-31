@@ -4,7 +4,7 @@ A [FoundryVTT](https://foundryvtt.com/) module that provides a unit sheet for MC
 
 ###This project is not affiliated with MCDM and is in no way endorsed by them.
 
-The module adds a special sheet for NPC Actors that designates them as a unit and allows you to input any units created with the warfare system.
+The module adds a sheet for NPC Actors that designates them as a warfare unit and allows you to input any units created with the warfare system.
 
 To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 
@@ -13,9 +13,9 @@ Features:
   * Create an Item of the type "Feature"
   * Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type` (any other value or blank will be treated as a unit Trait)
   * Dragging and dropping it onto unit cards will correctly map the feature to the correct field
-* Icons added by you for Ancestry and Unit Type features will be displayed on the unit card
-* Click on the rollable stats to trigger a roll!
-* Unit HP is configured by the `size` attribute so all normal methods to damage/heal tokens should function.
+* Icons added by you for Ancestry and Unit Type features will be displayed on the unit card.
+* Click on the rollable stats to trigger a roll.
+* Unit HP is configured by the `Size` attribute so all normal methods to damage/heal tokens should function.
 * Clickable Trait names that will expand the Trait details inside the sheet.
 * Built-in Compendium with several helpful macros.
 

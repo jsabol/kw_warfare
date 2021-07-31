@@ -1,6 +1,6 @@
 .kw-warfare.window-app {
 	min-width: 475px;
-	min-height: 340px;
+	min-height: 445px;
 }
 
 .kw-warfare.window-app .window-content {
@@ -37,6 +37,10 @@
 	display: inline-block;
 }
 
+.kw-warfare-config .kw-warfare-config-add-items .kw-warfare-config-add-item {
+	margin-right: 5px;
+}
+
 .kw-warfare-config .kw-warfare-config-item {
 	display: inline-block;
 }
@@ -56,14 +60,14 @@
 }
 
 .kw-warfare-stat-short-label {
-	color: #071A42;
-	background-color: #D9DCC8;
+	color: midnightblue;
+	background-color: beige;
 	border: 3px solid darkred;
 }
 
 .kw-warfare-unit-stat-value {
-	color: #EEE7E5;
-	background-color: #A15D5D;
+	color: floralwhite;
+	background-color: indianred;
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
 	border: 3px solid darkred;
@@ -85,10 +89,10 @@
 	gap: 0 0;
 	grid-auto-flow: row;
 	grid-template-areas:
-    "kw-typeicon kw-ancestryicon kw-unit-name kw-unit-name kw-unit-name kw-unit-name kw-size"
-    "kw-typeicon kw-details kw-details kw-details kw-details kw-details kw-size"
-    "kw-numattacks kw-stats kw-stats kw-stats kw-stats kw-stats kw-stats"
-    "kw-numattacks kw-traits kw-traits kw-traits kw-traits kw-traits ."
+    "kw-typeicon kw-ancestryicon kw-unit-name kw-unit-name kw-unit-name kw-unit-name kw-unit-name"
+    "kw-typeicon kw-details kw-details kw-details kw-details kw-details kw-details"
+    "kw-stats kw-stats kw-stats kw-stats kw-stats kw-stats kw-stats"
+    "kw-numattacks kw-traits kw-traits kw-traits kw-traits kw-traits kw-size"
     "kw-damage kw-traits kw-traits kw-traits kw-traits kw-traits kw-tier";
 	/*width: 585px;*/
 	height: 100%;
@@ -121,14 +125,13 @@
 
 .kw-size {
 	grid-area: kw-size;
-	background-color: #102641;
+	background-color: midnightblue;
 	border: 2px solid silver;
 	height: 90px;
 	width: 90px;
 }
 
 .kw-size-circle {
-	/*width: calc(100% - 18px);*/
 	height: calc(100% - 18px);
 	background: beige center;
 	-moz-border-radius: 30px;
@@ -140,7 +143,7 @@
 	font-size: 68px;
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
-	color: #701820;
+	color: darkred;
 }
 
 .kw-size-circle input {
@@ -175,7 +178,7 @@
 .kw-details {
 	grid-area: kw-details;
 	margin: 0 3px 0 2px;
-	color: #972329;
+	color: darkred;
 	font-size: 17px;
 	font-weight: bold;
 	-webkit-text-stroke-width: 1px;
@@ -193,7 +196,7 @@
 
 .kw-traits-prefix {
 	text-transform: uppercase;
-	color: #972329;
+	color: darkred;
 	font-size: 18px;
 	font-weight: bold;
 }
@@ -231,7 +234,7 @@
 .kw-tier-circle {
 	height: calc(100% - 18px);
 	max-height: 64px;
-	background: goldenrod center;
+	background: seagreen center;
 	-moz-border-radius: 30px;
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
@@ -241,7 +244,7 @@
 	font-size: 68px;
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
-	color: #701820;
+	color: darkred;
 }
 
 .kw-tier-circle input {
@@ -312,7 +315,7 @@
 	font-size: 68px;
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
-	color: #701820;
+	color: darkred;
 	font-weight: bold;
 	padding-top: 16px;
 	padding-right: 4px;
@@ -336,10 +339,12 @@
 .kw-traits {
 	grid-area: kw-traits;
 	overflow-y: auto;
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 .kw-warfare-trait-name {
-	color: #662931;
+	color: maroon;
 	font-size: 16px;
 	cursor: pointer;
 }
@@ -373,12 +378,12 @@
 .kw-warfare-unit-casualties-pip span {
 	width: 10px;
 	height: 10px;
-	border: 1px solid #ba2828;
+	border: 1px solid darkred;
 	border-radius: 50%;
 }
 
 .kw-warfare-unit-casualties-pip-full span {
-	background-color: #ba2828;
+	background-color: darkred;
 }
 
 .kw-warfare-unit-diminished .kw-warfare-unit-casualties-pip span {
@@ -393,7 +398,7 @@
 	content: '';
 	width: 11px;
 	height: 11px;
-	border: 2px solid #ba2828;
+	border: 2px solid darkred;
 	border-radius: 50%;
 	position: absolute;
 	left: 1px;
@@ -415,4 +420,8 @@
 
 .kw-warfare-trait-description.kw-trait-expanded {
 	display: block;
+}
+
+.kw-warfare-trait-description p {
+	text-indent: 20px;
 }

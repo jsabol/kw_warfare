@@ -1,22 +1,10 @@
 <form class="{{#if kw_warfare.sheet.config}}kw-warfare-config{{/if}}" autocomplete="off">
 		<div class="kw-sheet-container">
-				<div class="kw-typeicon">
+				<div class="kw-typeicon" title="{{kw_warfare.details.type}}">
 						<img alt="{{kw_warfare.details.type}}" src="{{kw_warfare.kw_type_icon}}"/>
 				</div>
-				<div class="kw-ancestryicon">
+				<div class="kw-ancestryicon" title="{{kw_warfare.details.ancestry}}">
 						<img alt="{{kw_warfare.details.ancestry}}" src="{{kw_warfare.kw_ancestry_icon}}"/>
-				</div>
-				<div class="kw-size">
-						<div class="kw-size-circle">
-								<label>
-										<span>{{data.attributes.hp.max}}</span>
-										<input type="number" data-dtype="Number" name="data.attributes.hp.max"
-													 value="{{data.attributes.hp.max}}">
-								</label>
-						</div>
-						<div class="kw-size-label">
-								{{localize 'KW_WARFARE.Size'}}
-						</div>
 				</div>
 				<div class="kw-unit-name">
 						<label class="kw-warfare-unit-name">
@@ -130,6 +118,18 @@
 											 name="flags.kw-warfare.stats.command" value="{{kw_warfare.stats.command}}">
 						</div>
 				</div>
+				<div class="kw-size">
+						<div class="kw-size-circle">
+								<label>
+										<span>{{data.attributes.hp.max}}</span>
+										<input type="number" data-dtype="Number" name="data.attributes.hp.max"
+													 value="{{data.attributes.hp.max}}">
+								</label>
+						</div>
+						<div class="kw-size-label">
+								{{localize 'KW_WARFARE.Size'}}
+						</div>
+				</div>
 				<div class="kw-tier">
 						<div class="kw-tier-circle">
 								<label>
@@ -151,7 +151,7 @@
 								</label>
 						</div>
 						<div class="kw-damage-label">
-								{{localize 'KW_WARFARE.DamageShort'}}
+								{{localize 'KW_WARFARE.Damage'}}
 						</div>
 				</div>
 				<div class="kw-numattacks">
