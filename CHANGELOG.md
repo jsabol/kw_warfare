@@ -1,3 +1,14 @@
+### [0.2.1](https://github.com/Mejari/kw_warfare/compare/v0.2.0...v0.2.1) (2021-07-31)
+
+
+### Bug Fixes
+
+* **license:** Fixed license attribution error ([d119ada](https://github.com/Mejari/kw_warfare/commit/d119ada6a229f2ce19f8ffd565e9eccf1b931bd1))
+* **migrate:** Migrate to 'kw-warfare' name to match Foundry criteria ([4d0d07f](https://github.com/Mejari/kw_warfare/commit/4d0d07f3296e94fa1266dfb4d621bf0393a9c9e5))
+* **readme:** Clean up readme to be more accurate ([4f2f11d](https://github.com/Mejari/kw_warfare/commit/4f2f11d1ee47039899066c7f4906095023b75cfa))
+* **ui:** use blank image as default for ancestry and type ([0c520d3](https://github.com/Mejari/kw_warfare/commit/0c520d3471075ed8590d77a34af7ab715c774718))
+
+
 ## [0.2.1-4f2f11d](https://github.com/Mejari/kw_warfare/compare/v0.2.1-b2ecb91...v0.2.1-4f2f11d) (2021-07-31)
 
 
