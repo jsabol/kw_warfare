@@ -10,7 +10,7 @@ const attributeLabels = {
 
 export default function extendActor () {
 
-	Actor5e.prototype.rollUnitAttribute = function (attr, options = {}) {
+	Actor5e.prototype.rollKWUnitAttribute = function (attr, options = {}) {
 		//TODO: include roll attribute icon in roll data for chat-portrait module (if possible)
 		const stats = this.getFlag('kw-warfare', 'stats');
 		if (!stats) {

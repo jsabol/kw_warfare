@@ -49,10 +49,6 @@
 	display: none;
 }
 
-/*.kw-sheet-container div {*/
-/*	border: 1px solid darkred;*/
-/*}*/
-
 .kw-sheet-container .fa-cog {
 	color: gray;
 	font-weight: 900;
@@ -94,7 +90,6 @@
     "kw-stats kw-stats kw-stats kw-stats kw-stats kw-stats kw-stats"
     "kw-numattacks kw-traits kw-traits kw-traits kw-traits kw-traits kw-size"
     "kw-damage kw-traits kw-traits kw-traits kw-traits kw-traits kw-tier";
-	/*width: 585px;*/
 	height: 100%;
 }
 

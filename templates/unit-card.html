@@ -25,7 +25,7 @@
 								</label>
 						</div>
 						<div class="kw-aeqt">
-								{{#if (or kw_warfare.details.ancestry kw_warfare.sheet.config)}}
+								{{#if (kw-or kw_warfare.details.ancestry kw_warfare.sheet.config)}}
 								<label>
 										<span>{{kw_warfare.details.ancestry}},</span>
 										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
@@ -40,7 +40,7 @@
 													 value="{{kw_warfare.details.experience}}"
 													 placeholder="{{localize 'KW_WARFARE.Experience'}}">
 								</label>
-								{{#if (or kw_warfare.details.equipment kw_warfare.sheet.config)}}
+								{{#if (kw-or kw_warfare.details.equipment kw_warfare.sheet.config)}}
 								<label>
 										<span>{{kw_warfare.details.equipment}},</span>
 										<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
@@ -72,8 +72,8 @@
 						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.MoraleShort'}}</div>
 						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.CommandShort'}}</div>
 						<div class="kw-warfare-unit-stat-value">
-								<label for="attack-stat" class="kw-warfare-rollable" data-roll="attack">
-										<span>{{number-format kw_warfare.stats.attack sign=true decimals=0}}</span>
+								<label for="attack-stat" class="kw-warfare-rollable" kw-data-roll="attack">
+										<span>{{kw-number-format kw_warfare.stats.attack sign=true decimals=0}}</span>
 								</label>
 								<input id="attack-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 											 placeholder="&mdash;"
@@ -87,8 +87,8 @@
 								</label>
 						</div>
 						<div class="kw-warfare-unit-stat-value">
-								<label for="power-stat" class="kw-warfare-rollable" data-roll="power">
-										<span>{{number-format kw_warfare.stats.power sign=true decimals=0}}</span>
+								<label for="power-stat" class="kw-warfare-rollable" kw-data-roll="power">
+										<span>{{kw-number-format kw_warfare.stats.power sign=true decimals=0}}</span>
 								</label>
 								<input id="power-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 											 placeholder="&mdash;"
@@ -102,16 +102,16 @@
 								</label>
 						</div>
 						<div class="kw-warfare-unit-stat-value">
-								<label for="morale-stat" class="kw-warfare-rollable" data-roll="morale">
-										<span>{{number-format kw_warfare.stats.morale sign=true decimals=0}}</span>
+								<label for="morale-stat" class="kw-warfare-rollable" kw-data-roll="morale">
+										<span>{{kw-number-format kw_warfare.stats.morale sign=true decimals=0}}</span>
 								</label>
 								<input id="morale-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 											 placeholder="&mdash;"
 											 name="flags.kw-warfare.stats.morale" value="{{kw_warfare.stats.morale}}">
 						</div>
 						<div class="kw-warfare-unit-stat-value">
-								<label for="command-stat" class="kw-warfare-rollable" data-roll="command">
-										<span>{{number-format kw_warfare.stats.command sign=true decimals=0}}</span>
+								<label for="command-stat" class="kw-warfare-rollable" kw-data-roll="command">
+										<span>{{kw-number-format kw_warfare.stats.command sign=true decimals=0}}</span>
 								</label>
 								<input id="command-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 											 placeholder="&mdash;"

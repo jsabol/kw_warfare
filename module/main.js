@@ -86,7 +86,7 @@ function cleanDetails(actor, detailName, detailType) {
 	}
 }
 
-Handlebars.registerHelper('number-format', function (n, options) {
+Handlebars.registerHelper('kw-number-format', function (n, options) {
 	if (n == null) {
 		return '';
 	}
@@ -97,7 +97,7 @@ Handlebars.registerHelper('number-format', function (n, options) {
 	return sign && n >= 0 ? '+' + n : n;
 });
 
-Handlebars.registerHelper('or', function (...args) {
+Handlebars.registerHelper('kw-or', function (...args) {
 	args.pop();
 	return args.reduce((acc, x) => acc || !!x);
 });
