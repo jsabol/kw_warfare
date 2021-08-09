@@ -13,13 +13,16 @@ Features:
   * Create an Item of the type "Feature"
   * Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type` (any other value or blank will be treated as a unit Trait)
   * Dragging and dropping it onto unit cards will correctly map the feature to the correct field
+* Drag-drop Commander.
+  * Dragging and dropping a PC or NPC actor onto unit cards will correctly map the actor as the commander of the unit
+  * Players whose PCs are dropped onto the unit will set that player's permission for the unit to "Owner"
 * Icons added by you for Ancestry and Unit Type features will be displayed on the unit card.
 * Click on the rollable stats to trigger a roll.
 * Unit HP is configured by the `Size` attribute so all normal methods to damage/heal tokens should function.
 * Clickable Trait names that will expand the Trait details inside the sheet.
 * Built-in Compendium with several helpful macros.
 * Migration from the original Warfare module.
-  * Simply change the sheet type to the new K&W Warfare NPC type and the data will be migrated to the new format.
+  * Simply change the sheet type to the new K&W Warfare NPC type and the data will be migrated to the new format
   * (NOTE: This is irreversible, and data no longer used by K&W Warfare like unit cost will be lost on migration)
 
 Known Issues:

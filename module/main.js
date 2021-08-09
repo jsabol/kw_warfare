@@ -1,6 +1,8 @@
 import KW_WarfareUnitSheet, {KW_ANCESTRY, KW_EQUIPMENT, KW_EXPERIENCE, KW_TYPE} from './sheet.js';
 import extendActor from './unit.js';
 
+const OWNER = CONST.ENTITY_PERMISSIONS.OWNER;
+
 Hooks.on('init', () => {
 	loadTemplates(['modules/kw-warfare/templates/trait.hbs']);
 	Actors.registerSheet('dnd5e', KW_WarfareUnitSheet, {
@@ -61,6 +63,34 @@ function dropActor(itemInfo, kwWarfareUnit) {
 	}
 
 	kwWarfareUnit.setFlag('kw-warfare', 'details.commander', droppedActor.data.name);
+
+	//Only set permissions when dragging PCs.
+	if(droppedActor.type !== 'character') {
+		return;
+	}
+
+	const existingPermissions = kwWarfareUnit.data.permission;
+	const updatedPermissions = {}
+
+	//Remove other owners (not GMs, default or observers)
+	Object.entries(existingPermissions)
+		.map(e => {
+			if(e[0] !== 'default' && !game.users.get(e[0])?.isGM && e[1] === OWNER) {
+				return [e[0], CONST.ENTITY_PERMISSIONS.NONE];
+			}
+			return e;
+		})
+		.forEach(e => updatedPermissions[e[0]] = e[1]);
+
+	//Add owner of the dropped actor as the owner of the warfare unit
+	Object.entries(droppedActor.data.permission)
+		.filter(e=> e[0] !== 'default' && !game.users.get(e[0])?.isGM && e[1] === OWNER)
+		.map(e=>e[0])
+		.forEach(id => {
+			updatedPermissions[id] = OWNER;
+		});
+
+	kwWarfareUnit.update({permission: updatedPermissions});
 }
 
 Hooks.on('preUpdateActor', (actor, updatedFlags) => {
