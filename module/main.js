@@ -15,9 +15,19 @@ Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {
 	if (KW_WarfareUnitSheet.name !== sheet.constructor.name) {
 		return;
 	}
+
+	if (itemInfo.type === 'Item') {
+		dropTrait(itemInfo, actor);
+	} else if (itemInfo.type === 'Actor') {
+		dropActor(itemInfo, actor);
+		return false;
+	}
+
+});
+
+function dropTrait(itemInfo, kwWarfareUnit) {
 	//overwrite existing experience/ancestry/equipment/type if already exist
 	//delete old trait. clear out text value.
-
 	const item = game.items.get(itemInfo.id);
 	if (!item) {
 		return;
@@ -27,44 +37,58 @@ Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {
 	if (!requirements) {
 		return;
 	}
-	if (requirements === KW_ANCESTRY) {
-		actor.setFlag('kw-warfare', 'details.ancestry', item.name);
-		cleanDetails(actor, 'ancestry', KW_ANCESTRY);
-	} else if (requirements === KW_EQUIPMENT) {
-		actor.setFlag('kw-warfare', 'details.equipment', item.name);
-		cleanDetails(actor, 'equipment', KW_EQUIPMENT);
-	} else if (requirements === KW_EXPERIENCE) {
-		actor.setFlag('kw-warfare', 'details.experience', item.name);
-		cleanDetails(actor, 'experience', KW_EXPERIENCE);
-	} else if (requirements === KW_TYPE) {
-		actor.setFlag('kw-warfare', 'details.type', item.name);
-		cleanDetails(actor, 'type', KW_TYPE);
-	}
-});
 
-Hooks.on('preUpdateActor', (actor, updatedFlags) => {
-	if (!updatedFlags || !actor.sheet || actor.sheet.constructor.name !== 'WarfareUnitSheet') {
+	if (requirements === KW_ANCESTRY) {
+		kwWarfareUnit.setFlag('kw-warfare', 'details.ancestry', item.name);
+		cleanDetails(kwWarfareUnit, 'ancestry', KW_ANCESTRY);
+	} else if (requirements === KW_EQUIPMENT) {
+		kwWarfareUnit.setFlag('kw-warfare', 'details.equipment', item.name);
+		cleanDetails(kwWarfareUnit, 'equipment', KW_EQUIPMENT);
+	} else if (requirements === KW_EXPERIENCE) {
+		kwWarfareUnit.setFlag('kw-warfare', 'details.experience', item.name);
+		cleanDetails(kwWarfareUnit, 'experience', KW_EXPERIENCE);
+	} else if (requirements === KW_TYPE) {
+		kwWarfareUnit.setFlag('kw-warfare', 'details.type', item.name);
+		cleanDetails(kwWarfareUnit, 'type', KW_TYPE);
+	}
+}
+
+function dropActor(itemInfo, kwWarfareUnit) {
+	//set commander
+	const droppedActor = game.actors.get(itemInfo.id);
+	if (!droppedActor || droppedActor.sheet.constructor.name === 'KW_WarfareUnitSheet') {
 		return;
 	}
 
-	const isMigration = updatedFlags.flags?.core?.sheetClass === 'dnd5e.KW_WarfareUnitSheet'
+	kwWarfareUnit.setFlag('kw-warfare', 'details.commander', droppedActor.data.name);
+}
+
+Hooks.on('preUpdateActor', (actor, updatedFlags) => {
+	if (!updatedFlags || !actor.sheet) {
+		return;
+	}
+
+	const isMigration = actor.sheet.constructor.name === 'WarfareUnitSheet'
+		&& updatedFlags.flags?.core?.sheetClass === 'dnd5e.KW_WarfareUnitSheet'
 		&& !actor.data.flags['kw-warfare'] && actor.data.flags.warfare;
 
-	if(isMigration) {
+	if (isMigration) {
 		migrate(updatedFlags, actor);
+	} else if(actor.sheet.constructor.name !== 'KW_WarfareUnitSheet') {
+		return;
 	}
 
 	//If updating the max-hp, reduce current hp to that max if greater than the new max
-	if(updatedFlags.data?.attributes?.hp?.max) {
+	if (updatedFlags.data?.attributes?.hp?.max) {
 		const newMax = updatedFlags.data.attributes.hp.max;
 		const currentHp = actor.data.data.attributes.hp.value;
-		if(currentHp > newMax) {
+		if (currentHp > newMax) {
 			updatedFlags.data.attributes.hp.value = newMax;
 		}
 	}
 
 	//if manually entering an experience/ancestry/equipment/type delete old trait if exists
-	if(updatedFlags.flags && updatedFlags.flags['kw-warfare']?.details) {
+	if (updatedFlags.flags && updatedFlags.flags['kw-warfare']?.details) {
 		cleanDetailTraitsOnUpdate(updatedFlags.flags['kw-warfare'].details, actor);
 	}
 });
@@ -83,13 +107,13 @@ function migrate(updatedFlags, actor) {
 	};
 	updatedFlags.flags['kw-warfare'] = kwWarfareStats;
 
-	if(!updatedFlags.data) {
+	if (!updatedFlags.data) {
 		updatedFlags.data = {};
 	}
-	if(!updatedFlags.data.attributes) {
+	if (!updatedFlags.data.attributes) {
 		updatedFlags.data.attributes = {};
 	}
-	if(warfareStats.stats.casualties) {
+	if (warfareStats.stats.casualties) {
 		updatedFlags.data.attributes.hp = {
 			max: warfareStats.stats.casualties.max,
 			value: warfareStats.stats.casualties.remaining
