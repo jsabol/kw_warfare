@@ -21,7 +21,7 @@ Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {
 	if (itemInfo.type === 'Item') {
 		dropTrait(itemInfo, actor);
 	} else if (itemInfo.type === 'Actor') {
-		dropActor(itemInfo, actor);
+		dropActor(itemInfo, actor, sheet);
 		return false;
 	}
 
@@ -55,7 +55,7 @@ function dropTrait(itemInfo, kwWarfareUnit) {
 	}
 }
 
-function dropActor(itemInfo, kwWarfareUnit) {
+function dropActor(itemInfo, kwWarfareUnit, kwWarfareSheet) {
 	//set commander
 	const droppedActor = game.actors.get(itemInfo.id);
 	if (!droppedActor || droppedActor.sheet.constructor.name === 'KW_WarfareUnitSheet') {
@@ -91,6 +91,9 @@ function dropActor(itemInfo, kwWarfareUnit) {
 		});
 
 	kwWarfareUnit.update({permission: updatedPermissions});
+	
+	//set unit disposition to friendly if a pc is dropped
+	kwWarfareSheet.token.update({disposition: 1});
 }
 
 Hooks.on('preUpdateActor', (actor, updatedFlags) => {
