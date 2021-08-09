@@ -1,3 +1,19 @@
+## [0.4.0](https://github.com/Mejari/kw_warfare/compare/v0.3.0...v0.4.0) (2021-08-09)
+
+
+### Features
+
+* **details:** Drag-drop actor to set commander. ([70e939d](https://github.com/Mejari/kw_warfare/commit/70e939da69a1ae3702b6d9ca7624b281cde28095))
+* **migration:** Implement migration from Warfare unit to KW Warfare unit ([98abe80](https://github.com/Mejari/kw_warfare/commit/98abe80a658cb3fad4cfe6e0502297aa33dc62a4))
+* **permissions:** Set player permission to unit when commander is dropped ([34f6e2c](https://github.com/Mejari/kw_warfare/commit/34f6e2c79e1ef638599d728d1a47a565e18aadcf))
+* **token:** Change token disposition to friendly when a PC is set as the commander ([d5430db](https://github.com/Mejari/kw_warfare/commit/d5430db55f827093a99859da3d543896f2d2c8a2))
+
+
+### Bug Fixes
+
+* **compatibility:** Fix rolling dice when both Warfare and KW-Warfare modules enabled. ([20bb193](https://github.com/Mejari/kw_warfare/commit/20bb193792e3ea4306e5bfe70018aa55e202f257))
+
+
 ## [0.3.0](https://github.com/Mejari/kw_warfare/compare/v0.2.1...v0.3.0) (2021-07-31)
 
 
