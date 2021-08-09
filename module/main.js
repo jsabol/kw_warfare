@@ -43,13 +43,19 @@ Hooks.on("dropActorSheetData", (actor, sheet, itemInfo) => {
 });
 
 Hooks.on('preUpdateActor', (actor, updatedFlags) => {
-	if (!updatedFlags || actor.sheet?.constructor.name !== KW_WarfareUnitSheet.name) {
+	if (!updatedFlags || !actor.sheet || actor.sheet.constructor.name !== 'WarfareUnitSheet') {
 		return;
 	}
 
+	const isMigration = updatedFlags.flags?.core?.sheetClass === 'dnd5e.KW_WarfareUnitSheet'
+		&& !actor.data.flags['kw-warfare'] && actor.data.flags.warfare;
+
+	if(isMigration) {
+		migrate(updatedFlags, actor);
+	}
+
 	//If updating the max-hp, reduce current hp to that max if greater than the new max
-	if(updatedFlags.data && updatedFlags.data.attributes
-		&& updatedFlags.data.attributes.hp && updatedFlags.data.attributes.hp.max) {
+	if(updatedFlags.data?.attributes?.hp?.max) {
 		const newMax = updatedFlags.data.attributes.hp.max;
 		const currentHp = actor.data.data.attributes.hp.value;
 		if(currentHp > newMax) {
@@ -57,25 +63,60 @@ Hooks.on('preUpdateActor', (actor, updatedFlags) => {
 		}
 	}
 
-	//if manually entering an experience/ancestry/equipment/type
-	//delete old trait if exists
-	if(updatedFlags.flags && updatedFlags.flags['kw-warfare'] && updatedFlags.flags['kw-warfare'].details) {
-		const updatedDetails = updatedFlags.flags['kw-warfare'].details;
-		if (Object.keys(updatedDetails).length !== 1) {
-			return;
-		}
-		const updatedKey = Object.keys(updatedDetails)[0];
-		if (updatedKey === 'ancestry') {
-			cleanDetails(actor, 'ancestry', KW_ANCESTRY);
-		} else if (updatedKey === 'equipment') {
-			cleanDetails(actor, 'equipment', KW_EQUIPMENT);
-		} else if (updatedKey === 'experience') {
-			cleanDetails(actor, 'experience', KW_EXPERIENCE);
-		} else if (updatedKey === 'type') {
-			cleanDetails(actor, 'type', KW_TYPE);
-		}
+	//if manually entering an experience/ancestry/equipment/type delete old trait if exists
+	if(updatedFlags.flags && updatedFlags.flags['kw-warfare']?.details) {
+		cleanDetailTraitsOnUpdate(updatedFlags.flags['kw-warfare'].details, actor);
 	}
 });
+
+function migrate(updatedFlags, actor) {
+	const warfareStats = actor.data.flags.warfare;
+	const kwWarfareStats = {}
+
+	kwWarfareStats.details = warfareStats.details;
+	kwWarfareStats.stats = {
+		attack: warfareStats.stats.attack,
+		defense: warfareStats.stats.defense,
+		morale: warfareStats.stats.morale,
+		power: warfareStats.stats.power,
+		toughness: warfareStats.stats.toughness
+	};
+	updatedFlags.flags['kw-warfare'] = kwWarfareStats;
+
+	if(!updatedFlags.data) {
+		updatedFlags.data = {};
+	}
+	if(!updatedFlags.data.attributes) {
+		updatedFlags.data.attributes = {};
+	}
+	if(warfareStats.stats.casualties) {
+		updatedFlags.data.attributes.hp = {
+			max: warfareStats.stats.casualties.max,
+			value: warfareStats.stats.casualties.remaining
+		};
+	}
+	updatedFlags.flags.warfare = {
+		stats: null,
+		details: null,
+		sheet: null
+	};
+}
+
+function cleanDetailTraitsOnUpdate(updatedDetails, actor) {
+	if (Object.keys(updatedDetails).length !== 1) {
+		return;
+	}
+	const updatedKey = Object.keys(updatedDetails)[0];
+	if (updatedKey === 'ancestry') {
+		cleanDetails(actor, 'ancestry', KW_ANCESTRY);
+	} else if (updatedKey === 'equipment') {
+		cleanDetails(actor, 'equipment', KW_EQUIPMENT);
+	} else if (updatedKey === 'experience') {
+		cleanDetails(actor, 'experience', KW_EXPERIENCE);
+	} else if (updatedKey === 'type') {
+		cleanDetails(actor, 'type', KW_TYPE);
+	}
+}
 
 function cleanDetails(actor, detailName, detailType) {
 	const existingTrait = actor.items.find((i) => {

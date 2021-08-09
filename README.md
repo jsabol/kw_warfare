@@ -18,6 +18,9 @@ Features:
 * Unit HP is configured by the `Size` attribute so all normal methods to damage/heal tokens should function.
 * Clickable Trait names that will expand the Trait details inside the sheet.
 * Built-in Compendium with several helpful macros.
+* Migration from the original Warfare module.
+  * Simply change the sheet type to the new K&W Warfare NPC type and the data will be migrated to the new format.
+  * (NOTE: This is irreversible, and data no longer used by K&W Warfare like unit cost will be lost on migration)
 
 Known Issues:
 * Styling is a bit wonky.

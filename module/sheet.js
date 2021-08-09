@@ -32,7 +32,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		html.find('.kw-warfare-trait-name').click(this._onTraitNameClicked.bind(this));
 		html.find('.kw-warfare-config-edit-item').click(this._onEditItem.bind(this));
 		html.find('.kw-warfare-unit-casualties-pip').click(this._onCasualtyClicked.bind(this));
-		html.find('[kw-data-roll]').click(this._onRollAttribute.bind(this));
+		html.find('[data-kw-roll]').click(this._onRollAttribute.bind(this));
 	}
 
 	getData () {
@@ -169,7 +169,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	}
 
 	_onRollAttribute (evt) {
-		this.actor.rollKWUnitAttribute(evt.currentTarget.dataset.roll, {event: evt});
+		this.actor.rollKWUnitAttribute(evt.currentTarget.dataset['kwRoll'], {event: evt});
 	}
 
 	_prepareItems () {
