@@ -65,7 +65,7 @@ function dropActor(itemInfo, kwWarfareUnit, kwWarfareSheet) {
 	kwWarfareUnit.setFlag('kw-warfare', 'details.commander', droppedActor.data.name);
 
 	//Only set permissions when dragging PCs.
-	if(droppedActor.type !== 'character') {
+	if (droppedActor.type !== 'character') {
 		return;
 	}
 
@@ -75,7 +75,7 @@ function dropActor(itemInfo, kwWarfareUnit, kwWarfareSheet) {
 	//Remove other owners (not GMs, default or observers)
 	Object.entries(existingPermissions)
 		.map(e => {
-			if(e[0] !== 'default' && !game.users.get(e[0])?.isGM && e[1] === OWNER) {
+			if (e[0] !== 'default' && !game.users.get(e[0])?.isGM && e[1] === OWNER) {
 				return [e[0], CONST.ENTITY_PERMISSIONS.NONE];
 			}
 			return e;
@@ -84,14 +84,14 @@ function dropActor(itemInfo, kwWarfareUnit, kwWarfareSheet) {
 
 	//Add owner of the dropped actor as the owner of the warfare unit
 	Object.entries(droppedActor.data.permission)
-		.filter(e=> e[0] !== 'default' && !game.users.get(e[0])?.isGM && e[1] === OWNER)
-		.map(e=>e[0])
+		.filter(e => e[0] !== 'default' && !game.users.get(e[0])?.isGM && e[1] === OWNER)
+		.map(e => e[0])
 		.forEach(id => {
 			updatedPermissions[id] = OWNER;
 		});
 
 	kwWarfareUnit.update({permission: updatedPermissions});
-	
+
 	//set unit disposition to friendly if a pc is dropped
 	kwWarfareSheet.token.update({disposition: 1});
 }
@@ -107,7 +107,7 @@ Hooks.on('preUpdateActor', (actor, updatedFlags) => {
 
 	if (isMigration) {
 		migrate(updatedFlags, actor);
-	} else if(actor.sheet.constructor.name !== 'KW_WarfareUnitSheet') {
+	} else if (actor.sheet.constructor.name !== 'KW_WarfareUnitSheet') {
 		return;
 	}
 
@@ -208,4 +208,23 @@ document.addEventListener('click', evt => {
 		&& !parent?.classList.contains('kw-warfare-config-rm-item')) {
 		$('.kw-warfare-config-rm-item.kw-warfare-alert').removeClass('kw-warfare-alert');
 	}
+});
+
+
+const CHAT_PORTRAIT_ICON_MAP = {
+	"KW_WARFARE.Power": "systems/dnd5e/icons/skills/yellow_08.jpg",
+	"KW_WARFARE.Attack": "systems/dnd5e/icons/skills/red_31.jpg",
+	"KW_WARFARE.Morale": "systems/dnd5e/icons/skills/yellow_17.jpg",
+	"KW_WARFARE.Command": "systems/dnd5e/icons/skills/ice_16.jpg"
+};
+
+//Optional support for the Chat-Portrait module
+Hooks.on('ChatPortraitReplaceData', (chatPortraitCustomData, chatMessage) => {
+	if (chatMessage) {
+		const speaker = ChatMessage.getSpeakerActor(chatMessage.data.speaker);
+		if ('KW_WarfareUnitSheet' === speaker?.sheet?.constructor.name) {
+			chatPortraitCustomData.customImageReplacer = CHAT_PORTRAIT_ICON_MAP;
+		}
+	}
+	return chatPortraitCustomData;
 });

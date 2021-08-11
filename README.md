@@ -24,6 +24,7 @@ Features:
 * Migration from the original Warfare module.
   * Simply change the sheet type to the new K&W Warfare NPC type and the data will be migrated to the new format
   * (NOTE: This is irreversible, and data no longer used by K&W Warfare like unit cost will be lost on migration)
+* Support for the [Chat-Portrait](https://foundryvtt.com/packages/chat-portrait/) module for unit rolls.
 
 Known Issues:
 * Styling is a bit wonky.
