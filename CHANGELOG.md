@@ -1,3 +1,11 @@
+## [0.5.0](https://github.com/Mejari/kw_warfare/compare/v0.4.0...v0.5.0) (2021-08-11)
+
+
+### Features
+
+* **chat:** Add support for kw-warfare unit rolls in the chat-portrait module ([92440c2](https://github.com/Mejari/kw_warfare/commit/92440c2b7d5250f5fba485c651ea01ce208cc5c1))
+
+
 ## [0.4.0](https://github.com/Mejari/kw_warfare/compare/v0.3.0...v0.4.0) (2021-08-09)
 
 
