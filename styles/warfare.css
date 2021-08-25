@@ -167,6 +167,11 @@
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
 	font-size: 22px;
+}
+
+.kw-warfare-unit-name {
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	overflow: hidden;
 }
 
