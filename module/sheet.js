@@ -135,7 +135,13 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			return;
 		}
 
-		this.actor.deleteEmbeddedDocuments('Item', [target.parentElement.dataset.itemId]);
+		const parent = target.parentElement;
+
+		let itemId = parent.dataset.itemId || parent.parentElement.dataset.itemId;
+
+		if(itemId && this.actor.items.get(itemId)) {
+			this.actor.deleteEmbeddedDocuments('Item', [itemId]);
+		}
 	}
 
 	_onTraitNameClicked (evt) {
