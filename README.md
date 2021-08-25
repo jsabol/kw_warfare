@@ -1,5 +1,7 @@
 # K&W: Warfare
 
+![K&W Unit Example](./unitexample.png)
+
 A [FoundryVTT](https://foundryvtt.com/) module that provides a unit sheet for MCDM's warfare system as seen in [Kingdoms & Warfare](https://shop.mcdmproductions.com/products/kingdoms-and-warfare-book).
 
 **This project is not affiliated with MCDM and is in no way endorsed by them.**
@@ -8,15 +10,13 @@ The module adds a sheet for NPC Actors that designates them as a warfare unit an
 
 To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 
-Features:
+##Features:
 * Drag-drop Traits, Experience, Equipment, Ancestry and Unit Type.
-  * Create an Item of the type "Feature"
-  * Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type` (any other value or blank will be treated as a unit Trait)
-  * Dragging and dropping it onto unit cards will correctly map the feature to the correct field
+  * Dragging and dropping correctly marked features onto unit cards will correctly map it to the correct field (see How-to below)
+  * Icons added by you for Ancestry and Unit Type features will be displayed on the unit card.
 * Drag-drop Commander.
   * Dragging and dropping a PC or NPC actor onto unit cards will correctly map the actor as the commander of the unit
   * Players whose PCs are dropped onto the unit will set that player's permission for the unit to "Owner"
-* Icons added by you for Ancestry and Unit Type features will be displayed on the unit card.
 * Click on the rollable stats to trigger a roll.
 * Unit HP is configured by the `Size` attribute so all normal methods to damage/heal tokens should function.
 * Clickable Trait names that will expand the Trait details inside the sheet.
@@ -26,16 +26,25 @@ Features:
   * (NOTE: This is irreversible, and data no longer used by K&W Warfare like unit cost will be lost on migration)
 * Support for the [Chat-Portrait](https://foundryvtt.com/packages/chat-portrait/) module for unit rolls.
 
-Known Issues:
-* Styling is a bit wonky.
-
-Proposed Features:
+##Proposed Features:
 * Hook up targeting to automatically roll against matching stats (attack vs target's defense, etc...)
 * Automatically apply damage on hit/successful power test (add option to disable)
 * Store stats in the Feature items (Ancestry, Experience, etc...) and automatically calculate unit stats when added. This would enable drag/drop unit building from scratch.
 * Add conditions for things like Weakened to mark units with.
 
 **NOTE** Not all feature suggestions may be possible to implement in order to not infringe on MCDM's copyright.
+
+
+##How to Use
+
+###Drag-drop Experience, Equipment, Ancestry and Unit Type
+
+1. Create an Item of the type "Feature"
+2. Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type`
+*(any other value or blank will be treated as a unit Trait)*
+3. (optional) Set the Item's icon. This only works for the `Ancestry` and `Type` traits.
+4. Drag-drop the Item onto the K&W Warfare unit.
+
 
 ## License
 
