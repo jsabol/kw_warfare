@@ -40,6 +40,8 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		data.kw_warfare = duplicate(this.actor.data.flags['kw-warfare'] || { sheet: { config: false } });
 		data.kw_warfare.details = data.kw_warfare.details || {};
 		data.kw_warfare.stats = data.kw_warfare.stats || {};
+		data.kw_warfare.bonus = data.kw_warfare.bonus || {};
+		data.kw_warfare.advantage = data.kw_warfare.advantage || {};
 		data.kw_traits = [];
 
 		for (const item of data.items) {

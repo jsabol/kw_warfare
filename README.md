@@ -45,6 +45,25 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 3. (optional) Set the Item's icon. This only works for the `Ancestry` and `Type` traits.
 4. Drag-drop the Item onto the K&W Warfare unit.
 
+###Active Effects
+Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the unit.
+
+|Available flags|key|acceptable values|
+|---|---|---|
+|Roll Bonuses|`flags.kw-warfare.bonus`||
+| |`flags.kw-warfare.bonus.attack`|any number|
+| |`flags.kw-warfare.bonus.defense`|any number|
+| |`flags.kw-warfare.bonus.morale`|any number|
+| |`flags.kw-warfare.bonus.power`|any number|
+| |`flags.kw-warfare.bonus.toughness`|any number|
+|Advantage|`flags.kw-warfare.advantage`||
+| |`flags.kw-warfare.advantage.attack`|0 for false, 1 for true|
+| |`flags.kw-warfare.advantage.morale`|0 for false, 1 for true|
+| |`flags.kw-warfare.advantage.power`|0 for false, 1 for true|
+
+![Active Effects Example providing +5 to Power rolls and Advantage on Attack rolls](./activeeffectexample.png)
+
+![Active Effects Results Example showing the +5 to Power rolls and Advantage on Attack rolls](./activeeffectresultexample.png)
 
 ## License
 

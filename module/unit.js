@@ -15,9 +15,19 @@ export default function extendActor () {
 		if (!stats) {
 			return;
 		}
+		const bonus = this.getFlag('kw-warfare', 'bonus');
+		const advantage = this.getFlag('kw-warfare', 'advantage');
 
 		const parts = ['@mod'];
-		const data = {mod: stats[attr]};
+		const data = {
+			mod: stats[attr],
+		};
+
+		if(bonus[attr] && bonus[attr] > 0) {
+			data.checkBonus = bonus[attr];
+			parts.push('@checkBonus');
+		}
+
 		const rollData = mergeObject(options, {
 			parts: parts,
 			data: data,
@@ -26,6 +36,10 @@ export default function extendActor () {
 				speaker: ChatMessage.getSpeaker({actor: this})
 			}
 		});
+
+		if(advantage[attr] && advantage[attr] > 0) {
+			rollData.advantage = "1";
+		}
 
 		return d20Roll(rollData);
 	};

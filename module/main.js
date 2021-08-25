@@ -3,7 +3,7 @@ import extendActor from './unit.js';
 
 const OWNER = CONST.ENTITY_PERMISSIONS.OWNER;
 
-Hooks.on('init', () => {
+Hooks.once('init', () => {
 	loadTemplates(['modules/kw-warfare/templates/trait.hbs']);
 	Actors.registerSheet('dnd5e', KW_WarfareUnitSheet, {
 		types: ['npc'],
@@ -227,4 +227,33 @@ Hooks.on('ChatPortraitReplaceData', (chatPortraitCustomData, chatMessage) => {
 		}
 	}
 	return chatPortraitCustomData;
+});
+
+Hooks.on('renderKW_WarfareUnitSheet', (sheet) => {
+	let actor = sheet.actor;
+	if(!actor.getFlag('kw-warfare', 'stats')) {
+		actor.setFlag('kw-warfare', 'stats', {
+			attack: null,
+			defense: null,
+			morale: null,
+			power: null,
+			toughness: null
+		});
+	}
+	if(!actor.getFlag('kw-warfare', 'advantage')) {
+		actor.setFlag('kw-warfare', 'advantage', {
+			attack: 0,
+			morale: 0,
+			power: 0
+		});
+	}
+	if(!actor.getFlag('kw-warfare', 'bonus')) {
+		actor.setFlag('kw-warfare', 'bonus', {
+			attack: 0,
+			defense: 0,
+			morale: 0,
+			power: 0,
+			toughness: 0
+		});
+	}
 });

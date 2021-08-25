@@ -69,6 +69,12 @@
 	border: 3px solid darkred;
 }
 
+.kw-warfare-unit-stat-value .kw-warfare-stat-bonus {
+	color: slateblue;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
 .kw-warfare-rollable {
 	cursor: pointer;
 }
