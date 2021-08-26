@@ -42,6 +42,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		data.kw_warfare.stats = data.kw_warfare.stats || {};
 		data.kw_warfare.bonus = data.kw_warfare.bonus || {};
 		data.kw_warfare.advantage = data.kw_warfare.advantage || {};
+		data.kw_warfare.special = data.kw_warfare.special || {};
 		data.kw_traits = [];
 
 		for (const item of data.items) {
@@ -81,7 +82,11 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
 		data.kw_warfare.kw_casualties = this._formatCasualties(hp);
 
-		data.kw_warfare.diminished = (hp.max / 2) >= hp.value;
+		if(data.kw_warfare.special.diminishable !== "0") {
+			data.kw_warfare.diminished = (hp.max / 2) >= hp.value;
+		} else {
+			data.kw_warfare.diminished = false;
+		}
 
 		return data;
 	}

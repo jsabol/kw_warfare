@@ -64,6 +64,8 @@ Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the u
 | |`flags.kw-warfare.disadvantage.attack`|0 for false, 1 for true|
 | |`flags.kw-warfare.disadvantage.morale`|0 for false, 1 for true|
 | |`flags.kw-warfare.disadvantage.power`|0 for false, 1 for true|
+|Diminishable|`flags.kw-warfare.special.diminishable`|0 for false, 1 for true|
+
 
 ![Active Effects Example providing +5 to Power rolls and Advantage on Attack rolls](./activeeffectexample.png)
 

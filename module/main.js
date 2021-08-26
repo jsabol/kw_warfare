@@ -263,4 +263,9 @@ Hooks.on('renderKW_WarfareUnitSheet', (sheet) => {
 			toughness: 0
 		});
 	}
+	if(!actor.getFlag('kw-warfare', 'special')) {
+		actor.setFlag('kw-warfare', 'special', {
+			diminishable: 1
+		});
+	}
 });
