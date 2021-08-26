@@ -32,6 +32,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		html.find('.kw-warfare-trait-name').click(this._onTraitNameClicked.bind(this));
 		html.find('.kw-warfare-config-edit-item').click(this._onEditItem.bind(this));
 		html.find('.kw-warfare-unit-casualties-pip').click(this._onCasualtyClicked.bind(this));
+		html.find('.kw-warfare-trait-info-button').click(this._onShowTraitInfo.bind(this));
 		html.find('[data-kw-roll]').click(this._onRollAttribute.bind(this));
 	}
 
@@ -87,6 +88,8 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		} else {
 			data.kw_warfare.diminished = false;
 		}
+
+		data.midiQolEnabled = game.modules.get("midi-qol")?.active;
 
 		return data;
 	}
@@ -183,6 +186,14 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
 	_onRollAttribute (evt) {
 		this.actor.rollKWUnitAttribute(evt.currentTarget.dataset['kwRoll'], {event: evt});
+	}
+
+	_onShowTraitInfo(evt) {
+		if(!game.modules.get("midi-qol")?.active) {
+			return;
+		}
+		const trait = this.actor.items.get(evt.currentTarget.closest('.kw-warfare-unit-trait').dataset.itemId);
+		window.MidiQOL.showItemInfo.bind(trait)();
 	}
 
 	_prepareItems () {

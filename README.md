@@ -31,6 +31,7 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 * Automatically apply damage on hit/successful power test (add option to disable)
 * Store stats in the Feature items (Ancestry, Experience, etc...) and automatically calculate unit stats when added. This would enable drag/drop unit building from scratch.
 * Add conditions for things like Weakened to mark units with.
+* Set unit movement distances.
 
 **NOTE** Not all feature suggestions may be possible to implement in order to not infringe on MCDM's copyright.
 

@@ -425,10 +425,45 @@
 }
 
 .kw-warfare-trait-description.kw-trait-expanded {
-	display: block;
+	display: flex;
+	justify-content: space-between;
 }
 
 .kw-warfare-trait-description p {
 	text-indent: 20px;
 	margin: 0 5px;
+}
+
+.kw-warfare-trait-info-button {
+	display:inline-block;
+	padding:0.1em 0.2em;
+	margin:0 0.1em 0.1em 0;
+	border:0.1em solid rgba(255,255,255,0);
+	border-radius:1em;
+	box-sizing: border-box;
+	text-decoration:none;
+	font-family:'Roboto',sans-serif;
+	font-weight:300;
+	font-size: 10px;
+	color:#FFFFFF;
+	background-color: darkgray;
+	text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+	text-align:center;
+	transition: all 0.2s;
+	cursor: pointer;
+	height: 15px;
+}
+.kw-warfare-trait-info-button:hover{
+	border-color: black;
+}
+
+.kw-warfare-trait-info-button.kw-trait-expanded {
+	display: block;
+}
+
+.kw-warfare-trait-info {
+	width: 25px;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
 }

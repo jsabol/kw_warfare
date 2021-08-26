@@ -34,5 +34,7 @@
   "KW_WARFARE.Size": "Size",
   "KW_WARFARE.Tier": "Tier",
 
-  "KW_WARFARE.Casualties": "Casualties"
+  "KW_WARFARE.Casualties": "Casualties",
+
+  "KW_WARFARE.Info": "Info"
 }
