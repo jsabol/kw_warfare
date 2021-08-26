@@ -17,6 +17,7 @@ export default function extendActor () {
 		}
 		const bonus = this.getFlag('kw-warfare', 'bonus');
 		const advantage = this.getFlag('kw-warfare', 'advantage');
+		const disadvantage = this.getFlag('kw-warfare', 'disadvantage');
 
 		const parts = ['@mod'];
 		const data = {
@@ -37,8 +38,15 @@ export default function extendActor () {
 			}
 		});
 
-		if(advantage[attr] && advantage[attr] > 0) {
-			rollData.advantage = "1";
+		const adv = !!advantage[attr] && advantage[attr] > 0;
+		const disadv = !!disadvantage[attr] && disadvantage[attr] > 0;
+
+		if(adv !== disadv) {
+			if(adv) {
+				rollData.advantage = "1";
+			} else {
+				rollData.disadvantage = "1";
+			}
 		}
 
 		return d20Roll(rollData);

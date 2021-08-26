@@ -247,6 +247,13 @@ Hooks.on('renderKW_WarfareUnitSheet', (sheet) => {
 			power: 0
 		});
 	}
+	if(!actor.getFlag('kw-warfare', 'disadvantage')) {
+		actor.setFlag('kw-warfare', 'disadvantage', {
+			attack: 0,
+			morale: 0,
+			power: 0
+		});
+	}
 	if(!actor.getFlag('kw-warfare', 'bonus')) {
 		actor.setFlag('kw-warfare', 'bonus', {
 			attack: 0,
