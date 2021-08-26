@@ -10,7 +10,7 @@ The module adds a sheet for NPC Actors that designates them as a warfare unit an
 
 To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 
-##Features:
+## Features:
 * Drag-drop Traits, Experience, Equipment, Ancestry and Unit Type.
   * Dragging and dropping correctly marked features onto unit cards will correctly map it to the correct field (see How-to below)
   * Icons added by you for Ancestry and Unit Type features will be displayed on the unit card.
@@ -26,7 +26,7 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
   * (NOTE: This is irreversible, and data no longer used by K&W Warfare like unit cost will be lost on migration)
 * Support for the [Chat-Portrait](https://foundryvtt.com/packages/chat-portrait/) module for unit rolls.
 
-##Proposed Features:
+## Proposed Features:
 * Hook up targeting to automatically roll against matching stats (attack vs target's defense, etc...)
 * Automatically apply damage on hit/successful power test (add option to disable)
 * Store stats in the Feature items (Ancestry, Experience, etc...) and automatically calculate unit stats when added. This would enable drag/drop unit building from scratch.
@@ -36,9 +36,9 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 **NOTE** Not all feature suggestions may be possible to implement in order to not infringe on MCDM's copyright.
 
 
-##How to Use
+## How to Use
 
-###Drag-drop Experience, Equipment, Ancestry and Unit Type
+### Drag-drop Experience, Equipment, Ancestry and Unit Type
 
 1. Create an Item of the type "Feature"
 2. Set the "Requirements" field to one of: `Experience`, `Equipment`, `Ancestry` or `Type`
@@ -46,7 +46,7 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 3. (optional) Set the Item's icon. This only works for the `Ancestry` and `Type` traits.
 4. Drag-drop the Item onto the K&W Warfare unit.
 
-###Active Effects
+### Active Effects
 Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the unit.
 
 |Available flags|key|acceptable values|
