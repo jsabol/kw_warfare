@@ -1,3 +1,11 @@
+### [0.6.1](https://github.com/Mejari/kw_warfare/compare/v0.6.0...v0.6.1) (2021-08-26)
+
+
+### Bug Fixes
+
+* **ui:** long commander names hidden while editing ([0e8b720](https://github.com/Mejari/kw_warfare/commit/0e8b720ca1b89e22e00fb668b223fbbe1d021468))
+
+
 ## [0.6.0](https://github.com/Mejari/kw_warfare/compare/v0.5.0...v0.6.0) (2021-08-26)
 
 
