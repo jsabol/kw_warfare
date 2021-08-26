@@ -24,7 +24,7 @@ export default function extendActor () {
 			mod: stats[attr],
 		};
 
-		if(bonus[attr] && bonus[attr] > 0) {
+		if(bonus && bonus[attr] && bonus[attr] > 0) {
 			data.checkBonus = bonus[attr];
 			parts.push('@checkBonus');
 		}
@@ -38,8 +38,8 @@ export default function extendActor () {
 			}
 		});
 
-		const adv = !!advantage[attr] && advantage[attr] > 0;
-		const disadv = !!disadvantage[attr] && disadvantage[attr] > 0;
+		const adv = advantage && !!advantage[attr] && advantage[attr] > 0;
+		const disadv = disadvantage && !!disadvantage[attr] && disadvantage[attr] > 0;
 
 		if(adv !== disadv) {
 			if(adv) {
