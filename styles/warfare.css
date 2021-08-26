@@ -61,12 +61,24 @@
 	border: 3px solid darkred;
 }
 
+.kw-warfare-stat-advantage {
+	color: slateblue;
+	position: absolute;
+	left: -3px;
+	top: -3px;
+	font-size: 20px;
+}
+
 .kw-warfare-unit-stat-value {
 	color: floralwhite;
 	background-color: indianred;
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
 	border: 3px solid darkred;
+}
+
+.kw-warfare-unit-stat-value label {
+	position: relative;
 }
 
 .kw-warfare-unit-stat-value .kw-warfare-stat-bonus {

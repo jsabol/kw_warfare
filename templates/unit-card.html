@@ -18,7 +18,8 @@
 						<div class="kw-commander">
 								<span class="kw-commander-prefix">{{localize 'KW_WARFARE.Commander'}}:&nbsp;</span>
 								<label>
-										<span>{{kw_warfare.details.commander}}</span>
+										<!--FIXME: Long commander names overflow, need to ellipsize -->
+										<span class="kw-commander-display">{{kw_warfare.details.commander}}</span>
 										<input type="text" class="kw-warfare-unit-commander" data-dtype="String"
 													 placeholder="&mdash;"
 													 name="flags.kw-warfare.details.commander" value="{{kw_warfare.details.commander}}">
@@ -71,70 +72,42 @@
 						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.ToughnessShort'}}</div>
 						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.MoraleShort'}}</div>
 						<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.CommandShort'}}</div>
-						<div class="kw-warfare-unit-stat-value">
-								<label for="attack-stat" class="kw-warfare-rollable" data-kw-roll="attack">
-										<span>{{kw-number-format kw_warfare.stats.attack sign=true decimals=0}}</span>
-										{{#if kw_warfare.bonus.attack}}
-											<span class="kw-warfare-stat-bonus">({{kw-number-format kw_warfare.bonus.attack sign=true decimals=0}})</span>
-										{{/if}}
-								</label>
-								<input id="attack-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
-											 placeholder="&mdash;"
-											 name="flags.kw-warfare.stats.attack" value="{{kw_warfare.stats.attack}}">
-						</div>
-						<div class="kw-warfare-unit-stat-value">
-								<label>
-										<span>{{kw_warfare.stats.defense}}</span>
-										{{#if kw_warfare.bonus.defense}}
-										<span class="kw-warfare-stat-bonus">({{kw-number-format kw_warfare.bonus.defense sign=true decimals=0}})</span>
-										{{/if}}
-										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-													 name="flags.kw-warfare.stats.defense" value="{{kw_warfare.stats.defense}}">
-								</label>
-						</div>
-						<div class="kw-warfare-unit-stat-value">
-								<label for="power-stat" class="kw-warfare-rollable" data-kw-roll="power">
-										<span>{{kw-number-format kw_warfare.stats.power sign=true decimals=0}}</span>
-										{{#if kw_warfare.bonus.power}}
-										<span class="kw-warfare-stat-bonus">({{kw-number-format kw_warfare.bonus.power sign=true decimals=0}})</span>
-										{{/if}}
-								</label>
-								<input id="power-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
-											 placeholder="&mdash;"
-											 name="flags.kw-warfare.stats.power" value="{{kw_warfare.stats.power}}">
-						</div>
-						<div class="kw-warfare-unit-stat-value">
-								<label>
-										<span>{{kw_warfare.stats.toughness}}</span>
-										{{#if kw_warfare.bonus.toughness}}
-										<span class="kw-warfare-stat-bonus">({{kw-number-format kw_warfare.bonus.toughness sign=true decimals=0}})</span>
-										{{/if}}
-										<input type="text" class="kw-warfare-unit-stat" data-dtype="Number" placeholder="&mdash;"
-													 name="flags.kw-warfare.stats.toughness" value="{{kw_warfare.stats.toughness}}">
-								</label>
-						</div>
-						<div class="kw-warfare-unit-stat-value">
-								<label for="morale-stat" class="kw-warfare-rollable" data-kw-roll="morale">
-										<span>{{kw-number-format kw_warfare.stats.morale sign=true decimals=0}}</span>
-										{{#if kw_warfare.bonus.morale}}
-										<span class="kw-warfare-stat-bonus">({{kw-number-format kw_warfare.bonus.morale sign=true decimals=0}})</span>
-										{{/if}}
-								</label>
-								<input id="morale-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
-											 placeholder="&mdash;"
-											 name="flags.kw-warfare.stats.morale" value="{{kw_warfare.stats.morale}}">
-						</div>
-						<div class="kw-warfare-unit-stat-value">
-								<label for="command-stat" class="kw-warfare-rollable" data-kw-roll="command">
-										<span>{{kw-number-format kw_warfare.stats.command sign=true decimals=0}}</span>
-										{{#if kw_warfare.bonus.command}}
-										<span class="kw-warfare-stat-bonus">({{kw-number-format kw_warfare.bonus.command sign=true decimals=0}})</span>
-										{{/if}}
-								</label>
-								<input id="command-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
-											 placeholder="&mdash;"
-											 name="flags.kw-warfare.stats.command" value="{{kw_warfare.stats.command}}">
-						</div>
+						{{> "modules/kw-warfare/templates/stat.hbs"
+								stat='attack' rollable = true
+								statValue = kw_warfare.stats.attack
+								bonus = kw_warfare.bonus.attack
+								advantage = kw_warfare.advantage.attack
+						}}
+						{{> "modules/kw-warfare/templates/stat.hbs"
+								stat='defense' rollable = false
+								statValue = kw_warfare.stats.defense
+								bonus = kw_warfare.bonus.defense
+								advantage = kw_warfare.advantage.defense
+						}}
+						{{> "modules/kw-warfare/templates/stat.hbs"
+								stat='power' rollable = true
+								statValue = kw_warfare.stats.power
+								bonus = kw_warfare.bonus.power
+								advantage = kw_warfare.advantage.power
+						}}
+						{{> "modules/kw-warfare/templates/stat.hbs"
+								stat='toughness' rollable = false
+								statValue = kw_warfare.stats.toughness
+								bonus = kw_warfare.bonus.toughness
+								advantage = kw_warfare.advantage.toughness
+						}}
+						{{> "modules/kw-warfare/templates/stat.hbs"
+								stat='morale' rollable = true
+								statValue = kw_warfare.stats.morale
+								bonus = kw_warfare.bonus.morale
+								advantage = kw_warfare.advantage.morale
+						}}
+						{{> "modules/kw-warfare/templates/stat.hbs"
+								stat='command' rollable = true
+								statValue = kw_warfare.stats.command
+								bonus = kw_warfare.bonus.command
+								advantage = kw_warfare.advantage.command
+						}}
 				</div>
 				<div class="kw-size">
 						<div class="kw-size-circle">

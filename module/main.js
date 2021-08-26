@@ -4,7 +4,10 @@ import extendActor from './unit.js';
 const OWNER = CONST.ENTITY_PERMISSIONS.OWNER;
 
 Hooks.once('init', () => {
-	loadTemplates(['modules/kw-warfare/templates/trait.hbs']);
+	loadTemplates([
+		'modules/kw-warfare/templates/trait.hbs',
+		'modules/kw-warfare/templates/stat.hbs'
+	]);
 	Actors.registerSheet('dnd5e', KW_WarfareUnitSheet, {
 		types: ['npc'],
 		makeDefault: false,

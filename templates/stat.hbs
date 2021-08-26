@@ -1,0 +1,17 @@
+<div class="kw-warfare-unit-stat-value">
+	<label for="{{stat}}-stat" >
+		{{#if advantage}}<span title="{{localize 'KW_WARFARE.Advantage'}}" class="kw-warfare-stat-advantage">*</span>{{/if}}
+		<span class="kw-warfare-unit-stat-display {{#if rollable}}kw-warfare-rollable{{/if}}"
+		{{#if rollable}}data-kw-roll="{{stat}}"{{/if}}>
+			{{kw-number-format statValue sign=rollable decimals=0}}
+		</span>
+		{{#if bonus}}
+			<span class="kw-warfare-stat-bonus" title="{{localize 'KW_WARFARE.Bonus'}}">
+				({{kw-number-format bonus sign=true decimals=0}})
+			</span>
+		{{/if}}
+	</label>
+	<input id="{{stat}}-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+		   placeholder="&mdash;"
+		   name="flags.kw-warfare.stats.{{stat}}" value="{{statValue}}" />
+</div>

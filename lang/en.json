@@ -36,5 +36,7 @@
 
   "KW_WARFARE.Casualties": "Casualties",
 
-  "KW_WARFARE.Info": "Info"
+  "KW_WARFARE.Info": "Info",
+  "KW_WARFARE.Advantage": "Advantage",
+  "KW_WARFARE.Bonus": "Bonus"
 }
