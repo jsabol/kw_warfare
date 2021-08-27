@@ -436,6 +436,15 @@
 	margin-left: 2px;
 }
 
+.kw-warfare-unit-casualties-pip-temp span {
+	background-color: yellowgreen;
+	border-color: yellowgreen;
+}
+
+.kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full.kw-warfare-unit-casualties-pip-temp:before {
+	border-color: yellowgreen;
+}
+
 .kw-warfare-trait-description {
 	display: none;
 }

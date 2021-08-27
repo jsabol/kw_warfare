@@ -84,7 +84,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		data.kw_warfare.kw_casualties = this._formatCasualties(hp);
 
 		if(data.kw_warfare.special.diminishable !== "0") {
-			data.kw_warfare.diminished = (hp.max / 2) >= hp.value;
+			data.kw_warfare.diminished = (hp.max / 2) >= (hp.value + hp.temp);
 		} else {
 			data.kw_warfare.diminished = false;
 		}
@@ -112,6 +112,14 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			}
 
 			display += `<div class="${classes.join(' ')}" data-n="${i}"><span></span></div>`;
+		}
+		for(let j = 1; j <= hp.temp; j++) {
+			const classes = [
+				'kw-warfare-unit-casualties-pip',
+				'kw-warfare-unit-casualties-pip-full',
+				'kw-warfare-unit-casualties-pip-temp'
+			];
+			display += `<div class="${classes.join(' ')}" data-n="${hp.max+j}"><span></span></div>`;
 		}
 
 		return display;
@@ -163,15 +171,24 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	_onCasualtyClicked (evt) {
 		const n = Number(evt.currentTarget.dataset.n);
 
-		let hp = this.actor.data.data.attributes.hp.value;
+		const hp = this.actor.data.data.attributes.hp;
 
-		if (n > hp) {
-			hp++;
+		if(hp.temp > 0) {
+			let tempValue = hp.temp;
+			tempValue--;
+
+			this.actor.update({"data.attributes.hp.temp": tempValue});
 		} else {
-			hp--;
-		}
+			let hpValue = hp.value;
 
-		this.actor.update({ "data.attributes.hp.value": hp })
+			if (n > hpValue) {
+				hpValue++;
+			} else {
+				hpValue--;
+			}
+
+			this.actor.update({"data.attributes.hp.value": hpValue});
+		}
 	}
 
 	_onChangeInputDelta () {
