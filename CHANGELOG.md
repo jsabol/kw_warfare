@@ -1,3 +1,19 @@
+## [0.7.0](https://github.com/Mejari/kw_warfare/compare/v0.6.1...v0.7.0) (2021-08-27)
+
+
+### Features
+
+* **hp:** Add support for temp hp ([f75763c](https://github.com/Mejari/kw_warfare/commit/f75763cad0468831a071be47062158e528732827))
+* **macro:** Add macro to set unit temp hp ([b8af2b5](https://github.com/Mejari/kw_warfare/commit/b8af2b579190e3764b83ce7df8306bec2c464d88))
+* **macro:** Add macros to toggle advantage and set bonuses for stats. ([528b9ee](https://github.com/Mejari/kw_warfare/commit/528b9ee38ce39417c25d5610072dd6239e632aaf))
+* **ui:** Add visible marker when a stat has advantage. Extract stat block into a partial. ([b4105dc](https://github.com/Mejari/kw_warfare/commit/b4105dcd8bac2e151bc146bbc152a320c6a11f50))
+
+
+### Bug Fixes
+
+* **stats:** Automatically populate flag defaults when switching an actor to be a K&W unit ([4fd26a2](https://github.com/Mejari/kw_warfare/commit/4fd26a2b076bce3e0e2f4af9d96fcbbc48cf444b))
+
+
 ### [0.6.1](https://github.com/Mejari/kw_warfare/compare/v0.6.0...v0.6.1) (2021-08-26)
 
 
