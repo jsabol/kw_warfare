@@ -169,26 +169,33 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	}
 
 	_onCasualtyClicked (evt) {
-		const n = Number(evt.currentTarget.dataset.n);
-
 		const hp = this.actor.data.data.attributes.hp;
 
-		if(hp.temp > 0) {
-			let tempValue = hp.temp;
-			tempValue--;
-
-			this.actor.update({"data.attributes.hp.temp": tempValue});
-		} else {
-			let hpValue = hp.value;
-
-			if (n > hpValue) {
-				hpValue++;
-			} else {
-				hpValue--;
-			}
-
-			this.actor.update({"data.attributes.hp.value": hpValue});
+		if(evt.currentTarget.classList.contains('kw-warfare-unit-casualties-pip-temp')) {
+			this._decrementTempHp(hp.temp);
+			return;
 		}
+
+		const n = Number(evt.currentTarget.dataset.n);
+		let hpValue = hp.value;
+
+		if (n > hpValue) {
+			hpValue++;
+		} else if (hp.temp > 0) {
+			this._decrementTempHp(hp.temp);
+			return;
+		} else {
+			hpValue--;
+		}
+
+		this.actor.update({"data.attributes.hp.value": hpValue});
+	}
+
+	_decrementTempHp(currentValue) {
+		let tempValue = currentValue;
+		tempValue--;
+
+		this.actor.update({"data.attributes.hp.temp": tempValue});
 	}
 
 	_onChangeInputDelta () {
