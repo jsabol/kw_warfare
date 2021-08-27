@@ -25,13 +25,15 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
   * Simply change the sheet type to the new K&W Warfare NPC type and the data will be migrated to the new format
   * (NOTE: This is irreversible, and data no longer used by K&W Warfare like unit cost will be lost on migration)
 * Support for the [Chat-Portrait](https://foundryvtt.com/packages/chat-portrait/) module for unit rolls.
+* Output trait details using the "Info" button if [Midi-qol](https://foundryvtt.com/packages/midi-qol/) is enabled.
 
 ## Proposed Features:
 * Hook up targeting to automatically roll against matching stats (attack vs target's defense, etc...)
 * Automatically apply damage on hit/successful power test (add option to disable)
 * Store stats in the Feature items (Ancestry, Experience, etc...) and automatically calculate unit stats when added. This would enable drag/drop unit building from scratch.
 * Add conditions for things like Weakened to mark units with.
-* Set unit movement distances.
+* Set unit movement distances. (should be modifiable by active effects)
+* Add sections on sheet (tabs?) for actions and items.
 
 **NOTE** Not all feature suggestions may be possible to implement in order to not infringe on MCDM's copyright.
 

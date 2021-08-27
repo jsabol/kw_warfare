@@ -104,9 +104,15 @@ Hooks.on('preUpdateActor', (actor, updatedFlags) => {
 		return;
 	}
 
+	const settingAsKWUnit = updatedFlags.flags?.core?.sheetClass === 'dnd5e.KW_WarfareUnitSheet';
+
 	const isMigration = actor.sheet.constructor.name === 'WarfareUnitSheet'
-		&& updatedFlags.flags?.core?.sheetClass === 'dnd5e.KW_WarfareUnitSheet'
+		&& settingAsKWUnit
 		&& !actor.data.flags['kw-warfare'] && actor.data.flags.warfare;
+
+	if(settingAsKWUnit) {
+		setKWUnitDefaults(actor);
+	}
 
 	if (isMigration) {
 		migrate(updatedFlags, actor);
@@ -233,7 +239,10 @@ Hooks.on('ChatPortraitReplaceData', (chatPortraitCustomData, chatMessage) => {
 });
 
 Hooks.on('renderKW_WarfareUnitSheet', (sheet) => {
-	let actor = sheet.actor;
+	setKWUnitDefaults(sheet.actor);
+});
+
+function setKWUnitDefaults(actor) {
 	if(!actor.getFlag('kw-warfare', 'stats')) {
 		actor.setFlag('kw-warfare', 'stats', {
 			attack: null,
@@ -271,4 +280,4 @@ Hooks.on('renderKW_WarfareUnitSheet', (sheet) => {
 			diminishable: 1
 		});
 	}
-});
+}
