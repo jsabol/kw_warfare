@@ -1,3 +1,16 @@
+## [0.8.0](https://github.com/Mejari/kw_warfare/compare/v0.7.0...v0.8.0) (2021-08-27)
+
+
+### Features
+
+* **macro:** Add macro to toggle stat disadvantage ([92fcbe9](https://github.com/Mejari/kw_warfare/commit/92fcbe9cce7565cce47304c75e2d73dffb22ac54))
+
+
+### Bug Fixes
+
+* **hp:** Fix healing unit when it has temp hp ([f733e47](https://github.com/Mejari/kw_warfare/commit/f733e47c97b9cb403027c4a51b33577e8849ecb4))
+
+
 ## [0.7.0](https://github.com/Mejari/kw_warfare/compare/v0.6.1...v0.7.0) (2021-08-27)
 
 
