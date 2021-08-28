@@ -3,7 +3,10 @@
 			<a class="kw-warfare-config-edit-item"><i class="fas fa-cog"></i></a>
 			<a class="kw-warfare-config-rm-item"><i class="fas fa-trash"></i></a>
 	</div>
-	<strong class="kw-warfare-trait-name">• {{name}}</strong>
+	<strong class="kw-warfare-trait-name">
+		• {{name}}
+		<span class="kw-trait-{{activation}}"></span>
+	</strong>
 	<div class="kw-warfare-trait-description {{#if description.expanded}}kw-trait-expanded{{/if}}">
 		<span class="kw-warfare-trait-description-text">{{{description.enriched}}}</span>
 		{{#if midiQolEnabled}}

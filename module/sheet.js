@@ -68,6 +68,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			data.kw_traits.push({
 				id: item._id,
 				name: item.name,
+				activation: item.data?.activation?.type || 'none',
 				description: {
 					expanded: !!item.flags['kw-warfare']?.kw_trait_expanded,
 					enriched: TextEditor.enrichHTML(item.data?.description?.value, {
