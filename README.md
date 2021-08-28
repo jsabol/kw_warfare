@@ -8,6 +8,8 @@ A [FoundryVTT](https://foundryvtt.com/) module that provides a unit sheet for MC
 
 The module adds a sheet for NPC Actors that designates them as a warfare unit and allows you to input any units created with the warfare system.
 
+To Install: Click "Install Module" in Foundry, use this url in the "Manifest URL" field: https://raw.githubusercontent.com/Mejari/kw_warfare/main/module.json
+
 To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 
 ## Features:
