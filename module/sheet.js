@@ -65,14 +65,19 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 					continue;
 				}
 			}
-			data.kw_traits.push(item);
-
-			item.data.description.enriched = TextEditor.enrichHTML(item.data.description.value, {
-				secrets: data.owner,
-				entities: true,
-				links: true,
-				rolls: true,
-				rollData: this.actor.getRollData()
+			data.kw_traits.push({
+				id: item._id,
+				name: item.name,
+				description: {
+					expanded: item.flags['kw-warfare'].kw_trait_expanded,
+					enriched: TextEditor.enrichHTML(item.data.description.value, {
+						secrets: data.owner,
+						entities: true,
+						links: true,
+						rolls: true,
+						rollData: this.actor.getRollData()
+					})
+				}
 			});
 		}
 

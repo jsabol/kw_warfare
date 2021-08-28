@@ -454,7 +454,7 @@
 	justify-content: space-between;
 }
 
-.kw-warfare-trait-description p {
+.kw-warfare-trait-description .kw-warfare-trait-description-text {
 	text-indent: 20px;
 	margin: 0 5px;
 }
