@@ -1,3 +1,17 @@
+### [0.8.1](https://github.com/Mejari/kw_warfare/compare/v0.8.0...v0.8.1) (2021-09-01)
+
+
+### Bug Fixes
+
+* **disadvantage:** Add missing disadvantage icon to match advantage. ([eb8fda8](https://github.com/Mejari/kw_warfare/commit/eb8fda80643f0a2ac6b935a2e80505f6cd106892))
+* **traits:** fix refactor. ([3de63f3](https://github.com/Mejari/kw_warfare/commit/3de63f35aaa1e0db22da1ae8489fb541df0cea20))
+
+
+### Documentation
+
+* **docs:** Add install instructions. ([2961a3e](https://github.com/Mejari/kw_warfare/commit/2961a3ebdf2ca678ce4f2a4615ba8cd816569aa4))
+
+
 ## [0.8.0](https://github.com/Mejari/kw_warfare/compare/v0.7.0...v0.8.0) (2021-08-27)
 
 
