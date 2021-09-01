@@ -1,6 +1,7 @@
 <div class="kw-warfare-unit-stat-value">
 	<label for="{{stat}}-stat" >
 		{{#if advantage}}<span title="{{localize 'KW_WARFARE.Advantage'}}" class="kw-warfare-stat-advantage">*</span>{{/if}}
+		{{#if disadvantage}}<span title="{{localize 'KW_WARFARE.Disadvantage'}}" class="kw-warfare-stat-disadvantage">-</span>{{/if}}
 		<span class="kw-warfare-unit-stat-display {{#if rollable}}kw-warfare-rollable{{/if}}"
 		{{#if rollable}}data-kw-roll="{{stat}}"{{/if}}>
 			{{kw-number-format statValue sign=rollable decimals=0}}

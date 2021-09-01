@@ -55,7 +55,7 @@ Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the u
 
 |Available flags|key|acceptable values|
 |---|---|---|
-|Roll Bonuses|`flags.kw-warfare.bonus`||
+|Stat Bonuses|`flags.kw-warfare.bonus`||
 | |`flags.kw-warfare.bonus.attack`|any number|
 | |`flags.kw-warfare.bonus.defense`|any number|
 | |`flags.kw-warfare.bonus.morale`|any number|
@@ -63,12 +63,14 @@ Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the u
 | |`flags.kw-warfare.bonus.toughness`|any number|
 |Advantage|`flags.kw-warfare.advantage`||
 | |`flags.kw-warfare.advantage.attack`|0 for false, 1 for true|
-| |`flags.kw-warfare.advantage.morale`|0 for false, 1 for true|
 | |`flags.kw-warfare.advantage.power`|0 for false, 1 for true|
+| |`flags.kw-warfare.advantage.morale`|0 for false, 1 for true|
+| |`flags.kw-warfare.advantage.command`|0 for false, 1 for true|
 |Disadvantage|`flags.kw-warfare.disadvantage`||
 | |`flags.kw-warfare.disadvantage.attack`|0 for false, 1 for true|
-| |`flags.kw-warfare.disadvantage.morale`|0 for false, 1 for true|
 | |`flags.kw-warfare.disadvantage.power`|0 for false, 1 for true|
+| |`flags.kw-warfare.disadvantage.morale`|0 for false, 1 for true|
+| |`flags.kw-warfare.disadvantage.command`|0 for false, 1 for true|
 |Diminishable|`flags.kw-warfare.special.diminishable`|0 for false, 1 for true|
 
 A unit's size can also be modified using active effects by modifying the hp/max hp of the unit.

@@ -43,6 +43,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		data.kw_warfare.stats = data.kw_warfare.stats || {};
 		data.kw_warfare.bonus = data.kw_warfare.bonus || {};
 		data.kw_warfare.advantage = data.kw_warfare.advantage || {};
+		data.kw_warfare.disadvantage = data.kw_warfare.disadvantage || {};
 		data.kw_warfare.special = data.kw_warfare.special || {};
 		data.kw_traits = [];
 
