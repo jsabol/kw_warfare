@@ -94,54 +94,7 @@ A unit's size can also be modified using active effects by modifying the hp/max 
 
 Some major refactoring between 0.8.1 and 0.9.0 requires migrating data from the old structure to the new one. You can use this macro to select what units you want to migrate:
 
-    if(!game.users.current.isGM) {
-        ui.notifications.error('Must execute as GM');
-    }
-
-    const units = game.actors.filter(a=>a.sheet.constructor.name === 'KW_WarfareUnitSheet');
-
-    let content = `<div><h2>Units:<ul>`;
-    units.forEach(o=>{
-    content += `<li><input type="checkbox" id="${o.id}" value="${o.id}" checked=true>
-    	<label for="${o.id}">${o.name}</label></li>`
-    });
-    content += '</ul></div>';
-
-    const buttons = {
-        cancel: { icon: '<i class="fas fa-times"></i>', label: '', callback: () => {} },
-        start: {
-            icon: '<i class="fas fa-play"></i>',
-            label: 'Migrate',
-            callback: async (html) => {
-                const selectedUnits = html.find('input:checkbox:checked')
-                    .get().map(cb=>game.actors.get(cb.value));
-                const {setKWWarfareUnitDefaults} = await import('/modules/kw-warfare/module/KW_WarfareUnitSheet.js');
-                selectedUnits.forEach(u=>{
-                    const oldStats = u.getFlag('kw-warfare', 'stats');
-                    const oldDetails = u.getFlag('kw-warfare', 'details');
-                    setKWWarfareUnitDefaults(u);
-                    u.setFlag('kw-warfare', 'unit.stats.attack.value', oldStats.attack);
-                    u.setFlag('kw-warfare', 'unit.stats.defense.value', oldStats.defense);
-                    u.setFlag('kw-warfare', 'unit.stats.morale.value', oldStats.morale);
-                    u.setFlag('kw-warfare', 'unit.stats.power.value', oldStats.power);
-                    u.setFlag('kw-warfare', 'unit.stats.toughness.value', oldStats.toughness);
-                    u.setFlag('kw-warfare', 'unit.stats.command.value', oldStats.command);
-                    u.setFlag('kw-warfare', 'unit.experience', oldDetails.experience);
-                    u.setFlag('kw-warfare', 'unit.type', oldDetails.type);
-                    u.setFlag('kw-warfare', 'unit.ancestry', oldDetails.ancestry);
-                    u.setFlag('kw-warfare', 'unit.equipment', oldDetails.equipment);
-                    u.setFlag('kw-warfare', 'unit.commander', oldDetails.commander);
-                    u.setFlag('kw-warfare', 'unit.tier', oldStats.tier);
-                    u.setFlag('kw-warfare', 'unit.damage', oldStats.damage);
-                    u.setFlag('kw-warfare', 'unit.numberOfAttacks', oldStats.numberOfAttacks);
-                });
-            }
-        }
-    };
-
-    new Dialog({
-        title: 'K&W Data Migration 0.8.1=>1.0', content, buttons, default: "start"
-    }).render(true);
+[Migrate Existing KW-Warfare data From 0.8.1](https://gist.githubusercontent.com/Mejari/cac90f00c10ed5f583b28a3b9f880a7e/raw/7aa782553d9947429f3d1193f12bf490852d1556)
 
 ## License
 

@@ -3,16 +3,17 @@
 	min-height: 445px;
 }
 
-.kw-warfare.window-app .window-content {
-	background: #e8e8e8;
-	border: 8px solid #902626;
-	box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, .4);
-}
-
 .kw-warfare.window-app form {
 	height: 100%;
 }
 
+.kw-warfare-unit-config {
+	display: flex;
+}
+
+form.kw-warfare-config .kw-warfare-unit-config .fa-cog {
+	color: darkred;
+}
 
 .kw-warfare form input {
 	display: none;
@@ -110,7 +111,7 @@
 
 .kw-sheet-container {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 40px 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 35px 65px 90px 2.7fr 90px;
 	gap: 0 0;
 	grid-auto-flow: row;
@@ -150,14 +151,20 @@
 
 .kw-size {
 	grid-area: kw-size;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 	background-color: midnightblue;
-	border: 2px solid silver;
+	border: 2px solid sienna;
 	height: 90px;
-	width: 90px;
+	max-width: 90px;
+	min-width: 64px;
 }
 
 .kw-size-circle {
-	height: calc(100% - 18px);
+	height: 64px;
+	width: 64px;
 	background: beige center;
 	-moz-border-radius: 30px;
 	-webkit-border-radius: 30px;
@@ -175,28 +182,24 @@
 	text-align: center;
 }
 
-
 .kw-size-label {
 	height: 20px;
 	font-size: 16px;
 	text-transform: uppercase;
 	background-color: silver;
 	text-align: center;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
-	color: antiquewhite;
+	color: midnightblue;
+	font-weight: bold;
+	width: 100%;
 }
 
 .kw-unit-name {
 	grid-area: kw-unit-name;
 	display: flex;
 	justify-content: space-between;
-	margin: 0 3px 0 3px;
 	font-weight: bold;
-	color: darkred;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
-	font-size: 22px;
+	font-size: 26px;
+	margin: 0 3px 0 10px;
 }
 
 .kw-warfare-unit-name {
@@ -209,10 +212,8 @@
 	grid-area: kw-details;
 	margin: 0 3px 0 2px;
 	color: darkred;
-	font-size: 17px;
+	font-size: 16px;
 	font-weight: bold;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
 	border-top: 5px solid silver;
 }
 
@@ -236,7 +237,6 @@
 }
 
 .kw-aeqt {
-	text-transform: uppercase;
 	font-size: 15px;
 	-webkit-text-stroke-width: 0;
 	display: flex;
@@ -244,6 +244,10 @@
 
 .kw-aeqt label {
 	margin-left: 3px;
+}
+
+.kw-aeqt label:first-child {
+	margin-left: 0;
 }
 
 .kw-stats {
@@ -263,15 +267,20 @@
 
 .kw-tier {
 	grid-area: kw-tier;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 	background-color: beige;
-	border: 3px solid silver;
-	height: 88px;
-	width: 88px;
+	border: 2px solid sienna;
+	height: 90px;
+	max-width: 90px;
+	min-width: 64px;
 }
 
 .kw-tier-circle {
-	height: calc(100% - 18px);
-	max-height: 64px;
+	height: 64px;
+	width: 64px;
 	background: seagreen center;
 	-moz-border-radius: 30px;
 	-webkit-border-radius: 30px;
@@ -295,14 +304,18 @@
 	text-transform: uppercase;
 	background-color: silver;
 	text-align: center;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
-	color: antiquewhite;
+	color: midnightblue;
+	font-weight: bold;
+	width: 100%;
+	margin-bottom: -1px;
 }
 
 .kw-damage {
 	grid-area: kw-damage;
 	width: 80px;
+	background-color: papayawhip;
+	height: 90px;
+	border: 2px solid sienna;
 }
 
 .kw-damage-label {
@@ -311,42 +324,12 @@
 	text-transform: uppercase;
 	background-color: silver;
 	text-align: center;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
-	color: antiquewhite;
-}
-
-.kw-damage-hex {
-	background-image: url("/modules/kw-warfare/dmghex.png");
-	background-size: 78px;
-	height: 70px;
-	background-repeat: no-repeat;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 68px;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
-	color: silver;
+	color: midnightblue;
 	font-weight: bold;
-	padding-top: 16px;
-	padding-right: 4px;
 }
 
-.kw-damage-hex input {
-	text-align: center;
-}
-
-.kw-numattacks {
-	grid-area: kw-numattacks;
-	width: 80px;
-}
-
-.kw-numattacks-triangle {
-	background-image: url("/modules/kw-warfare/numattackstriangle.png");
-	background-size: 78px;
-	height: 70px;
-	background-repeat: no-repeat;
+.kw-damage-triangle {
+	height: 66px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -359,6 +342,60 @@
 	padding-right: 4px;
 }
 
+.kw-damage-triangle .triangle-up-equilateral {
+	border-bottom-color: lightseagreen;
+}
+
+.kw-damage-triangle label {
+	z-index: 1;
+}
+
+.kw-damage-triangle input {
+	text-align: center;
+}
+
+.kw-numattacks {
+	grid-area: kw-numattacks;
+	width: 80px;
+	background-color: cadetblue;
+	height: 90px;
+	border: 2px solid sienna;
+}
+
+.kw-numattacks-triangle {
+	height: 66px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 68px;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	color: darkred;
+	font-weight: bold;
+	padding-top: 16px;
+	padding-right: 4px;
+}
+
+.kw-numattacks-triangle label {
+	z-index: 1;
+}
+
+.kw-numattacks-triangle .triangle-up-equilateral {
+	border-bottom-color: goldenrod;
+}
+
+.triangle-up-equilateral {
+	border-left: 38px solid transparent;
+	border-right: 38px solid transparent;
+	border-bottom: calc(2 * 38px * 0.866) solid;
+	border-top: 40px solid transparent;
+	display: inline-block;
+	position: absolute;
+	z-index: 0;
+	margin-top: -56px;
+	margin-left: 4px;
+}
+
 .kw-numattacks-triangle input {
 	text-align: center;
 }
@@ -369,9 +406,8 @@
 	text-transform: uppercase;
 	background-color: silver;
 	text-align: center;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
-	color: antiquewhite;
+	color: midnightblue;
+	font-weight: bold;
 }
 
 .kw-traits {
@@ -507,4 +543,8 @@
 	display: flex;
 	justify-content: flex-end;
 	flex-direction: column;
+}
+
+a.kw-warfare-config-rm-item.kw-warfare-alert {
+	color: darkred;
 }
