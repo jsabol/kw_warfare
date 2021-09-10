@@ -100,7 +100,7 @@ form.kw-warfare-config .kw-warfare-unit-config .fa-cog {
 	color: mediumpurple;
 }
 
-.kw-warfare-rollable {
+.kw-organization-editable .kw-warfare-rollable {
 	cursor: pointer;
 }
 
@@ -438,11 +438,14 @@ form.kw-warfare-config .kw-warfare-unit-config .fa-cog {
 	display: flex;
 	align-items: center;
 	padding-left: 3px;
-	cursor: pointer;
 	position: relative;
 	margin-left: 5px;
 	width: 15px;
 	height: 15px;
+}
+
+.kw-organization-editable .kw-warfare-unit-casualties-pip {
+	cursor: pointer;
 }
 
 .kw-warfare-unit-casualties-pip:first-child {

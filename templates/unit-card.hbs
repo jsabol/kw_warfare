@@ -1,4 +1,5 @@
-<form class="{{#if sheet.config}}kw-warfare-config{{/if}}" autocomplete="off">
+<form class="{{#if sheet.config}}kw-warfare-config{{/if}}
+	{{#if editable}}kw-organization-editable{{/if}}" autocomplete="off">
 	<div class="kw-sheet-container">
 		<div class="kw-typeicon" title="{{unit.type}}">
 			<img alt="{{unit.type}}" src="{{unit.type_icon}}"/>
