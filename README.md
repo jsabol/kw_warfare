@@ -56,33 +56,28 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 ### Active Effects
 Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the unit.
 
-|Available flags|key|acceptable values|
+All flags are prefixed with `flags.kw-warfare.unit`
+
+|Available flags|key||
 |---|---|---|
-|Stat Value|`flags.kw-warfare.unit.{attribute}.value`||
-| |`flags.kw-warfare.unit.attack.value`|any number|
-| |`flags.kw-warfare.unit.defense.value`|any number|
-| |`flags.kw-warfare.unit.morale.value`|any number|
-| |`flags.kw-warfare.unit.power.value`|any number|
-| |`flags.kw-warfare.unit.toughness.value`|any number|
-|Stat Bonus|`flags.kw-warfare.unit.{attribute}.bonus`||
-| |`flags.kw-warfare.unit.attack.bonus`|any number|
-| |`flags.kw-warfare.unit.defense.bonus`|any number|
-| |`flags.kw-warfare.unit.morale.bonus`|any number|
-| |`flags.kw-warfare.unit.power.bonus`|any number|
-| |`flags.kw-warfare.unit.toughness.bonus`|any number|
-|Advantage|`flags.kw-warfare.unit.{attribute}.advantage`||
-| |`flags.kw-warfare.unit.attack.advantage`|0 for false, 1 for true|
-| |`flags.kw-warfare.unit.power.advantage`|0 for false, 1 for true|
-| |`flags.kw-warfare.unit.morale.advantage`|0 for false, 1 for true|
-| |`flags.kw-warfare.unit.command.advantage`|0 for false, 1 for true|
-|Disadvantage|`flags.kw-warfare.unit.{attribute}.disadvantage`||
-| |`flags.kw-warfare.unit.attack.disadvantage`|0 for false, 1 for true|
-| |`flags.kw-warfare.unit.power.disadvantage`|0 for false, 1 for true|
-| |`flags.kw-warfare.unit.morale.disadvantage`|0 for false, 1 for true|
-| |`flags.kw-warfare.unit.command.disadvantage`|0 for false, 1 for true|
-|Damage|`flags.kw-warfare.unit.damage`|any number|
-|Number of Attacks|`flags.kw-warfare.unit.numberOfAttacks`|any number|
-|Diminishable|`flags.kw-warfare.unit.special.diminishable`|0 for false, 1 for true|
+|Stat Value|`{stat}.value`||
+| |Valid stats|`attack`, `defense`, `morale`, `power`, `toughness`|
+| |Acceptable values|any number|
+|Stat Bonus|`{stat}.bonus`||
+| |Valid stats|`attack`, `defense`, `morale`, `power`, `toughness`|
+| |Acceptable values|any number|
+|Advantage|`{stat}.advantage`||
+| |Valid stats|`attack`, `power`, `morale`, `command`|
+| |Acceptable values|0 for false, 1 for true|
+|Disadvantage|`{stat}.disadvantage`||
+| |Valid stats|`attack`, `power`, `morale`, `command`|
+| |Acceptable values|0 for false, 1 for true|
+|Damage|`damage`||
+| |Acceptable values|any number|
+|Number of Attacks|`numberOfAttacks`|
+| |Acceptable values|any number|
+|Diminishable|`special.diminishable`|
+| |Acceptable values|0 for false, 1 for true|
 
 A unit's size can also be modified using active effects by modifying the hp/max hp of the unit.
 
