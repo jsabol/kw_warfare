@@ -58,20 +58,19 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
 	activateListeners(html) {
 		super.activateListeners(html);
-		if (!this.isEditable) {
-			return;
-		}
 
 		html.click(this._onWindowClick.bind(this));
-
-		html.find('.kw-warfare-unit-config').click(this._onConfigClicked.bind(this));
-		html.find('.kw-warfare-config-add-item').click(this._onAddItem.bind(this));
-		html.find('.kw-warfare-config-rm-item').click(this._onRemoveItem.bind(this));
+		if (this.isEditable) {
+			html.find('.kw-warfare-unit-config').click(this._onConfigClicked.bind(this));
+			html.find('.kw-warfare-config-add-item').click(this._onAddItem.bind(this));
+			html.find('.kw-warfare-config-rm-item').click(this._onRemoveItem.bind(this));
+			html.find('.kw-warfare-config-edit-item').click(this._onEditItem.bind(this));
+			html.find('.kw-warfare-unit-casualties-pip').click(this._onCasualtyClicked.bind(this));
+			html.find('[data-kw-roll]').click(this._onRollAttribute.bind(this));
+		}
+		
 		html.find('.kw-warfare-trait-name').click(this._onTraitNameClicked.bind(this));
-		html.find('.kw-warfare-config-edit-item').click(this._onEditItem.bind(this));
-		html.find('.kw-warfare-unit-casualties-pip').click(this._onCasualtyClicked.bind(this));
 		html.find('.kw-warfare-trait-info-button').click(this._onShowTraitInfo.bind(this));
-		html.find('[data-kw-roll]').click(this._onRollAttribute.bind(this));
 	}
 
 	getData() {
@@ -282,7 +281,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 	}
 
 	_prepareItems() {
-//
+		//
 	}
 
 }
