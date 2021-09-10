@@ -1,13 +1,49 @@
 import ActorSheet5e from '../../../systems/dnd5e/module/actor/sheets/base.js';
+import {KW_ANCESTRY, KW_EQUIPMENT, KW_EXPERIENCE, KW_TYPE} from "./KW_WarfareUnitActor.js";
 
-export const KW_ANCESTRY = 'Ancestry';
-export const KW_EXPERIENCE = 'Experience';
-export const KW_EQUIPMENT = 'Equipment';
-export const KW_TYPE = 'Type';
+export const DEFAULT_UNIT_DATA = {
+	type: null,
+	ancestry: null,
+	equipment: null,
+	experience: null,
+	commander: null,
+	tier: null,
+	damage: null,
+	numberOfAttacks: null,
+	stats: {
+		attack: {
+			value: null,
+			bonus: 0,
+			advantage: 0,
+			disadvantage: 0
+		},
+		defense: {
+			value: null,
+			bonus: 0
+		},
+		morale: {
+			value: null,
+			bonus: 0
+		},
+		power: {
+			value: null,
+			bonus: 0,
+			advantage: 0,
+			disadvantage: 0
+		},
+		toughness: {
+			value: null,
+			bonus: 0
+		}
+	},
+	special: {
+		diminishable: 1
+	}
+};
 
 export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
-	static get defaultOptions () {
+	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
 			classes: ['kw-warfare', 'kw-warfare-unit'],
 			scrollY: ['form'],
@@ -16,15 +52,17 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		});
 	}
 
-	get template () {
-		return 'modules/kw-warfare/templates/unit-card.html';
+	get template() {
+		return 'modules/kw-warfare/templates/unit-card.hbs';
 	}
 
-	activateListeners (html) {
+	activateListeners(html) {
 		super.activateListeners(html);
 		if (!this.isEditable) {
 			return;
 		}
+
+		html.click(this._onWindowClick.bind(this));
 
 		html.find('.kw-warfare-unit-config').click(this._onConfigClicked.bind(this));
 		html.find('.kw-warfare-config-add-item').click(this._onAddItem.bind(this));
@@ -36,42 +74,37 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		html.find('[data-kw-roll]').click(this._onRollAttribute.bind(this));
 	}
 
-	getData () {
+	getData() {
 		const data = super.getData();
-		data.kw_warfare = duplicate(this.actor.data.flags['kw-warfare'] || { sheet: { config: false } });
-		data.kw_warfare.details = data.kw_warfare.details || {};
-		data.kw_warfare.stats = data.kw_warfare.stats || {};
-		data.kw_warfare.bonus = data.kw_warfare.bonus || {};
-		data.kw_warfare.advantage = data.kw_warfare.advantage || {};
-		data.kw_warfare.disadvantage = data.kw_warfare.disadvantage || {};
-		data.kw_warfare.special = data.kw_warfare.special || {};
-		data.kw_traits = [];
+		data.unit = duplicate(this.actor.getFlag('kw-warfare', 'unit') || DEFAULT_UNIT_DATA);
+
+		data.unit.traits = [];
 
 		for (const item of data.items) {
 			const requirements = item.data.requirements;
-			if(requirements) {
-				if(requirements === KW_ANCESTRY) {
-					data.kw_warfare.details.ancestry = item.name;
-					data.kw_warfare.kw_ancestry_icon = item.img;
+			if (requirements) {
+				if (requirements === KW_ANCESTRY) {
+					data.unit.ancestry = item.name;
+					data.unit.ancestry_icon = item.img;
 					continue;
 				} else if (requirements === KW_EXPERIENCE) {
-					data.kw_warfare.details.experience = item.name;
+					data.unit.experience = item.name;
 					continue;
 				} else if (requirements === KW_EQUIPMENT) {
-					data.kw_warfare.details.equipment = item.name;
+					data.unit.equipment = item.name;
 					continue;
 				} else if (requirements === KW_TYPE) {
-					data.kw_warfare.details.type = item.name;
-					data.kw_warfare.kw_type_icon = item.img;
+					data.unit.type = item.name;
+					data.unit.type_icon = item.img;
 					continue;
 				}
 			}
-			data.kw_traits.push({
+			data.unit.traits.push({
 				id: item._id,
 				name: item.name,
 				activation: item.data?.activation?.type || 'none',
 				description: {
-					expanded: !!item.flags['kw-warfare']?.kw_trait_expanded,
+					expanded: this._traitIsExpanded(item),
 					enriched: TextEditor.enrichHTML(item.data?.description?.value, {
 						secrets: data.owner,
 						entities: true,
@@ -83,32 +116,40 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			});
 		}
 
-		data.kw_warfare.kw_type_icon = this._getDefaultImg(data.kw_warfare.kw_type_icon);
-		data.kw_warfare.kw_ancestry_icon = this._getDefaultImg(data.kw_warfare.kw_ancestry_icon);
+		data.unit.type_icon = this._getDefaultImg(data.unit.type_icon);
+		data.unit.ancestry_icon = this._getDefaultImg(data.unit.ancestry_icon);
 
 		const hp = data.data.attributes.hp;
 
-		data.kw_warfare.kw_casualties = this._formatCasualties(hp);
+		data.unit.casualties = this._formatCasualties(hp);
 
-		if(data.kw_warfare.special.diminishable !== "0") {
-			data.kw_warfare.diminished = (hp.max / 2) >= (hp.value + hp.temp);
+		if (data.unit.special.diminishable === "0") {
+			data.unit.diminished = false;
 		} else {
-			data.kw_warfare.diminished = false;
+			data.unit.diminished = (hp.max / 2) >= (hp.value + hp.temp);
 		}
 
+		data.sheet = mergeObject({
+			isGM: game.users.current.isGM,
+		}, this.actor.getFlag('kw-warfare', 'sheet'));
 		data.midiQolEnabled = game.modules.get("midi-qol")?.active;
 
 		return data;
 	}
 
+	_traitIsExpanded(trait) {
+		return !!trait.flags['kw-warfare']?.kw_trait_expanded?.[game.user.id] ||
+			!!game.user.getFlag('kw-warfare', `kw_trait_expanded.${trait._id}`);
+	}
+
 	_getDefaultImg(img) {
-		if(!img || img === 'icons/svg/item-bag.svg') {
+		if (!img || img === 'icons/svg/item-bag.svg') {
 			return '/modules/kw-warfare/blank.png';
 		}
 		return img;
 	}
 
-	_formatCasualties (hp) {
+	_formatCasualties(hp) {
 		let display = '';
 		for (let i = 1; i <= hp.max; i++) {
 			const classes = ['kw-warfare-unit-casualties-pip'];
@@ -120,19 +161,19 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
 			display += `<div class="${classes.join(' ')}" data-n="${i}"><span></span></div>`;
 		}
-		for(let j = 1; j <= hp.temp; j++) {
+		for (let j = 1; j <= hp.temp; j++) {
 			const classes = [
 				'kw-warfare-unit-casualties-pip',
 				'kw-warfare-unit-casualties-pip-full',
 				'kw-warfare-unit-casualties-pip-temp'
 			];
-			display += `<div class="${classes.join(' ')}" data-n="${hp.max+j}"><span></span></div>`;
+			display += `<div class="${classes.join(' ')}" data-n="${hp.max + j}"><span></span></div>`;
 		}
 
 		return display;
 	}
 
-	_onAddItem (evt) {
+	_onAddItem(evt) {
 		const dataset = evt.currentTarget.dataset;
 		const data = {
 			activation: {
@@ -148,37 +189,43 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		}], {renderSheet: true});
 	}
 
-	_onEditItem (evt) {
-		const item = this.actor.items.get(evt.currentTarget.parentElement.parentElement.dataset.itemId);
+	_onEditItem(evt) {
+		const item = this.actor.items.get(evt.currentTarget.closest('.kw-warfare-unit-trait').dataset.itemId);
 		item.sheet.render(true);
 	}
 
-	_onRemoveItem (evt) {
+	_onRemoveItem(evt) {
 		const target = evt.currentTarget;
 		if (!target.classList.contains('kw-warfare-alert')) {
 			target.classList.add('kw-warfare-alert');
 			return;
 		}
 
-		const parent = target.parentElement;
+		const parent = target.closest('.kw-warfare-unit-trait');
 
-		let itemId = parent.dataset.itemId || parent.parentElement.dataset.itemId;
+		let itemId = parent.dataset.itemId;
 
-		if(itemId && this.actor.items.get(itemId)) {
+		if (itemId && this.actor.items.get(itemId)) {
 			this.actor.deleteEmbeddedDocuments('Item', [itemId]);
 		}
 	}
 
-	_onTraitNameClicked (evt) {
-		const item = this.actor.items.get(evt.currentTarget.parentElement.dataset.itemId);
-		const isExpanded = !!item.getFlag('kw-warfare', 'kw_trait_expanded');
-		item.setFlag('kw-warfare', 'kw_trait_expanded', !isExpanded);
+	async _onTraitNameClicked(evt) {
+		const item = this.actor.items.get(evt.currentTarget.closest('.kw-warfare-unit-trait').dataset.itemId);
+		if (item.testUserPermission(game.user, 3)) {
+			const isExpanded = !!item.getFlag('kw-warfare', `kw_trait_expanded.${game.user.id}`);
+			item.setFlag('kw-warfare', `kw_trait_expanded.${game.user.id}`, !isExpanded);
+		} else if (item.testUserPermission(game.user, 2)) {
+			const isExpanded = !!game.user.getFlag('kw-warfare', `kw_trait_expanded.${item.id}`);
+			await game.user.setFlag('kw-warfare', `kw_trait_expanded.${item.id}`, !isExpanded);
+			this.render();
+		}
 	}
 
-	_onCasualtyClicked (evt) {
+	_onCasualtyClicked(evt) {
 		const hp = this.actor.data.data.attributes.hp;
 
-		if(evt.currentTarget.classList.contains('kw-warfare-unit-casualties-pip-temp')) {
+		if (evt.currentTarget.classList.contains('kw-warfare-unit-casualties-pip-temp')) {
 			this._decrementTempHp(hp.temp);
 			return;
 		}
@@ -205,29 +252,44 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		this.actor.update({"data.attributes.hp.temp": tempValue});
 	}
 
-	_onChangeInputDelta () {
-		// Disable this entirely as this behaviour is counter-intuitive for
-		// this sheet.
+	_onChangeInputDelta() {
+		//
 	}
 
-	_onConfigClicked () {
+	_onConfigClicked() {
 		const currentStatus = !!this.actor.getFlag('kw-warfare', 'sheet.config');
 		this.actor.setFlag('kw-warfare', 'sheet.config', !currentStatus);
 	}
 
-	_onRollAttribute (evt) {
+	_onRollAttribute(evt) {
 		this.actor.rollKWUnitAttribute(evt.currentTarget.dataset['kwRoll'], {event: evt});
 	}
 
 	_onShowTraitInfo(evt) {
-		if(!game.modules.get("midi-qol")?.active) {
+		if (!game.modules.get("midi-qol")?.active) {
 			return;
 		}
 		const trait = this.actor.items.get(evt.currentTarget.closest('.kw-warfare-unit-trait').dataset.itemId);
 		window.MidiQOL.showItemInfo.bind(trait)();
 	}
 
-	_prepareItems () {
+	_onWindowClick(evt) {
+		const rmItem = evt.target.closest('.kw-warfare-config-rm-item');
 
+		if (!rmItem) {
+			$('.kw-warfare-config-rm-item.kw-warfare-alert').removeClass('kw-warfare-alert');
+		}
 	}
+
+	_prepareItems() {
+//
+	}
+
+}
+
+export function setKWWarfareUnitDefaults(actor) {
+	const existingWarfareUnitValues = actor.getFlag('kw-warfare', 'unit') || {};
+	const mergedWarfareUnitValues = mergeObject(existingWarfareUnitValues, DEFAULT_UNIT_DATA);
+
+	actor.setFlag('kw-warfare', 'unit', mergedWarfareUnitValues);
 }

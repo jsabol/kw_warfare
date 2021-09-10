@@ -95,6 +95,10 @@
 	vertical-align: middle;
 }
 
+.kw-warfare-unit-stat-value .kw-warfare-stat-bonus.kw-warfare-stat-bonus-negative {
+	color: mediumpurple;
+}
+
 .kw-warfare-rollable {
 	cursor: pointer;
 }
@@ -236,6 +240,10 @@
 	font-size: 15px;
 	-webkit-text-stroke-width: 0;
 	display: flex;
+}
+
+.kw-aeqt label {
+	margin-left: 3px;
 }
 
 .kw-stats {

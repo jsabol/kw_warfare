@@ -1,18 +1,18 @@
 <div class="kw-warfare-unit-stat-value">
-	<label for="{{stat}}-stat" >
-		{{#if advantage}}<span title="{{localize 'KW_WARFARE.Advantage'}}" class="kw-warfare-stat-advantage">*</span>{{/if}}
-		{{#if disadvantage}}<span title="{{localize 'KW_WARFARE.Disadvantage'}}" class="kw-warfare-stat-disadvantage">-</span>{{/if}}
+	<label for="{{statName}}-stat" >
+		{{#if stat.advantage}}<span title="{{localize 'KW_WARFARE.Advantage'}}" class="kw-warfare-stat-advantage">*</span>{{/if}}
+		{{#if stat.disadvantage}}<span title="{{localize 'KW_WARFARE.Disadvantage'}}" class="kw-warfare-stat-disadvantage">-</span>{{/if}}
 		<span class="kw-warfare-unit-stat-display {{#if rollable}}kw-warfare-rollable{{/if}}"
-		{{#if rollable}}data-kw-roll="{{stat}}"{{/if}}>
-			{{kw-number-format statValue sign=rollable decimals=0}}
+		{{#if rollable}}data-kw-roll="{{statName}}"{{/if}}>
+			{{kw-number-format stat.value sign=rollable decimals=0}}
 		</span>
-		{{#if bonus}}
-			<span class="kw-warfare-stat-bonus" title="{{localize 'KW_WARFARE.Bonus'}}">
-				({{kw-number-format bonus sign=true decimals=0}})
+		{{#if stat.bonus}}
+			<span class="kw-warfare-stat-bonus {{#if (lt stat.bonus 0)}}kw-warfare-stat-bonus-negative{{/if}}" title="{{localize 'KW_WARFARE.Bonus'}}">
+				({{kw-number-format stat.bonus sign=true decimals=0}})
 			</span>
 		{{/if}}
 	</label>
-	<input id="{{stat}}-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
+	<input id="{{statName}}-stat" type="text" class="kw-warfare-unit-stat" data-dtype="Number"
 		   placeholder="&mdash;"
-		   name="flags.kw-warfare.stats.{{stat}}" value="{{statValue}}" />
+		   name="flags.kw-warfare.unit.stats.{{statName}}.value" value="{{stat.value}}" />
 </div>

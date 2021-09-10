@@ -39,6 +39,8 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 
 **NOTE** Not all feature suggestions may be possible to implement in order to not infringe on MCDM's copyright.
 
+## Known Issues:
+* Scroll position of traits is reset when one is open/closed.
 
 ## How to Use
 
@@ -55,29 +57,82 @@ Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the u
 
 |Available flags|key|acceptable values|
 |---|---|---|
-|Stat Bonuses|`flags.kw-warfare.bonus`||
-| |`flags.kw-warfare.bonus.attack`|any number|
-| |`flags.kw-warfare.bonus.defense`|any number|
-| |`flags.kw-warfare.bonus.morale`|any number|
-| |`flags.kw-warfare.bonus.power`|any number|
-| |`flags.kw-warfare.bonus.toughness`|any number|
-|Advantage|`flags.kw-warfare.advantage`||
-| |`flags.kw-warfare.advantage.attack`|0 for false, 1 for true|
-| |`flags.kw-warfare.advantage.power`|0 for false, 1 for true|
-| |`flags.kw-warfare.advantage.morale`|0 for false, 1 for true|
-| |`flags.kw-warfare.advantage.command`|0 for false, 1 for true|
-|Disadvantage|`flags.kw-warfare.disadvantage`||
-| |`flags.kw-warfare.disadvantage.attack`|0 for false, 1 for true|
-| |`flags.kw-warfare.disadvantage.power`|0 for false, 1 for true|
-| |`flags.kw-warfare.disadvantage.morale`|0 for false, 1 for true|
-| |`flags.kw-warfare.disadvantage.command`|0 for false, 1 for true|
-|Diminishable|`flags.kw-warfare.special.diminishable`|0 for false, 1 for true|
+|Stat Bonuses|`flags.kw-warfare.unit.{attribute}.bonus`||
+| |`flags.kw-warfare.unit.attack.bonus`|any number|
+| |`flags.kw-warfare.unit.defense.bonus`|any number|
+| |`flags.kw-warfare.unit.morale.bonus`|any number|
+| |`flags.kw-warfare.unit.power.bonus`|any number|
+| |`flags.kw-warfare.unit.toughness.bonus`|any number|
+|Advantage|`flags.kw-warfare.unit.{attribute}.advantage`||
+| |`flags.kw-warfare.unit.attack.advantage`|0 for false, 1 for true|
+| |`flags.kw-warfare.unit.power.advantage`|0 for false, 1 for true|
+| |`flags.kw-warfare.unit.morale.advantage`|0 for false, 1 for true|
+| |`flags.kw-warfare.unit.command.advantage`|0 for false, 1 for true|
+|Disadvantage|`flags.kw-warfare.unit.{attribute}.disadvantage`||
+| |`flags.kw-warfare.unit.attack.disadvantage`|0 for false, 1 for true|
+| |`flags.kw-warfare.unit.power.disadvantage`|0 for false, 1 for true|
+| |`flags.kw-warfare.unit.morale.disadvantage`|0 for false, 1 for true|
+| |`flags.kw-warfare.unit.command.disadvantage`|0 for false, 1 for true|
+|Diminishable|`flags.kw-warfare.unit.special.diminishable`|0 for false, 1 for true|
 
 A unit's size can also be modified using active effects by modifying the hp/max hp of the unit.
 
 ![Active Effects Example providing +5 to Power rolls and Advantage on Attack rolls](./activeeffectexample.png)
 
 ![Active Effects Results Example showing the +5 to Power rolls and Advantage on Attack rolls](./activeeffectresultexample.png)
+
+### 0.9 Migration
+
+Some major refactoring between 0.8.1 and 0.9.0 requires migrating data from the old structure to the new one. You can use this macro to select what units you want to migrate:
+
+    if(!game.users.current.isGM) {
+        ui.notifications.error('Must execute as GM');
+    }
+
+    const units = game.actors.filter(a=>a.sheet.constructor.name === 'KW_WarfareUnitSheet');
+
+    let content = `<div><h2>Units:<ul>`;
+    units.forEach(o=>{
+    content += `<li><input type="checkbox" id="${o.id}" value="${o.id}" checked=true>
+    	<label for="${o.id}">${o.name}</label></li>`
+    });
+    content += '</ul></div>';
+
+    const buttons = {
+        cancel: { icon: '<i class="fas fa-times"></i>', label: '', callback: () => {} },
+        start: {
+            icon: '<i class="fas fa-play"></i>',
+            label: 'Migrate',
+            callback: async (html) => {
+                const selectedUnits = html.find('input:checkbox:checked')
+                    .get().map(cb=>game.actors.get(cb.value));
+                const {setKWWarfareUnitDefaults} = await import('/modules/kw-warfare/module/KW_WarfareUnitSheet.js');
+                selectedUnits.forEach(u=>{
+                    const oldStats = u.getFlag('kw-warfare', 'stats');
+                    const oldDetails = u.getFlag('kw-warfare', 'details');
+                    setKWWarfareUnitDefaults(u);
+                    u.setFlag('kw-warfare', 'unit.stats.attack.value', oldStats.attack);
+                    u.setFlag('kw-warfare', 'unit.stats.defense.value', oldStats.defense);
+                    u.setFlag('kw-warfare', 'unit.stats.morale.value', oldStats.morale);
+                    u.setFlag('kw-warfare', 'unit.stats.power.value', oldStats.power);
+                    u.setFlag('kw-warfare', 'unit.stats.toughness.value', oldStats.toughness);
+                    u.setFlag('kw-warfare', 'unit.stats.command.value', oldStats.command);
+                    u.setFlag('kw-warfare', 'unit.experience', oldDetails.experience);
+                    u.setFlag('kw-warfare', 'unit.type', oldDetails.type);
+                    u.setFlag('kw-warfare', 'unit.ancestry', oldDetails.ancestry);
+                    u.setFlag('kw-warfare', 'unit.equipment', oldDetails.equipment);
+                    u.setFlag('kw-warfare', 'unit.commander', oldDetails.commander);
+                    u.setFlag('kw-warfare', 'unit.tier', oldStats.tier);
+                    u.setFlag('kw-warfare', 'unit.damage', oldStats.damage);
+                    u.setFlag('kw-warfare', 'unit.numberOfAttacks', oldStats.numberOfAttacks);
+                });
+            }
+        }
+    };
+
+    new Dialog({
+        title: 'K&W Data Migration 0.8.1=>1.0', content, buttons, default: "start"
+    }).render(true);
 
 ## License
 
