@@ -489,12 +489,12 @@ form.kw-warfare-config .kw-warfare-unit-config .fa-cog {
 }
 
 .kw-warfare-unit-casualties-pip-temp span {
-	background-color: yellowgreen;
-	border-color: yellowgreen;
+	background-color: darkgreen;
+	border-color: darkgreen;
 }
 
 .kw-warfare-unit-casualties-pips:not(.kw-warfare-unit-casualties-diminished) .kw-warfare-unit-casualties-pip-full.kw-warfare-unit-casualties-pip-temp:before {
-	border-color: yellowgreen;
+	border-color: darkgreen;
 }
 
 .kw-warfare-trait-description {
