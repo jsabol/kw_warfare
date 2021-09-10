@@ -16,6 +16,8 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 * Drag-drop Traits, Experience, Equipment, Ancestry and Unit Type.
   * Dragging and dropping correctly marked features onto unit cards will correctly map it to the correct field (see How-to below)
   * Icons added by you for Ancestry and Unit Type features will be displayed on the unit card.
+  * By adding active effects that increase stat base values (see below) to things like ancestry, experience, etc... you can effectively build units from the ground up
+    * There are several versions of people's unit building formulae online that you can use to populate these values.
 * Drag-drop Commander.
   * Dragging and dropping a PC or NPC actor onto unit cards will correctly map the actor as the commander of the unit
   * Players whose PCs are dropped onto the unit will set that player's permission for the unit to "Owner"
@@ -32,10 +34,9 @@ To use: Create an NPC actor and use the 'K&W Unit Sheet' sheet.
 ## Proposed Features:
 * Hook up targeting to automatically roll against matching stats (attack vs target's defense, etc...)
 * Automatically apply damage on hit/successful power test (add option to disable)
-* Store stats in the Feature items (Ancestry, Experience, etc...) and automatically calculate unit stats when added. This would enable drag/drop unit building from scratch.
 * Add conditions for things like Weakened to mark units with.
 * Set unit movement distances. (should be modifiable by active effects)
-* Add sections on sheet (tabs?) for actions and items.
+* Add sections on sheet (tabs? just visual markers?) for actions and items.
 
 **NOTE** Not all feature suggestions may be possible to implement in order to not infringe on MCDM's copyright.
 
@@ -57,7 +58,13 @@ Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the u
 
 |Available flags|key|acceptable values|
 |---|---|---|
-|Stat Bonuses|`flags.kw-warfare.unit.{attribute}.bonus`||
+|Stat Value|`flags.kw-warfare.unit.{attribute}.value`||
+| |`flags.kw-warfare.unit.attack.value`|any number|
+| |`flags.kw-warfare.unit.defense.value`|any number|
+| |`flags.kw-warfare.unit.morale.value`|any number|
+| |`flags.kw-warfare.unit.power.value`|any number|
+| |`flags.kw-warfare.unit.toughness.value`|any number|
+|Stat Bonus|`flags.kw-warfare.unit.{attribute}.bonus`||
 | |`flags.kw-warfare.unit.attack.bonus`|any number|
 | |`flags.kw-warfare.unit.defense.bonus`|any number|
 | |`flags.kw-warfare.unit.morale.bonus`|any number|
@@ -73,6 +80,8 @@ Use traits or [DAE](https://foundryvtt.com/packages/dae) to add effects to the u
 | |`flags.kw-warfare.unit.power.disadvantage`|0 for false, 1 for true|
 | |`flags.kw-warfare.unit.morale.disadvantage`|0 for false, 1 for true|
 | |`flags.kw-warfare.unit.command.disadvantage`|0 for false, 1 for true|
+|Damage|`flags.kw-warfare.unit.damage`|any number|
+|Number of Attacks|`flags.kw-warfare.unit.numberOfAttacks`|any number|
 |Diminishable|`flags.kw-warfare.unit.special.diminishable`|0 for false, 1 for true|
 
 A unit's size can also be modified using active effects by modifying the hp/max hp of the unit.
