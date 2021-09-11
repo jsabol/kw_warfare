@@ -85,9 +85,9 @@ A unit's size can also be modified using active effects by modifying the hp/max 
 
 ![Active Effects Results Example showing the +5 to Power rolls and Advantage on Attack rolls](./activeeffectresultexample.png)
 
-### 0.9 Migration
+### 0.8.2 Migration
 
-Some major refactoring between 0.8.1 and 0.9.0 requires migrating data from the old structure to the new one. You can use this macro to select what units you want to migrate:
+Some major refactoring between 0.8.1 and 0.8.2 requires migrating data from the old structure to the new one. You can use this macro to select what units you want to migrate:
 
 [Migrate Existing KW-Warfare data From 0.8.1](https://gist.githubusercontent.com/Mejari/cac90f00c10ed5f583b28a3b9f880a7e/raw/7aa782553d9947429f3d1193f12bf490852d1556)
 

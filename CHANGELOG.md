@@ -1,5 +1,10 @@
 ### [0.8.2](https://github.com/Mejari/kw_warfare/compare/v0.8.1...v0.8.2) (2021-09-11)
 
+Some major refactoring between 0.8.1 and 0.8.2 requires migrating data from the old structure to the new one. You can use this macro to select what units you want to migrate:
+
+[Migrate Existing KW-Warfare data From 0.8.1](https://gist.githubusercontent.com/Mejari/cac90f00c10ed5f583b28a3b9f880a7e/raw/7aa782553d9947429f3d1193f12bf490852d1556)
+
+You'll also need to re-import any of the bundled macros you've previously imported.
 
 ### Bug Fixes
 
