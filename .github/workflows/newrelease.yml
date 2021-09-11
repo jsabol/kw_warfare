@@ -41,7 +41,7 @@ jobs:
         run: |
           echo "${NEW_VERSION}"
           echo "${NEW_TAG}"
-          jq '. + {"version": env.NEW_VERSION, "download": (env.GITHUB_SERVER_URL + "/" + env.GITHUB_REPOSITORY + "/releases/download/" + env.NEW_TAG + "/" + env.MODULE_NAME + "-" + env.NEW_TAG + ".zip")}' module.json > _module.json
+          jq '. + {"version": env.NEW_VERSION, "download": (env.GITHUB_SERVER_URL + "/" + env.GITHUB_REPOSITORY + "/releases/download/" + env.NEW_TAG + "/module.zip")}' module.json > _module.json
           mv _module.json module.json
 
       - name: Update Changelog
@@ -90,14 +90,18 @@ jobs:
           NEW_TAG: ${{ steps.calculate_version.outputs.new_tag }}
         run: |
           zip -r /tmp/module.zip . -x .git\*
+          mv /tmp/module.zip ./module.zip
 
-      - name: Upload Release Asset
-        id: upload_release_asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Create a release for this specific version
+      - name: Update Release with Files
+        id: create_version_release
+        uses: ncipollo/release-action@v1
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /tmp/module.zip
-          asset_name: ${{ env.MODULE_NAME }}-${{ steps.calculate_version.outputs.new_tag }}.zip
-          asset_content_type: application/zip
+          allowUpdates: true
+          draft: false
+          prerelease: false
+          omitNameDuringUpdate: true
+          omitBodyDuringUpdate: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: './module.json, ./module.zip'
+          tag: ${{ steps.calculate_version.outputs.new_tag }}
