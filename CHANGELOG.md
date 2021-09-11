@@ -1,3 +1,23 @@
+### [0.8.2](https://github.com/Mejari/kw_warfare/compare/v0.8.1...v0.8.2) (2021-09-11)
+
+
+### Bug Fixes
+
+* **macro:** Fix macros for new data structure. ([8b17238](https://github.com/Mejari/kw_warfare/commit/8b17238bcab8813e7f91d0c95dbc95639f7611c4))
+* **ui:** Try another method of triangle to not obscure the attack button ([3c4dc51](https://github.com/Mejari/kw_warfare/commit/3c4dc51ee1f11ca4b6c2cfd1c7553507dc9ba843))
+
+
+### Documentation
+
+* **examples:** Redo example images ([83e6fd7](https://github.com/Mejari/kw_warfare/commit/83e6fd7c373390d2e8d01535a786734d17a1de2f))
+* **flags:** Clarify what is possible with active effects. ([47d546d](https://github.com/Mejari/kw_warfare/commit/47d546d0585232ec9cda893d20052307a398e8a9))
+
+
+### Code Refactoring
+
+* **data:** Move data around to be easier to mess with. Move data manipulation off of the sheet and main as much as possible ([bbadbba](https://github.com/Mejari/kw_warfare/commit/bbadbba896c1e4f4c1e332c6f1ddd28c10e4773e))
+
+
 ### [0.8.1](https://github.com/Mejari/kw_warfare/compare/v0.8.0...v0.8.1) (2021-09-01)
 
 
