@@ -342,8 +342,11 @@ form.kw-warfare-config .kw-warfare-unit-config .fa-cog {
 	padding-right: 4px;
 }
 
-.kw-damage-triangle .triangle-up-equilateral {
-	border-bottom-color: lightseagreen;
+.kw-background-triangle {
+	z-index: 0;
+	position: absolute;
+	margin-bottom: 14px;
+	margin-left: 3px;
 }
 
 .kw-damage-triangle label {
@@ -378,22 +381,6 @@ form.kw-warfare-config .kw-warfare-unit-config .fa-cog {
 
 .kw-numattacks-triangle label {
 	z-index: 1;
-}
-
-.kw-numattacks-triangle .triangle-up-equilateral {
-	border-bottom-color: goldenrod;
-}
-
-.triangle-up-equilateral {
-	border-left: 38px solid transparent;
-	border-right: 38px solid transparent;
-	border-bottom: calc(2 * 38px * 0.866) solid;
-	border-top: 40px solid transparent;
-	display: inline-block;
-	position: absolute;
-	z-index: 0;
-	margin-top: -56px;
-	margin-left: 4px;
 }
 
 .kw-numattacks-triangle input {
