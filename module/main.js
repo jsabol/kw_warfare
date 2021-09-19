@@ -75,19 +75,19 @@ Handlebars.registerHelper('kw-number-format', function (n, options) {
 	return sign && n >= 0 ? '+' + n : n;
 });
 
-const CHAT_PORTRAIT_ICON_MAP = {
-	"KW_WARFARE.Power": "systems/dnd5e/icons/skills/yellow_08.jpg",
-	"KW_WARFARE.Attack": "systems/dnd5e/icons/skills/red_31.jpg",
-	"KW_WARFARE.Morale": "systems/dnd5e/icons/skills/yellow_17.jpg",
-	"KW_WARFARE.Command": "systems/dnd5e/icons/skills/ice_16.jpg"
-};
+const CHAT_PORTRAIT_ICON_MAP = [
+	{name:"KW_WARFARE.Power", icon: "systems/dnd5e/icons/skills/yellow_08.jpg"},
+	{name:"KW_WARFARE.Attack", icon: "systems/dnd5e/icons/skills/red_31.jpg"},
+	{name:"KW_WARFARE.Morale", icon: "systems/dnd5e/icons/skills/yellow_17.jpg"},
+	{name:"KW_WARFARE.Command", icon: "systems/dnd5e/icons/skills/ice_16.jpg"}
+];
 
 //Optional support for the Chat-Portrait module
 Hooks.on('ChatPortraitReplaceData', (chatPortraitCustomData, chatMessage) => {
 	if (chatMessage) {
 		const speaker = ChatMessage.getSpeakerActor(chatMessage.data.speaker);
 		if ('KW_WarfareUnitSheet' === speaker?.sheet?.constructor.name) {
-			chatPortraitCustomData.customImageReplacer = CHAT_PORTRAIT_ICON_MAP;
+			chatPortraitCustomData.customImageReplacerData = CHAT_PORTRAIT_ICON_MAP;
 		}
 	}
 	return chatPortraitCustomData;
