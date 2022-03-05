@@ -1,70 +1,77 @@
 <form class="{{#if sheet.config}}kw-warfare-config{{/if}}
 	{{#if editable}}kw-organization-editable{{/if}}" autocomplete="off">
-	<div class="kw-sheet-container">
+	<div class="kw-sheet-container" {{#if unit.color}}style="--primary-color: {{unit.color}}"{{/if}}>
+		{{#if editable}}<a class="kw-warfare-unit-config"><i class="fas fa-cog"></i>&nbsp;&nbsp;EDIT</a>{{/if}}
+		<div class="kw-overlay"></div>
 		<div class="kw-typeicon" title="{{unit.type}}">
+			<div class="kw-typeicon-stars">
+				{{#if (eq unit.experience "Veteran")}}
+					<i class="fas fa-star"></i>
+				{{/if}}
+				{{#if (eq unit.experience "Elite")}}
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				{{/if}}
+				{{#if (eq unit.experience "Super-Elite")}}
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				{{/if}}
+			</div>
 			<img alt="{{unit.type}}" src="{{unit.type_icon}}"/>
 		</div>
 		<div class="kw-ancestryicon" title="{{unit.ancestry}}">
 			<img alt="{{unit.ancestry}}" src="{{unit.ancestry_icon}}"/>
 		</div>
-		<div class="kw-unit-name">
-			<label class="kw-warfare-unit-name">
-				<span>{{actor.name}}</span>
-				<input type="text" data-dtype="String" name="name"
-					   value="{{actor.name}}" placeholder="{{localize 'KW_WARFARE.UnitName'}}">
+		<label class="kw-unit-name">
+			<span>{{actor.name}}</span>
+			<input type="text" data-dtype="String" name="name"
+						value="{{actor.name}}" placeholder="{{localize 'KW_WARFARE.UnitName'}}">
+		</label>
+		<div class="kw-commander">
+			<span class="kw-commander-prefix">{{localize 'KW_WARFARE.Commander'}}:&nbsp;</span>
+			<label>
+				<!--FIXME: Long commander names overflow, need to ellipsize -->
+				<span class="kw-commander-display">{{unit.commander}}</span>
+				<input type="text" class="kw-warfare-unit-commander" data-dtype="String"
+							placeholder="&mdash;"
+							name="flags.kw-warfare.unit.commander" value="{{unit.commander}}">
 			</label>
-			{{#if editable}}<a class="kw-warfare-unit-config"><i class="fas fa-cog"></i></a>{{/if}}
 		</div>
-		<div class="kw-details">
-			<div class="kw-commander">
-				<span class="kw-commander-prefix">{{localize 'KW_WARFARE.Commander'}}:&nbsp;</span>
-				<label>
-					<!--FIXME: Long commander names overflow, need to ellipsize -->
-					<span class="kw-commander-display">{{unit.commander}}</span>
-					<input type="text" class="kw-warfare-unit-commander" data-dtype="String"
-						   placeholder="&mdash;"
-						   name="flags.kw-warfare.unit.commander" value="{{unit.commander}}">
-				</label>
-			</div>
-			<div class="kw-aeqt">
-				{{#if (or unit.ancestry sheet.config)}}
-					<label>
-						<span>{{unit.ancestry}},</span>
-						<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-							   name="flags.kw-warfare.unit.ancestry" value="{{unit.ancestry}}"
-							   placeholder="{{localize 'KW_WARFARE.Ancestry'}}">
-					</label>
-				{{/if}}
-				<label>
-					<span>{{unit.experience}},</span>
-					<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-						   name="flags.kw-warfare.unit.experience"
-						   value="{{unit.experience}}"
-						   placeholder="{{localize 'KW_WARFARE.Experience'}}">
-				</label>
-				{{#if (or unit.equipment sheet.config)}}
-					<label>
-						<span>{{unit.equipment}},</span>
-						<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-							   name="flags.kw-warfare.unit.equipment"
-							   value="{{unit.equipment}}"
-							   placeholder="{{localize 'DND5E.ItemTypeEquipment'}}">
-					</label>
-				{{/if}}
-				<label>
-					<span>{{unit.type}}</span>
-					<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
-						   name="flags.unit.type" value="{{unit.type}}"
-						   placeholder="{{localize 'DND5E.Type'}}">
-				</label>
-			</div>
-			{{#if unit.casualties}}
-				<div class="kw-warfare-unit-casualties {{#if unit.diminished}}kw-warfare-unit-diminished{{/if}}">
-					<div title="{{localize 'KW_WARFARE.Casualties'}}" class="kw-warfare-unit-casualties-pips">
-						{{{unit.casualties}}}
-					</div>
-				</div>
+		<div class="kw-body">
+
+		</div>
+		<div class="kw-aeqt">
+			{{#if (or unit.experience sheet.config)}}
+			<label>
+				<span>{{unit.experience}},</span>
+				<select class="kw-warfare-unit-keyword" data-dtype="String"
+							name="flags.kw-warfare.unit.experience">
+					<option value="Levies" {{#if (eq unit.experience "Levies")}}selected{{/if}}>Levies</option>
+					<option value="Regular" {{#if (eq unit.experience "Regular")}}selected{{/if}}>Regular</option>
+					<option value="Veteran" {{#if (eq unit.experience "Veteran")}}selected{{/if}}>Veteran</option>
+					<option value="Elite" {{#if (eq unit.experience "Elite")}}selected{{/if}}>Elite</option>
+					<option value="Super-Elite" {{#if (eq unit.experience "Super-Elite")}}selected{{/if}}>Super-Elite</option>
+				</select>
+			</label>
 			{{/if}}
+			{{#if (or unit.equipment sheet.config)}}
+				<label>
+					<span>{{unit.equipment}},</span>
+					<input type="text" class="kw-warfare-unit-keyword" data-dtype="String"
+								name="flags.kw-warfare.unit.equipment"
+								value="{{unit.equipment}}"
+								placeholder="{{localize 'DND5E.ItemTypeEquipment'}}">
+				</label>
+			{{/if}}
+			{{#if (or unit.ancestry sheet.config)}}
+				<label>
+					<span>{{unit.ancestry}},</span>
+				</label>
+			{{/if}}
+			<label>
+				<span>{{unit.type}}</span>
+			</label>
 		</div>
 		<div class="kw-stats">
 			<div class="kw-warfare-stat-short-label">{{localize 'KW_WARFARE.AttackShort'}}</div>
@@ -81,64 +88,35 @@
 			{{> kw-stat statName='command' rollable = true stat=unit.stats.command }}
 		</div>
 		<div class="kw-size">
-			<div class="kw-size-circle">
-				<label>
-					<span>{{data.attributes.hp.max}}</span>
-					<input type="number" data-dtype="Number" min="1"
-						   name="data.attributes.hp.max"
-						   value="{{data.attributes.hp.max}}">
-				</label>
-			</div>
-			<div class="kw-size-label">
-				{{localize 'KW_WARFARE.Size'}}
-			</div>
+			<label>
+				<span>{{data.attributes.hp.max}}</span>
+				<input type="number" data-dtype="Number" min="1"
+							name="data.attributes.hp.max"
+							value="{{data.attributes.hp.max}}">
+			</label>
 		</div>
-		<div class="kw-tier">
-			<div class="kw-tier-circle">
-				<label>
-					<span>{{unit.tier}}</span>
-					<input type="number" class="kw-warfare-unit-stat" min="1"
-						   data-dtype="Number" placeholder="&mdash;"
-						   name="flags.kw-warfare.unit.tier" value="{{unit.tier}}">
-				</label>
-			</div>
-			<div class="kw-tier-label">
-				{{localize 'KW_WARFARE.Tier'}}
-			</div>
+		<label class="kw-tier">
+			<span>{{unit.tier}}</span>
+			<input type="number" class="kw-warfare-unit-stat" min="1"
+						data-dtype="Number" placeholder="&mdash;"
+						name="flags.kw-warfare.unit.tier" value="{{unit.tier}}">
+		</label>
+		<div class="kw-damage-background">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 628"><path d="M723 314 543 625.769H183L3 314 183 2.231h360L723 314z"/></svg>
 		</div>
-		<div class="kw-damage">
-			<div class="kw-damage-triangle">
-				<svg class="kw-background-triangle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 64" width="78" height="64">
-					<polygon points="40,0 78,64 0,64" fill="lightseagreen"></polygon>
-				</svg>
-				<label>
-					<span>{{unit.damage}}</span>
-					<input type="number" class="kw-warfare-unit-stat" min="1"
-						   data-dtype="Number" placeholder="&mdash;"
-						   name="flags.kw-warfare.unit.damage" value="{{unit.damage}}">
-				</label>
-			</div>
-			<div class="kw-damage-label">
-				{{localize 'KW_WARFARE.Damage'}}
-			</div>
-		</div>
-		<div class="kw-numattacks">
-			<div class="kw-numattacks-triangle">
-				<svg class="kw-background-triangle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 64" width="78" height="64">
-					<polygon points="40,0 78,64 0,64" fill="goldenrod"></polygon>
-				</svg>
-				<label>
-					<span>{{unit.numberOfAttacks}}</span>
-					<input type="number" class="kw-warfare-unit-stat" min="1"
-						   data-dtype="Number" placeholder="&mdash;"
-						   name="flags.kw-warfare.unit.numberOfAttacks"
-						   value="{{unit.numberOfAttacks}}">
-				</label>
-			</div>
-			<div class="kw-numattacks-label">
-				{{localize 'KW_WARFARE.NumberOfAttacks'}}
-			</div>
-		</div>
+		<label class="kw-damage">
+			<span>{{unit.damage}}</span>
+			<input type="number" class="kw-warfare-unit-stat" min="1"
+						data-dtype="Number" placeholder="&mdash;"
+						name="flags.kw-warfare.unit.damage" value="{{unit.damage}}">
+		</label>
+		<label class="kw-numattacks">
+			<span>{{unit.numberOfAttacks}}</span>
+			<input type="number" class="kw-warfare-unit-stat" min="1"
+						data-dtype="Number" placeholder="&mdash;"
+						name="flags.kw-warfare.unit.numberOfAttacks"
+						value="{{unit.numberOfAttacks}}">
+		</label>
 		<div class="kw-traits">
 			{{#if unit.traits.length}}
 				<section>

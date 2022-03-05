@@ -48,7 +48,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			classes: ['kw-warfare', 'kw-warfare-unit'],
 			scrollY: ['form'],
 			width: 615,
-			height: 440
+			height: 470
 		});
 	}
 
@@ -68,7 +68,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			html.find('.kw-warfare-unit-casualties-pip').click(this._onCasualtyClicked.bind(this));
 			html.find('[data-kw-roll]').click(this._onRollAttribute.bind(this));
 		}
-		
+
 		html.find('.kw-warfare-trait-name').click(this._onTraitNameClicked.bind(this));
 		html.find('.kw-warfare-trait-info-button').click(this._onShowTraitInfo.bind(this));
 	}
@@ -106,7 +106,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 					expanded: this._traitIsExpanded(item),
 					enriched: TextEditor.enrichHTML(item.data?.description?.value, {
 						secrets: data.owner,
-						entities: true,
+						documents: true,
 						links: true,
 						rolls: true,
 						rollData: this.actor.getRollData()

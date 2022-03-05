@@ -109,6 +109,7 @@ export function dropTrait(itemInfo) {
 	}
 
 	const requirements = item.data.data.requirements;
+	const source = item.data.data.source;
 	if (!requirements) {
 		return;
 	}
@@ -116,6 +117,10 @@ export function dropTrait(itemInfo) {
 	if (requirements === KW_ANCESTRY) {
 		this.setFlag('kw-warfare', 'unit.ancestry', item.name);
 		_cleanDetails(this, 'ancestry', KW_ANCESTRY);
+		if(source){
+			this.setFlag('kw-warfare', 'unit.color', source);
+			_cleanDetails(this, 'color', KW_ANCESTRY);
+		}
 	} else if (requirements === KW_EQUIPMENT) {
 		this.setFlag('kw-warfare', 'unit.equipment', item.name);
 		_cleanDetails(this, 'equipment', KW_EQUIPMENT);
